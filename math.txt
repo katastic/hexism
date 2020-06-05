@@ -1,0 +1,173 @@
+00 0E 17 B0
+
+
+HEX  DEC
+00 = 0
+0E = 14
+17 = 23
+B0 = 176
+
+(wait, is it 256, or different?)
+
+176 * 1
+23 * 256
+14 * 256 * 256
+0 * 256^3
+
+176 * 1 + 23 * 256 + 14 * 256 * 256
+
+
+@ 948 offset (decimal) 
+FORM[SZ]   where SZ = Size: 923,568 
+
+
+WORKS 
+ = 923,568  TURN ON BIG ENDIAN MODE on wxHexEditor.
+
+
+
+@ 948 offset (decimal) 
+
+
+@948 "FORM----"   where ---- = Size: 923,568 
+
+	FORM-v1-CDATASTON-v2-
+
+	v1 = 923568
+	v2 = 226556
+
+
+	923568 - 226556 = 697012
+	
+
+
+	FORM-v1-CDATASTON-v2-BODY-v3-FORM-v4-CDATIVER-v5-DATA...
+	
+	FORM 		v1 = 923568    / 1024 / 1024 = only 0.881 MB?    = 00 0E 17 B0
+	CDATASTON	v2 = 226556 = 00 03 74 FC 
+	BODY		v3 = 226548 -- NOTE! v2 - 8 = v3. Ala, v3 contains EVERYTHING the previous does minus "FORM...." = 00 03 74 F4 
+	FORM		v4 = 226540 -- AGAIN. 
+	CDATIVER	v5 = 12 	-- !!  (think DATA....dddd = 4"DATA" + 4size + 4data = 12!)   
+	DATA....    v6s = 4 (size) then 4 bytes of data:  
+				v6d = 
+		(binary:)
+			0000 0000     
+			0000 0100
+			0000 0000     
+			0000 0000     
+		PANL	v7 = 80664
+		DATA	v8s = 8
+				v8d = .... .... = 11010528 = 
+					0000 0000		
+					0000 0000		
+					0000 0000		
+					0000 0000		
+
+					0000 0000		
+					1010 1000 = 168
+					0000 0001 = 1
+					1110 0000 = 224
+
+		BODY	v9s = 80640		(NOTE: this is 24 from PANL's 80664)
+
+		...
+
+	FORM-v1-
+			CDATASTON-v2-
+						 BODY-v3-
+								 FORM-v4-
+							             CDATIVER-v5-
+													 DATA.v6a.v6d
+																 PANL-v7-
+																		 DATA-v8s-v8d
+
+
+		OOH SNAP body's position 
+			BODY.... 
+				    ^
+			plus 80640
+			 =
+			BDRP....DATA..8.,,,,,,,,
+				
+				BDRP [size = 3800]
+					DATA = [size=8]
+						00 A8 00 00 
+						01 D8 00 08
+					BODY = [size=3776]
+						[................]
+		
+		BODY....
+				^------now offset + 3776
+		
+		brings us to:
+
+		Offset: 85488
+			BRDP....DATA....,,,,,,,,BODY....[...........]
+
+			BRDP [s=3800]
+			DATA [s=8] 
+				,,,,,,,, = 47289823342886920
+			BODY [s=3776]
+				[,,,,,,,,,,]
+
+
+		starting from BODY....
+						      ^
+		we add 3776
+		and end up with:
+
+		BRDP.... [s=3736]
+		DATA....,,,,,,,, [s=8][d=177892219641397712]
+		BODY....[,,,] [s=3712]
+
+
+		Now add 3712 to
+		BODY....
+			    ^---here
+
+		BRDN....DATA....,,,,,,,,
+		BRDN [s=5144]
+		DATA [s=8, d=41943048]
+		BODY [s=5120, d=...]
+
+
+
+
+
+@227460
+	BODY.... s=0
+	BODY.... s=0
+	BODY.... s=0
+	BODY.... s=0
+	BODY.... s=0
+	TBGC....,,,,,,,,,,,,,,,, s=16
+	   	    DATA....,,,,,,,, s=8 d=34365767685
+	MEDI.... s=239056
+		    BODY.... s=239048
+				    FORM.... s=239040
+							CDAT <------ NOTE NO SIZE
+								IVER.... s=12
+										DATA....,,,,,,,, s=4 d=262144
+									                    PANL.... s=80664
+                                                                DATA.... s=8 d=11010528
+																BODY.... s=80640
+
+
+
+948 + 923568 = 924516
+
+
+
+
+NOTE: Anything that returns a LENGTH value like: GEED 1145059898  is very likely NOT A LABEL. Why? Because that's 1092 MB and the whole file is only 26MB!!!!!!!!!!
+	
+	Maximum value is: ~27,262,976 bytes!
+
+	"ll" reports 26,587,019 bytes.
+
+
+
+max number with the first column zero = 16,777,215 bytes. So we SHOULD be able to search for any 
+FOUR LETTER combination followed by a DOT.
+
+	How we find EIGHT letter sections though? Eight letters followed by a dot?

@@ -1,0 +1,25 @@
+				c[i..i+4] == "HDAT" ||
+				c[i..i+4] == "BHGR" ||
+				c[i..i+4] == "PANL" ||
+				c[i..i+4] == "CHBG" ||
+				c[i..i+4] == "HLTK" ||
+				c[i..i+4] == "TABG" ||
+				c[i..i+4] == "RHBG" ||
+				c[i..i+4] == "DATY" ||
+				c[i..i+4] == "BUTT" ||
+				c[i..i+4] == "BUTA" ||
+				c[i..i+4] == "BRDN" ||
+				c[i..i+4] == "BRDP" ||
+				c[i..i+4] == "MEDI" || //medieval
+				c[i..i+4] == "TWND" ||
+				c[i..i+4] == "PHGR" ||
+				c[i..i+4] == "PHBG" ||
+				c[i..i+4] == "BMRG" ||
+				c[i..i+4] == "BMRB" ||
+				c[i..i+4] == "MICO" ||
+				c[i..i+4] == "WINS" ||  //win
+				c[i..i+4] == "MESG" || //message
+				c[i..i+4] == "LOSE" || //lose
+				c[i..i+4] == "TBGC" ||
+				c[i..i+4] == "MODN" ||	//modern
+				c[i..i+4] == "FEND" ||

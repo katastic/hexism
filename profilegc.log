@@ -1,0 +1,3 @@
+bytes allocated, allocations, type, function, file:line
+         191232	           2656	hexism.file_t.find_iff.pair_t[] hexism.file_t.find_iff hexism.d:357
+             80	              1	hexism.file_t D main hexism.d:637

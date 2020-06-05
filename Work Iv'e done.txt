@@ -1,0 +1,5922 @@
+STuff I've done.
+
+
+I wanted to alphabetically sort all these match strings I've been writing in D.
+
+				c[i..i+4] == "HDAT" ||
+				c[i..i+4] == "BHGR" ||
+				c[i..i+4] == "PANL" ||
+				c[i..i+4] == "CHBG" ||
+				c[i..i+4] == "HLTK" ||
+				c[i..i+4] == "TABG" ||
+				c[i..i+4] == "RHBG" ||
+				c[i..i+4] == "DATY" ||
+				c[i..i+4] == "BUTT" ||
+				c[i..i+4] == "BUTA" ||
+				c[i..i+4] == "BRDN" ||
+				c[i..i+4] == "BRDP" ||
+				c[i..i+4] == "MEDI" || //medieval
+				c[i..i+4] == "TWND" ||
+				c[i..i+4] == "PHGR" ||
+				c[i..i+4] == "PHBG" ||
+				c[i..i+4] == "BMRG" ||
+				c[i..i+4] == "BMRB" ||
+				c[i..i+4] == "MICO" ||
+				c[i..i+4] == "WINS" ||  //win
+				c[i..i+4] == "MESG" || //message
+				c[i..i+4] == "LOSE" || //lose
+				c[i..i+4] == "TBGC" ||
+				c[i..i+4] == "MODN" ||	//modern
+				c[i..i+4] == "FEND" ||
+
+
+I copy and paste it to a text file.
+
+cat test.txt | sort > test2.txt
+
+copy and paste back into code. Done. (Also if I aded to sort a "| uniq" ) it would have trimmed any duplicates.
+
+
+
+
+
+============================================================================================================================
+
+Run:
+
+hexdump -C tankdata.bin -s 3 | grep -o "[A-Z][A-Z][A-Z][A-Z]\." --color=yes | sort | uniq | lesser
+
+	FIND ALL UNIQUE four letter (all capitals only!) "words" with a dot after them.
+		- NOTE the dot is VERY IMPORTANT. Because hexdump treats ANY non-printable character as a dot!
+			- So we don't have to check "grep for AAAA + [any nonprintable]" because the non-printable 
+			is already done for us by hexdump. Simpler.
+			
+		- Note originally I did "FOUR CAPS" and nothing else. BUT, then we get AAAAAAAAAAAAZZAAAA.
+			- And how can we tell that apart?
+			- HOWEVER, since start with a SIZE value afterward, we can "almost" assume that we're not going to get a letter again after the fourth. It shouldn't be DATAA. Because A would indicate a HUGE number since it's the biggest (IIRC) digit of the number. Which would be a HUGE chunk for a file that more-often-than-not is going to have chunks that aren't MEGS in size.
+			- This WILL fail however if we need a four letter chunk followed by a PRINTABLE character in terms of size. Perhaps not A, but something printable but lower in binary. But hopefully this isn't the case.
+			- ALSO, this won't catch 'AAA ' (space for last character)
+
+So now we've got:
+
+AAAA.
+ACES.
+ACID.
+AEFG.
+AFFG.
+AFWG.
+AHKA.
+ALTH.
+AMLO.
+ASFS.
+ATER.
+ATOR.
+AURA.
+AXXX.
+BAAJ.
+BBBB.
+BBBC.
+BBBF.
+BBCA.
+BBCC.
+BBCD.
+BBCJ.
+BBGB.
+BBIC.
+BCCI.
+BCDE.
+BCTR.
+BDFH.
+BDSH.
+BFJM.
+BHBG.
+BHGR.
+BKJB.
+BLRZ.
+BMRB.
+BMRG.
+BMRS.
+BMZP.
+BNGO.
+BODY.
+BQAS.
+BRDN.
+BRDP.
+BUTA.
+BUTT.
+BUTU.
+CBBB.
+CBCE.
+CCBB.
+CCCC.
+CCCD.
+CCCE.
+CCCF.
+CCCG.
+CCCL.
+CCCM.
+CCDC.
+CCDD.
+CCDE.
+CCDF.
+CCDG.
+CCDI.
+CCDJ.
+CCDM.
+CCEF.
+CCEL.
+CCEM.
+CCFF.
+CCFG.
+CCGM.
+CCII.
+CCJG.
+CCMH.
+CDCI.
+CDDD.
+CDDE.
+CDEF.
+CDFG.
+CDIL.
+CDLL.
+CEFH.
+CEHL.
+CFCC.
+CFIM.
+CFLL.
+CFLM.
+CGIH.
+CGMD.
+CGML.
+CGZB.
+CHBG.
+CHDJ.
+CHER.
+CHGR.
+CHII.
+CHIJ.
+CHMH.
+CIFY.
+CIMC.
+CJJJ.
+CKTH.
+CLLE.
+CLMM.
+CPAL.
+CTDV.
+CXGY.
+DARJ.
+DATA.
+DBUT.
+DCCC.
+DCCD.
+DCCM.
+DCDD.
+DCDI.
+DDCC.
+DDDB.
+DDDC.
+DDDD.
+DDDE.
+DDDF.
+DDDL.
+DDEE.
+DDEF.
+DDHM.
+DDII.
+DDKK.
+DEDD.
+DEEE.
+DEEF.
+DEFF.
+DEFG.
+DEKM.
+DFCC.
+DFDC.
+DFEM.
+DFFF.
+DFGG.
+DFHH.
+DFHJ.
+DFII.
+DFIM.
+DFKL.
+DFMI.
+DFML.
+DGGE.
+DGHD.
+DGIH.
+DGJF.
+DGKL.
+DGKM.
+DGMM.
+DHHH.
+DHIG.
+DIAC.
+DIAL.
+DIHK.
+DIJD.
+DINP.
+DJKK.
+DJTX.
+DKKK.
+DKLM.
+DLJI.
+DMMH.
+DMMK.
+DOWN.
+DTXT.
+ECCC.
+ECGG.
+ECJM.
+EDDD.
+EDDF.
+EDDG.
+EDOT.
+EECC.
+EEDD.
+EEEC.
+EEED.
+EEEE.
+EEEG.
+EEFG.
+EEFH.
+EEFJ.
+EEGD.
+EEGE.
+EEGG.
+EEGM.
+EETB.
+EEZE.
+EFFG.
+EFFH.
+EFGG.
+EFHH.
+EFHJ.
+EFIK.
+EFJM.
+EGCI.
+EGED.
+EGEE.
+EGGE.
+EGGG.
+EGGI.
+EGHJ.
+EGJM.
+EGME.
+EGMM.
+EHGD.
+EHLM.
+EHMM.
+EIKL.
+ELIN.
+ELMM.
+EMMD.
+EMMM.
+ENCE.
+ENZY.
+EQQB.
+FBIB.
+FCCF.
+FCCJ.
+FCHM.
+FDCC.
+FDDD.
+FDDK.
+FEDI.
+FEGL.
+FEND.
+FFDC.
+FFDK.
+FFEF.
+FFFD.
+FFFF.
+FFFG.
+FFGF.
+FFGG.
+FFGH.
+FFGI.
+FFHC.
+FFHL.
+FFHM.
+FFIC.
+FFJM.
+FFMJ.
+FFMM.
+FGCF.
+FGFD.
+FGFF.
+FGGF.
+FGGG.
+FGGH.
+FGGI.
+FGHH.
+FGHI.
+FGHJ.
+FGHK.
+FGJM.
+FGKL.
+FHGJ.
+FHHF.
+FHIG.
+FHIJ.
+FHJK.
+FHMJ.
+FHMM.
+FIDC.
+FIHF.
+FIJJ.
+FIMK.
+FIMM.
+FJHL.
+FJIG.
+FJIH.
+FJIM.
+FJJI.
+FJLH.
+FJLL.
+FJML.
+FJMM.
+FLLM.
+FLMH.
+FLMM.
+FMLD.
+FMMM.
+FORM.
+FVDJ.
+GCCC.
+GCCD.
+GCFD.
+GDEE.
+GDGG.
+GDIF.
+GDJP.
+GECI.
+GECM.
+GEED.
+GEEE.
+GEEG.
+GEGG.
+GFCF.
+GFDC.
+GFFD.
+GFFF.
+GFFG.
+GFFI.
+GFGF.
+GFGH.
+GFGI.
+GFGL.
+GGED.
+GGEE.
+GGFC.
+GGFF.
+GGFG.
+GGFK.
+GGGD.
+GGGE.
+GGGF.
+GGGG.
+GGGH.
+GGGI.
+GGGL.
+GGGM.
+GGHD.
+GGHE.
+GGHG.
+GGHH.
+GGHI.
+GGHJ.
+GGHK.
+GGIJ.
+GGIK.
+GGIL.
+GGJJ.
+GGMM.
+GHFF.
+GHGD.
+GHGG.
+GHGM.
+GHHD.
+GHHG.
+GHHH.
+GHHI.
+GHHJ.
+GHHK.
+GHHL.
+GHHM.
+GHIJ.
+GHIK.
+GHJK.
+GHJL.
+GHLM.
+GHMD.
+GHMM.
+GIHF.
+GIJL.
+GIKL.
+GIKM.
+GILM.
+GJDM.
+GJJJ.
+GJKL.
+GJLM.
+GJMM.
+GKFG.
+GKIC.
+GLLL.
+GMGG.
+GMHD.
+GMIJ.
+GMMD.
+GMME.
+GMMG.
+GMMM.
+GXGY.
+HAZE.
+HBFJ.
+HCOF.
+HDCD.
+HDDF.
+HDJF.
+HGED.
+HGEE.
+HGFK.
+HGGE.
+HGGF.
+HGGG.
+HGGH.
+HGGJ.
+HGGL.
+HGHG.
+HGHI.
+HGHM.
+HGKL.
+HHBI.
+HHCC.
+HHGD.
+HHGE.
+HHGF.
+HHGG.
+HHGH.
+HHGK.
+HHGL.
+HHHD.
+HHHE.
+HHHG.
+HHHH.
+HHHI.
+HHHJ.
+HHHK.
+HHHL.
+HHHM.
+HHII.
+HHIJ.
+HHIL.
+HHJL.
+HHJM.
+HHKM.
+HHLM.
+HHME.
+HHMF.
+HHMM.
+HIHF.
+HIHH.
+HIHM.
+HIII.
+HIIJ.
+HIJJ.
+HIJK.
+HIKM.
+HILM.
+HIMM.
+HJHJ.
+HJJM.
+HJKM.
+HJLJ.
+HJLM.
+HJML.
+HJMM.
+HJUT.
+HKKJ.
+HKKL.
+HKMD.
+HKMM.
+HLJI.
+HLLF.
+HLLK.
+HLTK.
+HMED.
+HMHD.
+HMHL.
+HMHM.
+HMMD.
+HMME.
+HMMI.
+HMMK.
+HMMM.
+HZDT.
+ICCC.
+ICDF.
+ICII.
+IDDD.
+IDGM.
+IDHJ.
+IELD.
+IFFF.
+IFIM.
+IFJJ.
+IFJM.
+IGEC.
+IGGH.
+IGGI.
+IHGG.
+IHHC.
+IHHF.
+IHHH.
+IHHK.
+IHIJ.
+IHIK.
+IHIL.
+IHJK.
+IHJM.
+IHMG.
+IICC.
+IIHF.
+IIHH.
+IIHJ.
+IIHK.
+IIIC.
+IIIF.
+IIIH.
+IIII.
+IIIJ.
+IIIK.
+IIIL.
+IIIM.
+IIJC.
+IIJJ.
+IIJK.
+IIJM.
+IIKL.
+IILH.
+IIMM.
+IJFC.
+IJHC.
+IJHF.
+IJII.
+IJIK.
+IJJI.
+IJJM.
+IJKL.
+IJKM.
+IJLI.
+IJLJ.
+IJLM.
+IKIK.
+IKKM.
+IKLM.
+IKMY.
+ILKK.
+ILLL.
+ILLM.
+ILMH.
+ILMK.
+ILMM.
+IMGC.
+IMJM.
+IMME.
+IMMH.
+IMMJ.
+IMMM.
+INFO.
+INTH.
+IOGK.
+IRBB.
+IUVO.
+IVER.
+JCCC.
+JCDD.
+JCII.
+JFFF.
+JFIH.
+JFIM.
+JFLK.
+JFUI.
+JHFC.
+JHHH.
+JHHJ.
+JHIH.
+JHJF.
+JIHH.
+JIII.
+JIIJ.
+JIIK.
+JIJL.
+JIJM.
+JIMI.
+JJAH.
+JJGC.
+JJHE.
+JJHF.
+JJID.
+JJIH.
+JJII.
+JJIK.
+JJJC.
+JJJJ.
+JJJK.
+JJJL.
+JJJM.
+JJKH.
+JJKJ.
+JJKK.
+JJKL.
+JJKM.
+JJLI.
+JJLM.
+JJMF.
+JJMM.
+JKHD.
+JKJC.
+JKJI.
+JKJJ.
+JKJK.
+JKJL.
+JKKH.
+JKKK.
+JKLL.
+JKLM.
+JKLY.
+JKMK.
+JKMM.
+JLJJ.
+JLLL.
+JLML.
+JLMM.
+JLMY.
+JMEC.
+JMIM.
+JMKI.
+JMLF.
+JMMF.
+JMML.
+JMMM.
+JXYY.
+KAAA.
+KBOQ.
+KCCC.
+KCCF.
+KFFF.
+KFHJ.
+KGDD.
+KHHH.
+KHHI.
+KICB.
+KIHH.
+KIIC.
+KIII.
+KIMK.
+KIML.
+KJIH.
+KJII.
+KJIL.
+KJIM.
+KJJH.
+KJJI.
+KJJJ.
+KJJK.
+KJJL.
+KJKI.
+KJKJ.
+KJKL.
+KJKM.
+KJMK.
+KJQL.
+KKHC.
+KKHH.
+KKHK.
+KKIH.
+KKIK.
+KKJA.
+KKJI.
+KKJJ.
+KKJK.
+KKJM.
+KKKG.
+KKKH.
+KKKI.
+KKKJ.
+KKKK.
+KKKL.
+KKKM.
+KKLH.
+KKLJ.
+KKLK.
+KKLL.
+KKLM.
+KKMK.
+KKMM.
+KKNO.
+KKOP.
+KLBB.
+KLIH.
+KLJG.
+KLJK.
+KLKK.
+KLKL.
+KLKM.
+KLLJ.
+KLLK.
+KLLL.
+KLLM.
+KLLP.
+KLMK.
+KLMM.
+KLNO.
+KLOO.
+KLOP.
+KMKH.
+KMKI.
+KMLD.
+KMLK.
+KMMD.
+KMMF.
+KMMG.
+KMMH.
+KMMI.
+KMML.
+KMMM.
+KMYV.
+KNOP.
+KRJS.
+KSBM.
+KXBN.
+LARE.
+LAUE.
+LAVA.
+LBKI.
+LCCC.
+LDSD.
+LECG.
+LGGL.
+LHFF.
+LHGG.
+LHKM.
+LIFF.
+LIGE.
+LIGG.
+LIHH.
+LIME.
+LJCG.
+LJFF.
+LJGC.
+LJGF.
+LJHG.
+LJHI.
+LJII.
+LJIJ.
+LJIM.
+LJJJ.
+LJJM.
+LJKM.
+LJLJ.
+LJLM.
+LKFC.
+LKGG.
+LKGH.
+LKJH.
+LKJJ.
+LKJL.
+LKKH.
+LKKK.
+LKKL.
+LKKM.
+LKLK.
+LKLL.
+LKLM.
+LKMM.
+LLGF.
+LLJM.
+LLKI.
+LLKJ.
+LLKK.
+LLLC.
+LLLF.
+LLLK.
+LLLL.
+LLLM.
+LLLX.
+LLLY.
+LLML.
+LLMM.
+LLOP.
+LLWV.
+LLXW.
+LMIH.
+LMIL.
+LMKM.
+LMLL.
+LMLM.
+LMMD.
+LMMF.
+LMMG.
+LMMI.
+LMML.
+LMMM.
+LMMP.
+LMOP.
+LMPP.
+LMPQ.
+LMYV.
+LMYW.
+LOQP.
+LOSE.
+LTGR.
+LWSQ.
+LYWT.
+MAGE.
+MCEM.
+MEDI.
+MESG.
+MFFF.
+MFFM.
+MFHM.
+MFJJ.
+MFMM.
+MGDD.
+MGDE.
+MGEE.
+MHEG.
+MHGD.
+MHGE.
+MHGM.
+MHHE.
+MHHG.
+MHHH.
+MHHI.
+MHHM.
+MHJM.
+MHLL.
+MHME.
+MHMH.
+MICC.
+MICO.
+MIFM.
+MIHH.
+MIHI.
+MIHM.
+MIIM.
+MILM.
+MIMM.
+MINE.
+MJFF.
+MJFM.
+MJHF.
+MJJL.
+MJJM.
+MJKL.
+MKGF.
+MKHF.
+MKHG.
+MKIG.
+MKIH.
+MKIK.
+MKJJ.
+MKJL.
+MKKH.
+MKKI.
+MKKJ.
+MKKK.
+MKKL.
+MKKM.
+MKLL.
+MKLM.
+MKMM.
+MLCC.
+MLIH.
+MLJF.
+MLJH.
+MLJJ.
+MLJK.
+MLJM.
+MLKH.
+MLKJ.
+MLKK.
+MLKL.
+MLLK.
+MLLL.
+MLLM.
+MLMI.
+MLMM.
+MMCG.
+MMDJ.
+MMEG.
+MMEH.
+MMFD.
+MMFM.
+MMGD.
+MMGE.
+MMGG.
+MMGM.
+MMHD.
+MMHE.
+MMHF.
+MMHG.
+MMHM.
+MMIC.
+MMIH.
+MMII.
+MMIM.
+MMJC.
+MMJG.
+MMJH.
+MMJJ.
+MMKC.
+MMKD.
+MMKK.
+MMKL.
+MMKM.
+MMLG.
+MMLH.
+MMLJ.
+MMLK.
+MMLL.
+MMLM.
+MMMD.
+MMME.
+MMMG.
+MMMH.
+MMMJ.
+MMMK.
+MMML.
+MMMM.
+MMPQ.
+MNMN.
+MODN.
+MOPQ.
+MOPR.
+MOQR.
+MPQR.
+MSHQ.
+MSIS.
+MUCT.
+MXYY.
+MYUV.
+NEND.
+NNEE.
+NNNE.
+NNNN.
+NNNO.
+NNNP.
+NNNQ.
+NNNS.
+NNNY.
+NNON.
+NNOO.
+NNOP.
+NNOQ.
+NNOR.
+NNOS.
+NNOT.
+NNPR.
+NNPS.
+NNPT.
+NNQQ.
+NNQS.
+NNQX.
+NNRQ.
+NNRR.
+NNSR.
+NNSY.
+NOMA.
+NOOO.
+NOOP.
+NOPP.
+NOPQ.
+NOPR.
+NOPS.
+NOPT.
+NOPX.
+NOQR.
+NOQS.
+NOQU.
+NOQX.
+NORT.
+NORV.
+NORX.
+NOSW.
+NOTW.
+NOTX.
+NOUX.
+NPQX.
+NPQY.
+NPRW.
+NPRY.
+NPSX.
+NPTX.
+NPWY.
+NQNN.
+NQUX.
+NRKR.
+NSNS.
+NSPT.
+NSUW.
+NSVY.
+NUWY.
+OAOP.
+OJSH.
+ONOT.
+ONPX.
+ONRX.
+OONN.
+OONO.
+OOON.
+OOOO.
+OOOP.
+OOOS.
+OOOT.
+OOOY.
+OOPP.
+OOPQ.
+OOPR.
+OOQQ.
+OORW.
+OOSR.
+OOSS.
+OPPP.
+OPPQ.
+OPPR.
+OPQQ.
+OPQR.
+OPQS.
+OPRS.
+OPRT.
+OPRV.
+OPRW.
+OPSV.
+OPSW.
+OPSX.
+OPSY.
+OPTX.
+OPTY.
+OQQQ.
+OQRS.
+OQRU.
+OQRX.
+OQST.
+OQSU.
+OQUV.
+OQVX.
+ORTX.
+ORUY.
+OSVY.
+OTEU.
+OUYY.
+OWER.
+OXKQ.
+PANL.
+PFFB.
+PHBG.
+PHGR.
+PHLC.
+PONP.
+POOR.
+POSX.
+PPNO.
+PPON.
+PPPP.
+PPPQ.
+PPPS.
+PPPY.
+PPQQ.
+PPQR.
+PPQY.
+PPRT.
+PPRV.
+PPSS.
+PPSU.
+PPSX.
+PPSY.
+PPVY.
+PQQQ.
+PQQR.
+PQQY.
+PQRR.
+PQRS.
+PQRT.
+PQST.
+PQTV.
+PQTX.
+PQVY.
+PQWY.
+PQYY.
+PRCR.
+PRRP.
+PRRR.
+PRRS.
+PRST.
+PRSU.
+PRSV.
+PRTU.
+PRTX.
+PSTW.
+PSUW.
+PSUY.
+PSVX.
+PSWY.
+PSXW.
+PSYY.
+PTYY.
+PULT.
+PWWP.
+QCMO.
+QFIF.
+QLYF.
+QNNN.
+QNNQ.
+QNOQ.
+QNPT.
+QNUW.
+QOPS.
+QOPT.
+QOPU.
+QPPP.
+QPPQ.
+QPPS.
+QPPU.
+QPQS.
+QPQY.
+QPRR.
+QPST.
+QPVY.
+QQQQ.
+QQQR.
+QQQS.
+QQQT.
+QQQU.
+QQQV.
+QQQY.
+QQRR.
+QQRS.
+QQRT.
+QQSU.
+QQTR.
+QQTT.
+QQTX.
+QQYY.
+QRLN.
+QRMQ.
+QRPR.
+QRQS.
+QRRR.
+QRRS.
+QRRT.
+QRSS.
+QRST.
+QRSU.
+QRTQ.
+QRTR.
+QRTS.
+QRTT.
+QRTU.
+QRTX.
+QRVT.
+QRYY.
+QSQR.
+QSRR.
+QSRT.
+QSSR.
+QSSS.
+QSST.
+QSTS.
+QSTT.
+QSTU.
+QSTY.
+QSUT.
+QSUX.
+QSUY.
+QSXX.
+QSYY.
+QTRQ.
+QTRT.
+QTRW.
+QTSQ.
+QTST.
+QTTT.
+QTTU.
+QTYY.
+QUUU.
+QUVX.
+QUWY.
+REST.
+RHBG.
+RHGR.
+RIJM.
+RNRN.
+ROEV.
+RONN.
+ROON.
+RORU.
+RPQT.
+RPQU.
+RPUV.
+RQPP.
+RQQP.
+RQSR.
+RQSS.
+RQTS.
+RQTU.
+RQUS.
+RQUW.
+RRNN.
+RRON.
+RROQ.
+RRPP.
+RRQQ.
+RRRN.
+RRRO.
+RRRP.
+RRRQ.
+RRRR.
+RRRS.
+RRRU.
+RRRV.
+RRRW.
+RRRY.
+RRRZ.
+RRSR.
+RRSS.
+RRST.
+RRSU.
+RRTS.
+RRVV.
+RRVY.
+RRWW.
+RRXX.
+RSQR.
+RSQS.
+RSSR.
+RSSS.
+RSST.
+RSSU.
+RSSV.
+RSTP.
+RSTQ.
+RSTR.
+RSTS.
+RSTT.
+RSTU.
+RSTV.
+RSUU.
+RSUV.
+RSUW.
+RSVX.
+RSYY.
+RSYZ.
+RTRR.
+RTRT.
+RTSR.
+RTST.
+RTTR.
+RTTS.
+RTTT.
+RTUS.
+RTUU.
+RTUX.
+RTVW.
+RTVX.
+RTVY.
+RTWY.
+RTYS.
+RUSR.
+RUUV.
+RUXV.
+RUXY.
+RUYY.
+RVWX.
+RVWY.
+RXRQ.
+RZZZ.
+SAND.
+SJKC.
+SKIR.
+SNEX.
+SPNN.
+SPPQ.
+SPPS.
+SPSU.
+SPSY.
+SPTY.
+SPUS.
+SPVR.
+SPVS.
+SQPQ.
+SQPR.
+SQQR.
+SQSR.
+SQSS.
+SQST.
+SQTR.
+SQTS.
+SQTY.
+SQUR.
+SQUS.
+SQVS.
+SQWS.
+SRQT.
+SRRN.
+SRRO.
+SRRQ.
+SRRR.
+SRRS.
+SRRY.
+SRSR.
+SRSS.
+SRST.
+SRSU.
+SRTR.
+SRTS.
+SRTT.
+SRTY.
+SSNS.
+SSPP.
+SSQR.
+SSQX.
+SSRN.
+SSRQ.
+SSRR.
+SSRS.
+SSRT.
+SSSN.
+SSSP.
+SSSR.
+SSSS.
+SSST.
+SSSU.
+SSSV.
+SSSW.
+SSSX.
+SSSY.
+SSSZ.
+SSTR.
+SSTS.
+SSTT.
+SSTU.
+SSTV.
+SSTY.
+SSUU.
+SSUY.
+SSVR.
+SSVS.
+SSVW.
+SSYY.
+STON.
+STQR.
+STRR.
+STRS.
+STRT.
+STSR.
+STSS.
+STST.
+STTR.
+STTS.
+STTT.
+STTU.
+STTV.
+STTW.
+STUT.
+STUU.
+STUV.
+STUX.
+STVR.
+STVV.
+STVW.
+STVY.
+SUSS.
+SUTS.
+SUTW.
+SUUV.
+SUVV.
+SUVY.
+SUWX.
+SVSS.
+SVTT.
+SVTV.
+SVVU.
+SVWX.
+SVWY.
+SVXY.
+SWWX.
+SYSR.
+SYSS.
+SYTW.
+SYTY.
+SYYT.
+SYYX.
+SYYY.
+SZXN.
+TABG.
+TBGC.
+TEAM.
+TEXT.
+TILE.
+TION.
+TMDV.
+TORU.
+TPPT.
+TPUR.
+TPUS.
+TPVS.
+TPVT.
+TQQT.
+TQRR.
+TQRS.
+TQTR.
+TQUR.
+TQUS.
+TQXV.
+TROS.
+TRQQ.
+TRQS.
+TRQY.
+TRRS.
+TRRT.
+TRRU.
+TRSR.
+TRSS.
+TRST.
+TRTR.
+TRTS.
+TRTT.
+TRUS.
+TRVU.
+TRWU.
+TSNR.
+TSQX.
+TSRR.
+TSRS.
+TSRT.
+TSRU.
+TSSR.
+TSSS.
+TSST.
+TSSU.
+TSTS.
+TSTT.
+TSTV.
+TSUS.
+TSUT.
+TSUV.
+TSWS.
+TTQS.
+TTQT.
+TTRS.
+TTRT.
+TTRU.
+TTSR.
+TTSS.
+TTST.
+TTSU.
+TTTS.
+TTTT.
+TTTU.
+TTTY.
+TTUT.
+TTUU.
+TTUV.
+TTUW.
+TTUY.
+TTVV.
+TUPO.
+TUTT.
+TUTU.
+TUTV.
+TUUS.
+TUUT.
+TUUU.
+TUUV.
+TUVT.
+TUVV.
+TUVW.
+TUVY.
+TUWX.
+TUXY.
+TVUU.
+TVWS.
+TVWX.
+TVXX.
+TWND.
+TWVX.
+TWYY.
+TYSY.
+UEFG.
+UOSW.
+UPPR.
+UPSO.
+UQBU.
+UQPS.
+UQTQ.
+UQTR.
+UQUS.
+URRU.
+URVY.
+USSS.
+USST.
+USSU.
+USTR.
+USTT.
+USTU.
+USUT.
+UTRT.
+UTST.
+UTSU.
+UTSV.
+UTTR.
+UTTT.
+UTTU.
+UTUU.
+UTUW.
+UUQQ.
+UUSS.
+UUST.
+UUTT.
+UUTU.
+UUUS.
+UUUT.
+UUUU.
+UUUV.
+UUUW.
+UUUY.
+UUVV.
+UUVW.
+UUWV.
+UUWX.
+UUWY.
+UVVY.
+UVWX.
+UVWY.
+UVXX.
+UVXY.
+UVYV.
+UWPW.
+UWUW.
+UWUY.
+UWWY.
+UWXV.
+UWXX.
+UWXY.
+VAZC.
+VECR.
+VIVB.
+VORS.
+VQRS.
+VQST.
+VQSU.
+VQSV.
+VRQS.
+VRRR.
+VRSV.
+VSPS.
+VSRP.
+VSRS.
+VSSU.
+VSSV.
+VSTU.
+VTRS.
+VTSP.
+VTSV.
+VTTS.
+VTTT.
+VTUR.
+VTVW.
+VTWV.
+VUPR.
+VUST.
+VUSU.
+VUTS.
+VUUS.
+VUUU.
+VUUV.
+VUUW.
+VUVV.
+VUVW.
+VVUT.
+VVUU.
+VVUV.
+VVVT.
+VVVV.
+VVVW.
+VVVY.
+VVWV.
+VVWX.
+VVXY.
+VVYV.
+VWUW.
+VWVW.
+VWVX.
+VWWU.
+VWWV.
+VWXX.
+VWXY.
+VWYY.
+VXST.
+VXVV.
+VXXU.
+VXXY.
+VXYU.
+VYSM.
+VYWS.
+WCHH.
+WIMD.
+WINS.
+WLLL.
+WQST.
+WQSU.
+WQSV.
+WQTX.
+WRRO.
+WRRR.
+WSGX.
+WSSS.
+WTQP.
+WTRU.
+WTRV.
+WTSU.
+WTUW.
+WUTU.
+WUUU.
+WUXX.
+WVVU.
+WVVW.
+WVVY.
+WVWY.
+WWPP.
+WWRR.
+WWWP.
+WWWR.
+WWWV.
+WWWW.
+WWWX.
+WWWY.
+WWXW.
+WWXX.
+WWXY.
+WWYY.
+WXDN.
+WXRS.
+WXWV.
+WXXW.
+WXXY.
+WXYY.
+WYRG.
+WYYY.
+XFYZ.
+XHII.
+XKLN.
+XQPR.
+XQRT.
+XRHK.
+XTQT.
+XTSU.
+XTUV.
+XUCS.
+XURS.
+XUSR.
+XUSV.
+XUTT.
+XVRR.
+XVRS.
+XVSR.
+XVST.
+XVTU.
+XWUU.
+XWVU.
+XXVU.
+XXWU.
+XXXV.
+XXXW.
+XXXX.
+XXXY.
+XXYY.
+XYWX.
+XYXX.
+XYYV.
+XYYW.
+XYYX.
+XYYY.
+YFAU.
+YLLL.
+YMMM.
+YNNQ.
+YNTS.
+YPSY.
+YPYY.
+YSPY.
+YSRO.
+YSRY.
+YSSS.
+YSSU.
+YSYY.
+YTLI.
+YTPY.
+YTQT.
+YTWY.
+YURS.
+YUUU.
+YUUY.
+YUXU.
+YVSV.
+YVTS.
+YVTV.
+YVUS.
+YVWW.
+YWRR.
+YWSW.
+YWTR.
+YWVY.
+YWWY.
+YWYW.
+YXUS.
+YXVV.
+YXWV.
+YXWX.
+YXWY.
+YXXY.
+YXYX.
+YYPY.
+YYSY.
+YYTT.
+YYUO.
+YYWY.
+YYXW.
+YYXX.
+YYXY.
+YYYW.
+YYYX.
+YYYY.
+ZDZZ.
+ZFFF.
+ZMWM.
+ZRMP.
+ZRRP.
+ZRRR.
+ZSSP.
+ZSSS.
+ZWRR.
+ZWSR.
+ZWVU.
+ZWWW.
+ZYSR.
+ZYWR.
+ZZSN.
+ZZWR.
+ZZZT.
+ZZZZ.
+
+Of which plenty probably aren't chunk types. HOWEVER, we can compare them to ones we HAVE found so far. Like DATY is similar to DATA!
+
+ANOTHER CLUE would be HOW OFTEN they show up! So let's change it again.
+
+    244 AAAA.
+      1 ACES.
+      1 ACID.
+      1 AEFG.
+      3 AFFG.
+      1 AFWG.
+      1 AHKA.
+      2 ALTH.
+      1 AMLO.
+      1 ASFS.
+      1 ATER.
+      1 ATOR.
+      1 AURA.
+      1 AXXX.
+      1 BAAJ.
+     39 BBBB.
+     11 BBBC.
+      1 BBBF.
+      1 BBCA.
+      2 BBCC.
+      2 BBCD.
+      4 BBCJ.
+      1 BBGB.
+      1 BBIC.
+      1 BCCI.
+      2 BCDE.
+      1 BCTR.
+      1 BDFH.
+      1 BDSH.
+      1 BFJM.
+      1 BHBG.
+      7 BHGR.
+      1 BKJB.
+      1 BLRZ.
+      2 BMRB.
+      3 BMRG.
+      2 BMRS.
+      1 BMZP.
+      1 BNGO.
+   1287 BODY.
+      1 BQAS.
+      8 BRDN.
+      6 BRDP.
+     32 BUTA.
+     16 BUTT.
+      1 BUTU.
+      2 CBBB.
+      1 CBCE.
+      4 CCBB.
+     33 CCCC.
+      1 CCCD.
+      2 CCCE.
+      2 CCCF.
+      2 CCCG.
+      1 CCCL.
+      1 CCCM.
+      1 CCDC.
+      2 CCDD.
+      3 CCDE.
+      2 CCDF.
+      1 CCDG.
+      2 CCDI.
+      1 CCDJ.
+      1 CCDM.
+      3 CCEF.
+      1 CCEL.
+      1 CCEM.
+      1 CCFF.
+      1 CCFG.
+      1 CCGM.
+      1 CCII.
+      1 CCJG.
+      1 CCMH.
+      1 CDCI.
+      2 CDDD.
+      1 CDDE.
+      8 CDEF.
+      1 CDFG.
+      1 CDIL.
+      1 CDLL.
+      1 CEFH.
+      1 CEHL.
+      1 CFCC.
+      1 CFIM.
+      1 CFLL.
+      1 CFLM.
+      1 CGIH.
+      1 CGMD.
+      1 CGML.
+      1 CGZB.
+      7 CHBG.
+      1 CHDJ.
+      1 CHER.
+      9 CHGR.
+      1 CHII.
+      1 CHIJ.
+      1 CHMH.
+      1 CIFY.
+      1 CIMC.
+      3 CJJJ.
+      1 CKTH.
+      2 CLLE.
+      1 CLMM.
+      3 CPAL.
+      1 CTDV.
+      1 CXGY.
+      1 DARJ.
+    289 DATA.
+      3 DBUT.
+      4 DCCC.
+      2 DCCD.
+      1 DCCM.
+      2 DCDD.
+      1 DCDI.
+      3 DDCC.
+      2 DDDB.
+      1 DDDC.
+     36 DDDD.
+      5 DDDE.
+      1 DDDF.
+      1 DDDL.
+     11 DDEE.
+      1 DDEF.
+      2 DDHM.
+      1 DDII.
+      1 DDKK.
+      1 DEDD.
+      1 DEEE.
+      3 DEEF.
+      2 DEFF.
+     30 DEFG.
+      1 DEKM.
+      1 DFCC.
+      1 DFDC.
+      1 DFEM.
+      2 DFFF.
+      1 DFGG.
+      1 DFHH.
+      2 DFHJ.
+      2 DFII.
+      1 DFIM.
+      1 DFKL.
+      1 DFMI.
+      1 DFML.
+      1 DGGE.
+      1 DGHD.
+      1 DGIH.
+      1 DGJF.
+      1 DGKL.
+      1 DGKM.
+      1 DGMM.
+      1 DHHH.
+      1 DHIG.
+      1 DIAC.
+      3 DIAL.
+      1 DIHK.
+      1 DIJD.
+      1 DINP.
+      1 DJKK.
+      2 DJTX.
+      2 DKKK.
+      2 DKLM.
+      1 DLJI.
+      1 DMMH.
+      1 DMMK.
+      1 DOWN.
+      1 DTXT.
+      3 ECCC.
+      1 ECGG.
+      1 ECJM.
+      7 EDDD.
+      1 EDDF.
+      1 EDDG.
+      1 EDOT.
+      1 EECC.
+      8 EEDD.
+      1 EEEC.
+     22 EEED.
+     57 EEEE.
+     10 EEEG.
+     23 EEFG.
+      3 EEFH.
+      2 EEFJ.
+      1 EEGD.
+      3 EEGE.
+      1 EEGG.
+      1 EEGM.
+      1 EETB.
+      1 EEZE.
+      5 EFFG.
+      3 EFFH.
+      5 EFGG.
+      2 EFHH.
+      1 EFHJ.
+      2 EFIK.
+      1 EFJM.
+      1 EGCI.
+      3 EGED.
+      1 EGEE.
+      1 EGGE.
+      1 EGGG.
+      1 EGGI.
+      2 EGHJ.
+      2 EGJM.
+      1 EGME.
+     11 EGMM.
+      1 EHGD.
+      1 EHLM.
+      1 EHMM.
+      2 EIKL.
+      1 ELIN.
+      1 ELMM.
+      2 EMMD.
+      2 EMMM.
+      2 ENCE.
+      1 ENZY.
+      1 EQQB.
+      1 FBIB.
+      1 FCCF.
+      1 FCCJ.
+      1 FCHM.
+      1 FDCC.
+      1 FDDD.
+      1 FDDK.
+      1 FEDI.
+      1 FEGL.
+    138 FEND.
+      1 FFDC.
+      1 FFDK.
+      6 FFEF.
+      1 FFFD.
+     44 FFFF.
+     13 FFFG.
+      2 FFGF.
+      8 FFGG.
+     16 FFGH.
+      3 FFGI.
+      1 FFHC.
+      1 FFHL.
+      6 FFHM.
+      1 FFIC.
+     18 FFJM.
+      1 FFMJ.
+     12 FFMM.
+      1 FGCF.
+      1 FGFD.
+      1 FGFF.
+      1 FGGF.
+     13 FGGG.
+      4 FGGH.
+      5 FGGI.
+      1 FGHH.
+      4 FGHI.
+      7 FGHJ.
+      1 FGHK.
+      2 FGJM.
+      1 FGKL.
+      1 FHGJ.
+      1 FHHF.
+      1 FHIG.
+     49 FHIJ.
+      1 FHJK.
+      1 FHMJ.
+     18 FHMM.
+      1 FIDC.
+      1 FIHF.
+      2 FIJJ.
+      1 FIMK.
+     24 FIMM.
+      2 FJHL.
+      1 FJIG.
+      1 FJIH.
+      1 FJIM.
+      1 FJJI.
+      1 FJLH.
+      1 FJLL.
+      1 FJML.
+     36 FJMM.
+      1 FLLM.
+      1 FLMH.
+      1 FLMM.
+      1 FMLD.
+      1 FMMM.
+     18 FORM.
+      1 FVDJ.
+      2 GCCC.
+      1 GCCD.
+      1 GCFD.
+      4 GDEE.
+      1 GDGG.
+      1 GDIF.
+      1 GDJP.
+      1 GECI.
+      1 GECM.
+     95 GEED.
+      5 GEEE.
+      2 GEEG.
+      9 GEGG.
+      1 GFCF.
+      1 GFDC.
+      1 GFFD.
+     12 GFFF.
+      2 GFFG.
+      2 GFFI.
+      1 GFGF.
+      1 GFGH.
+      1 GFGI.
+      1 GFGL.
+      8 GGED.
+      6 GGEE.
+      1 GGFC.
+      9 GGFF.
+      2 GGFG.
+      2 GGFK.
+      7 GGGD.
+      9 GGGE.
+      8 GGGF.
+    285 GGGG.
+     18 GGGH.
+     10 GGGI.
+      1 GGGL.
+      2 GGGM.
+      3 GGHD.
+      1 GGHE.
+      2 GGHG.
+      7 GGHH.
+      9 GGHI.
+     10 GGHJ.
+      2 GGHK.
+      2 GGIJ.
+      1 GGIK.
+      1 GGIL.
+      1 GGJJ.
+      1 GGMM.
+      1 GHFF.
+      2 GHGD.
+      2 GHGG.
+      2 GHGM.
+      3 GHHD.
+      2 GHHG.
+      4 GHHH.
+      5 GHHI.
+      8 GHHJ.
+      2 GHHK.
+      1 GHHL.
+      1 GHHM.
+     10 GHIJ.
+      5 GHIK.
+      3 GHJK.
+      3 GHJL.
+      1 GHLM.
+      1 GHMD.
+      1 GHMM.
+      1 GIHF.
+      5 GIJL.
+      4 GIKL.
+      2 GIKM.
+      1 GILM.
+      1 GJDM.
+      1 GJJJ.
+     15 GJKL.
+      2 GJLM.
+     36 GJMM.
+      1 GKFG.
+      1 GKIC.
+      1 GLLL.
+      1 GMGG.
+      1 GMHD.
+      1 GMIJ.
+      2 GMMD.
+      1 GMME.
+      1 GMMG.
+      1 GMMM.
+      1 GXGY.
+      1 HAZE.
+      2 HBFJ.
+      1 HCOF.
+      1 HDCD.
+      1 HDDF.
+      1 HDJF.
+      5 HGED.
+      2 HGEE.
+      1 HGFK.
+     24 HGGE.
+      1 HGGF.
+     28 HGGG.
+      1 HGGH.
+      3 HGGJ.
+      1 HGGL.
+      3 HGHG.
+      2 HGHI.
+      8 HGHM.
+      2 HGKL.
+      2 HHBI.
+      1 HHCC.
+      4 HHGD.
+      3 HHGE.
+      1 HHGF.
+     14 HHGG.
+     10 HHGH.
+      1 HHGK.
+      2 HHGL.
+      3 HHHD.
+      1 HHHE.
+     24 HHHG.
+    556 HHHH.
+     11 HHHI.
+      3 HHHJ.
+      3 HHHK.
+      3 HHHL.
+     26 HHHM.
+      1 HHII.
+     10 HHIJ.
+      3 HHIL.
+      1 HHJL.
+     14 HHJM.
+      6 HHKM.
+      1 HHLM.
+      1 HHME.
+      1 HHMF.
+     27 HHMM.
+      1 HIHF.
+      1 HIHH.
+      1 HIHM.
+      1 HIII.
+      4 HIIJ.
+      3 HIJJ.
+      3 HIJK.
+     12 HIKM.
+      1 HILM.
+     24 HIMM.
+      1 HJHJ.
+      1 HJJM.
+      3 HJKM.
+      1 HJLJ.
+      3 HJLM.
+      1 HJML.
+      1 HJMM.
+      1 HJUT.
+      1 HKKJ.
+      3 HKKL.
+      1 HKMD.
+      2 HKMM.
+      1 HLJI.
+      1 HLLF.
+      1 HLLK.
+      3 HLTK.
+      1 HMED.
+      1 HMHD.
+      2 HMHL.
+      1 HMHM.
+      1 HMMD.
+      1 HMME.
+      1 HMMI.
+      1 HMMK.
+      1 HMMM.
+      2 HZDT.
+      4 ICCC.
+      2 ICDF.
+      1 ICII.
+      1 IDDD.
+      1 IDGM.
+      1 IDHJ.
+      2 IELD.
+      3 IFFF.
+     18 IFIM.
+      1 IFJJ.
+     36 IFJM.
+     22 IGEC.
+      3 IGGH.
+      1 IGGI.
+      1 IHGG.
+      1 IHHC.
+      1 IHHF.
+      5 IHHH.
+      1 IHHK.
+      2 IHIJ.
+      1 IHIK.
+      2 IHIL.
+      3 IHJK.
+     24 IHJM.
+      1 IHMG.
+      5 IICC.
+      1 IIHF.
+      6 IIHH.
+      1 IIHJ.
+      1 IIHK.
+      2 IIIC.
+      1 IIIF.
+      7 IIIH.
+     72 IIII.
+      8 IIIJ.
+      6 IIIK.
+      1 IIIL.
+      1 IIIM.
+      1 IIJC.
+      9 IIJJ.
+     10 IIJK.
+      1 IIJM.
+      2 IIKL.
+      2 IILH.
+      1 IIMM.
+      1 IJFC.
+      2 IJHC.
+      1 IJHF.
+      1 IJII.
+      1 IJIK.
+      2 IJJI.
+      1 IJJM.
+     19 IJKL.
+      7 IJKM.
+      1 IJLI.
+      1 IJLJ.
+     19 IJLM.
+      1 IKIK.
+      3 IKKM.
+      7 IKLM.
+      3 IKMY.
+      1 ILKK.
+      4 ILLL.
+      4 ILLM.
+      1 ILMH.
+      3 ILMK.
+      6 ILMM.
+      1 IMGC.
+      6 IMJM.
+      1 IMME.
+      1 IMMH.
+      1 IMMJ.
+      4 IMMM.
+      1 INFO.
+      1 INTH.
+      1 IOGK.
+      1 IRBB.
+      1 IUVO.
+      3 IVER.
+      2 JCCC.
+      1 JCDD.
+     17 JCII.
+      2 JFFF.
+      1 JFIH.
+      6 JFIM.
+      1 JFLK.
+      1 JFUI.
+      1 JHFC.
+      1 JHHH.
+      1 JHHJ.
+      3 JHIH.
+      1 JHJF.
+      6 JIHH.
+      6 JIII.
+      4 JIIJ.
+      3 JIIK.
+      2 JIJL.
+      2 JIJM.
+      1 JIMI.
+      1 JJAH.
+      1 JJGC.
+      2 JJHE.
+      1 JJHF.
+      1 JJID.
+      3 JJIH.
+      7 JJII.
+      1 JJIK.
+      1 JJJC.
+     26 JJJJ.
+      4 JJJK.
+      4 JJJL.
+      3 JJJM.
+      1 JJKH.
+      4 JJKJ.
+      2 JJKK.
+     16 JJKL.
+      3 JJKM.
+      2 JJLI.
+      1 JJLM.
+      1 JJMF.
+      1 JJMM.
+      1 JKHD.
+      1 JKJC.
+      1 JKJI.
+      1 JKJJ.
+      6 JKJK.
+      1 JKJL.
+      2 JKKH.
+      2 JKKK.
+      1 JKLL.
+    107 JKLM.
+     12 JKLY.
+      5 JKMK.
+      5 JKMM.
+      1 JLJJ.
+      4 JLLL.
+      1 JLML.
+      1 JLMM.
+      3 JLMY.
+      1 JMEC.
+     42 JMIM.
+      4 JMKI.
+      1 JMLF.
+      1 JMMF.
+      1 JMML.
+      3 JMMM.
+      1 JXYY.
+      1 KAAA.
+      1 KBOQ.
+      1 KCCC.
+      1 KCCF.
+      4 KFFF.
+      1 KFHJ.
+      1 KGDD.
+      9 KHHH.
+      1 KHHI.
+      2 KICB.
+      4 KIHH.
+     17 KIIC.
+      1 KIII.
+      2 KIMK.
+      1 KIML.
+      4 KJIH.
+      1 KJII.
+      1 KJIL.
+      2 KJIM.
+      1 KJJH.
+      8 KJJI.
+      9 KJJJ.
+      6 KJJK.
+      1 KJJL.
+      1 KJKI.
+      7 KJKJ.
+      1 KJKL.
+      3 KJKM.
+      4 KJMK.
+      1 KJQL.
+      2 KKHC.
+      1 KKHH.
+      1 KKHK.
+      5 KKIH.
+      1 KKIK.
+     17 KKJA.
+      8 KKJI.
+      6 KKJJ.
+      1 KKJK.
+      1 KKJM.
+      1 KKKG.
+      1 KKKH.
+      1 KKKI.
+      2 KKKJ.
+     35 KKKK.
+      5 KKKL.
+      4 KKKM.
+      2 KKLH.
+      1 KKLJ.
+      3 KKLK.
+      3 KKLL.
+     13 KKLM.
+      3 KKMK.
+     13 KKMM.
+      1 KKNO.
+      1 KKOP.
+      1 KLBB.
+      1 KLIH.
+      1 KLJG.
+      2 KLJK.
+      1 KLKK.
+      2 KLKL.
+      1 KLKM.
+      1 KLLJ.
+      8 KLLK.
+      5 KLLL.
+      7 KLLM.
+      1 KLLP.
+      4 KLMK.
+     23 KLMM.
+      1 KLNO.
+      1 KLOO.
+      3 KLOP.
+      2 KMKH.
+      3 KMKI.
+      1 KMLD.
+      4 KMLK.
+      1 KMMD.
+      1 KMMF.
+      2 KMMG.
+      3 KMMH.
+      2 KMMI.
+      1 KMML.
+     28 KMMM.
+      3 KMYV.
+      2 KNOP.
+      1 KRJS.
+      1 KSBM.
+      3 KXBN.
+      3 LARE.
+      1 LAUE.
+      2 LAVA.
+      1 LBKI.
+      1 LCCC.
+      1 LDSD.
+      1 LECG.
+      3 LGGL.
+      2 LHFF.
+      1 LHGG.
+      1 LHKM.
+      1 LIFF.
+      1 LIGE.
+      1 LIGG.
+      3 LIHH.
+      2 LIME.
+      3 LJCG.
+      1 LJFF.
+      2 LJGC.
+      1 LJGF.
+      1 LJHG.
+      1 LJHI.
+      1 LJII.
+      1 LJIJ.
+      2 LJIM.
+      1 LJJJ.
+      1 LJJM.
+      1 LJKM.
+      1 LJLJ.
+      2 LJLM.
+      2 LKFC.
+      1 LKGG.
+      1 LKGH.
+      1 LKJH.
+      1 LKJJ.
+      1 LKJL.
+      1 LKKH.
+     13 LKKK.
+      2 LKKL.
+     25 LKKM.
+      1 LKLK.
+      2 LKLL.
+      9 LKLM.
+      3 LKMM.
+      2 LLGF.
+      2 LLJM.
+      1 LLKI.
+      1 LLKJ.
+     10 LLKK.
+      2 LLLC.
+      1 LLLF.
+      9 LLLK.
+    186 LLLL.
+     26 LLLM.
+      3 LLLX.
+      9 LLLY.
+      4 LLML.
+     31 LLMM.
+      2 LLOP.
+      3 LLWV.
+      3 LLXW.
+      2 LMIH.
+      1 LMIL.
+      1 LMKM.
+      3 LMLL.
+      5 LMLM.
+      3 LMMD.
+      1 LMMF.
+      1 LMMG.
+      1 LMMI.
+      3 LMML.
+     63 LMMM.
+      1 LMMP.
+      2 LMOP.
+      1 LMPP.
+      2 LMPQ.
+      3 LMYV.
+      3 LMYW.
+      1 LOQP.
+      3 LOSE.
+      1 LTGR.
+      3 LWSQ.
+      3 LYWT.
+      1 MAGE.
+      1 MCEM.
+      2 MEDI.
+      2 MESG.
+      1 MFFF.
+      6 MFFM.
+      1 MFHM.
+      1 MFJJ.
+     18 MFMM.
+      1 MGDD.
+      1 MGDE.
+      1 MGEE.
+      2 MHEG.
+      3 MHGD.
+      2 MHGE.
+      1 MHGM.
+      1 MHHE.
+      7 MHHG.
+      8 MHHH.
+      1 MHHI.
+     10 MHHM.
+      6 MHJM.
+      1 MHLL.
+      2 MHME.
+      2 MHMH.
+      1 MICC.
+      3 MICO.
+     42 MIFM.
+      4 MIHH.
+      2 MIHI.
+     36 MIHM.
+      1 MIIM.
+      1 MILM.
+     12 MIMM.
+      1 MINE.
+      1 MJFF.
+      6 MJFM.
+      1 MJHF.
+      1 MJJL.
+      5 MJJM.
+      3 MJKL.
+      1 MKGF.
+      1 MKHF.
+      1 MKHG.
+      1 MKIG.
+      4 MKIH.
+      1 MKIK.
+      1 MKJJ.
+      1 MKJL.
+      2 MKKH.
+      1 MKKI.
+      1 MKKJ.
+      3 MKKK.
+      1 MKKL.
+      1 MKKM.
+      5 MKLL.
+      2 MKLM.
+      1 MKMM.
+      1 MLCC.
+     10 MLIH.
+      1 MLJF.
+      2 MLJH.
+      1 MLJJ.
+      1 MLJK.
+      2 MLJM.
+      2 MLKH.
+      2 MLKJ.
+      7 MLKK.
+      2 MLKL.
+      2 MLLK.
+     14 MLLL.
+     10 MLLM.
+      1 MLMI.
+      6 MLMM.
+      1 MMCG.
+      1 MMDJ.
+      1 MMEG.
+      1 MMEH.
+      1 MMFD.
+     30 MMFM.
+      1 MMGD.
+      3 MMGE.
+      1 MMGG.
+      1 MMGM.
+      2 MMHD.
+      2 MMHE.
+      1 MMHF.
+      1 MMHG.
+      3 MMHM.
+      1 MMIC.
+      2 MMIH.
+      5 MMII.
+     12 MMIM.
+      3 MMJC.
+      3 MMJG.
+      1 MMJH.
+      1 MMJJ.
+      1 MMKC.
+      1 MMKD.
+      9 MMKK.
+      2 MMKL.
+     11 MMKM.
+      2 MMLG.
+      3 MMLH.
+      2 MMLJ.
+      2 MMLK.
+     10 MMLL.
+      8 MMLM.
+      2 MMMD.
+     15 MMME.
+      7 MMMG.
+     17 MMMH.
+      6 MMMJ.
+      9 MMMK.
+     18 MMML.
+    793 MMMM.
+      3 MMPQ.
+      3 MNMN.
+      2 MODN.
+      1 MOPQ.
+      1 MOPR.
+      3 MOQR.
+      7 MPQR.
+      2 MSHQ.
+      2 MSIS.
+      1 MUCT.
+      2 MXYY.
+      3 MYUV.
+      1 NEND.
+      1 NNEE.
+      1 NNNE.
+    302 NNNN.
+     32 NNNO.
+      2 NNNP.
+      8 NNNQ.
+     16 NNNS.
+      1 NNNY.
+      4 NNON.
+     23 NNOO.
+     28 NNOP.
+      7 NNOQ.
+      1 NNOR.
+      1 NNOS.
+      1 NNOT.
+      3 NNPR.
+      3 NNPS.
+      2 NNPT.
+      1 NNQQ.
+      1 NNQS.
+      1 NNQX.
+      2 NNRQ.
+      1 NNRR.
+      2 NNSR.
+      1 NNSY.
+      1 NOMA.
+      7 NOOO.
+     15 NOOP.
+     17 NOPP.
+     12 NOPQ.
+      1 NOPR.
+      2 NOPS.
+      1 NOPT.
+      2 NOPX.
+      2 NOQR.
+      1 NOQS.
+      3 NOQU.
+      2 NOQX.
+      1 NORT.
+      1 NORV.
+      1 NORX.
+      2 NOSW.
+      1 NOTW.
+      1 NOTX.
+      1 NOUX.
+      1 NPQX.
+      1 NPQY.
+      1 NPRW.
+      1 NPRY.
+      1 NPSX.
+      1 NPTX.
+      1 NPWY.
+      1 NQNN.
+      1 NQUX.
+      1 NRKR.
+      1 NSNS.
+      1 NSPT.
+      1 NSUW.
+      1 NSVY.
+      1 NUWY.
+      1 OAOP.
+      1 OJSH.
+      1 ONOT.
+      1 ONPX.
+      1 ONRX.
+      3 OONN.
+      1 OONO.
+      1 OOON.
+     16 OOOO.
+      8 OOOP.
+      1 OOOS.
+     12 OOOT.
+      1 OOOY.
+     18 OOPP.
+      9 OOPQ.
+      2 OOPR.
+      1 OOQQ.
+      1 OORW.
+      1 OOSR.
+      1 OOSS.
+     17 OPPP.
+     18 OPPQ.
+      1 OPPR.
+      4 OPQQ.
+     38 OPQR.
+      4 OPQS.
+      7 OPRS.
+      1 OPRT.
+      5 OPRV.
+      1 OPRW.
+      3 OPSV.
+      1 OPSW.
+      1 OPSX.
+      1 OPSY.
+      1 OPTX.
+      1 OPTY.
+      4 OQQQ.
+      1 OQRS.
+      1 OQRU.
+      1 OQRX.
+      1 OQST.
+      1 OQSU.
+      3 OQUV.
+      1 OQVX.
+      1 ORTX.
+      1 ORUY.
+      1 OSVY.
+      1 OTEU.
+      1 OUYY.
+      2 OWER.
+      2 OXKQ.
+     13 PANL.
+      1 PFFB.
+      3 PHBG.
+      7 PHGR.
+      1 PHLC.
+      1 PONP.
+      1 POOR.
+      2 POSX.
+      1 PPNO.
+      2 PPON.
+     16 PPPP.
+      5 PPPQ.
+      1 PPPS.
+      1 PPPY.
+     13 PPQQ.
+     29 PPQR.
+      6 PPQY.
+      1 PPRT.
+      1 PPRV.
+      2 PPSS.
+      1 PPSU.
+      2 PPSX.
+     12 PPSY.
+      1 PPVY.
+     13 PQQQ.
+     10 PQQR.
+      1 PQQY.
+     23 PQRR.
+    113 PQRS.
+      5 PQRT.
+      5 PQST.
+      1 PQTV.
+      1 PQTX.
+      1 PQVY.
+      1 PQWY.
+     18 PQYY.
+      1 PRCR.
+      9 PRRP.
+      1 PRRR.
+      1 PRRS.
+      1 PRST.
+      1 PRSU.
+      1 PRSV.
+      1 PRTU.
+      1 PRTX.
+      4 PSTW.
+      1 PSUW.
+      1 PSUY.
+      1 PSVX.
+      1 PSWY.
+      1 PSXW.
+     36 PSYY.
+     36 PTYY.
+      1 PULT.
+      1 PWWP.
+      1 QCMO.
+      1 QFIF.
+      1 QLYF.
+      2 QNNN.
+      3 QNNQ.
+      1 QNOQ.
+      1 QNPT.
+      1 QNUW.
+      1 QOPS.
+      1 QOPT.
+      1 QOPU.
+      1 QPPP.
+      1 QPPQ.
+      1 QPPS.
+      1 QPPU.
+      1 QPQS.
+     19 QPQY.
+      1 QPRR.
+      4 QPST.
+      1 QPVY.
+     30 QQQQ.
+     10 QQQR.
+      1 QQQS.
+      9 QQQT.
+      1 QQQU.
+      1 QQQV.
+      1 QQQY.
+     13 QQRR.
+      6 QQRS.
+      3 QQRT.
+      1 QQSU.
+      1 QQTR.
+      6 QQTT.
+      1 QQTX.
+      1 QQYY.
+      1 QRLN.
+      1 QRMQ.
+      1 QRPR.
+      2 QRQS.
+     11 QRRR.
+     17 QRRS.
+      4 QRRT.
+      7 QRSS.
+     45 QRST.
+      1 QRSU.
+      1 QRTQ.
+      2 QRTR.
+      1 QRTS.
+      3 QRTT.
+      1 QRTU.
+      1 QRTX.
+      1 QRVT.
+      1 QRYY.
+      1 QSQR.
+      1 QSRR.
+      1 QSRT.
+      1 QSSR.
+      2 QSSS.
+      4 QSST.
+      2 QSTS.
+      6 QSTT.
+      5 QSTU.
+      4 QSTY.
+      2 QSUT.
+      1 QSUX.
+      4 QSUY.
+      1 QSXX.
+     24 QSYY.
+      2 QTRQ.
+      1 QTRT.
+      2 QTRW.
+      1 QTSQ.
+      1 QTST.
+      2 QTTT.
+      1 QTTU.
+     37 QTYY.
+      5 QUUU.
+      1 QUVX.
+      3 QUWY.
+      1 REST.
+      3 RHBG.
+      3 RHGR.
+      1 RIJM.
+      7 RNRN.
+      1 ROEV.
+      3 RONN.
+      3 ROON.
+      1 RORU.
+      2 RPQT.
+      1 RPQU.
+      1 RPUV.
+      1 RQPP.
+      2 RQQP.
+      2 RQSR.
+      1 RQSS.
+      1 RQTS.
+      1 RQTU.
+      1 RQUS.
+      1 RQUW.
+      2 RRNN.
+     79 RRON.
+     10 RROQ.
+     23 RRPP.
+      1 RRQQ.
+     82 RRRN.
+     76 RRRO.
+    134 RRRP.
+      6 RRRQ.
+   3734 RRRR.
+     13 RRRS.
+      3 RRRU.
+      2 RRRV.
+      9 RRRW.
+     19 RRRY.
+      7 RRRZ.
+      4 RRSR.
+     33 RRSS.
+     11 RRST.
+      1 RRSU.
+      3 RRTS.
+      1 RRVV.
+      2 RRVY.
+      1 RRWW.
+      1 RRXX.
+      1 RSQR.
+      4 RSQS.
+      5 RSSR.
+     31 RSSS.
+     15 RSST.
+      1 RSSU.
+      1 RSSV.
+      1 RSTP.
+      1 RSTQ.
+      2 RSTR.
+      2 RSTS.
+     16 RSTT.
+     62 RSTU.
+      8 RSTV.
+      1 RSUU.
+      2 RSUV.
+      2 RSUW.
+      2 RSVX.
+     12 RSYY.
+      5 RSYZ.
+     11 RTRR.
+      1 RTRT.
+      1 RTSR.
+      2 RTST.
+      3 RTTR.
+      7 RTTS.
+      1 RTTT.
+      1 RTUS.
+      1 RTUU.
+      1 RTUX.
+      2 RTVW.
+      1 RTVX.
+      8 RTVY.
+      1 RTWY.
+      1 RTYS.
+      1 RUSR.
+      1 RUUV.
+      1 RUXV.
+      1 RUXY.
+      1 RUYY.
+      1 RVWX.
+      1 RVWY.
+      1 RXRQ.
+      3 RZZZ.
+      1 SAND.
+      1 SJKC.
+      1 SKIR.
+      1 SNEX.
+      1 SPNN.
+      1 SPPQ.
+      1 SPPS.
+      1 SPSU.
+     12 SPSY.
+     36 SPTY.
+      1 SPUS.
+      1 SPVR.
+      1 SPVS.
+      1 SQPQ.
+      1 SQPR.
+      1 SQQR.
+      1 SQSR.
+      1 SQSS.
+      1 SQST.
+      2 SQTR.
+      1 SQTS.
+     36 SQTY.
+      1 SQUR.
+      3 SQUS.
+      1 SQVS.
+      1 SQWS.
+      1 SRQT.
+     17 SRRN.
+     24 SRRO.
+      5 SRRQ.
+      7 SRRR.
+      3 SRRS.
+      1 SRRY.
+      1 SRSR.
+      9 SRSS.
+      2 SRST.
+      1 SRSU.
+      3 SRTR.
+     13 SRTS.
+      1 SRTT.
+      1 SRTY.
+      2 SSNS.
+      8 SSPP.
+      2 SSQR.
+      1 SSQX.
+     92 SSRN.
+      2 SSRQ.
+     17 SSRR.
+      2 SSRS.
+      3 SSRT.
+     74 SSSN.
+     15 SSSP.
+    240 SSSR.
+    193 SSSS.
+     34 SSST.
+      8 SSSU.
+      4 SSSV.
+      1 SSSW.
+      2 SSSX.
+      9 SSSY.
+      8 SSSZ.
+      3 SSTR.
+      3 SSTS.
+     24 SSTT.
+     22 SSTU.
+     16 SSTV.
+      1 SSTY.
+      3 SSUU.
+      3 SSUY.
+      2 SSVR.
+      5 SSVS.
+      4 SSVW.
+      1 SSYY.
+      1 STON.
+      1 STQR.
+      1 STRR.
+      8 STRS.
+      1 STRT.
+     10 STSR.
+      6 STSS.
+      3 STST.
+      1 STTR.
+     14 STTS.
+     11 STTT.
+     15 STTU.
+      2 STTV.
+      2 STTW.
+      1 STUT.
+      2 STUU.
+      7 STUV.
+      8 STUX.
+      1 STVR.
+      2 STVV.
+      5 STVW.
+      2 STVY.
+      1 SUSS.
+      1 SUTS.
+      1 SUTW.
+      1 SUUV.
+      1 SUVV.
+      5 SUVY.
+      1 SUWX.
+      1 SVSS.
+      1 SVTT.
+      1 SVTV.
+      2 SVVU.
+      1 SVWX.
+     16 SVWY.
+      1 SVXY.
+      1 SWWX.
+      2 SYSR.
+      1 SYSS.
+      1 SYTW.
+      6 SYTY.
+      2 SYYT.
+      1 SYYX.
+      1 SYYY.
+      2 SZXN.
+      3 TABG.
+      4 TBGC.
+      1 TEAM.
+      6 TEXT.
+     39 TILE.
+     10 TION.
+      1 TMDV.
+      3 TORU.
+      1 TPPT.
+      1 TPUR.
+      1 TPUS.
+      1 TPVS.
+      1 TPVT.
+      1 TQQT.
+      1 TQRR.
+      1 TQRS.
+      1 TQTR.
+      1 TQUR.
+      3 TQUS.
+      1 TQXV.
+      3 TROS.
+      1 TRQQ.
+      1 TRQS.
+      1 TRQY.
+      2 TRRS.
+      2 TRRT.
+      1 TRRU.
+      3 TRSR.
+      1 TRSS.
+      8 TRST.
+      4 TRTR.
+      4 TRTS.
+      1 TRTT.
+      9 TRUS.
+      2 TRVU.
+      1 TRWU.
+      3 TSNR.
+      2 TSQX.
+      4 TSRR.
+     10 TSRS.
+     10 TSRT.
+      1 TSRU.
+      4 TSSR.
+     19 TSSS.
+     17 TSST.
+      4 TSSU.
+     14 TSTS.
+      9 TSTT.
+      2 TSTV.
+      1 TSUS.
+      1 TSUT.
+      2 TSUV.
+      2 TSWS.
+      1 TTQS.
+      1 TTQT.
+      1 TTRS.
+      1 TTRT.
+      5 TTRU.
+      8 TTSR.
+      6 TTSS.
+     15 TTST.
+      3 TTSU.
+     14 TTTS.
+     73 TTTT.
+    231 TTTU.
+      1 TTTY.
+      2 TTUT.
+     53 TTUU.
+     10 TTUV.
+      3 TTUW.
+      1 TTUY.
+      1 TTVV.
+      6 TUPO.
+      3 TUTT.
+      1 TUTU.
+      1 TUTV.
+      1 TUUS.
+      2 TUUT.
+     29 TUUU.
+      2 TUUV.
+      1 TUVT.
+      3 TUVV.
+     31 TUVW.
+      2 TUVY.
+      6 TUWX.
+      1 TUXY.
+      1 TVUU.
+      2 TVWS.
+      7 TVWX.
+      1 TVXX.
+      3 TWND.
+      1 TWVX.
+      1 TWYY.
+     42 TYSY.
+      1 UEFG.
+      1 UOSW.
+      1 UPPR.
+      1 UPSO.
+      1 UQBU.
+      1 UQPS.
+      1 UQTQ.
+      2 UQTR.
+      1 UQUS.
+      2 URRU.
+      1 URVY.
+      4 USSS.
+      3 USST.
+      2 USSU.
+      1 USTR.
+      1 USTT.
+      1 USTU.
+      1 USUT.
+     23 UTRT.
+     87 UTST.
+      1 UTSU.
+      2 UTSV.
+      1 UTTR.
+      6 UTTT.
+     45 UTTU.
+      7 UTUU.
+      1 UTUW.
+      1 UUQQ.
+      1 UUSS.
+      4 UUST.
+      7 UUTT.
+     12 UUTU.
+      2 UUUS.
+      2 UUUT.
+     79 UUUU.
+      1 UUUV.
+      1 UUUW.
+      7 UUUY.
+      2 UUVV.
+      3 UUVW.
+      1 UUWV.
+      2 UUWX.
+      1 UUWY.
+      1 UVVY.
+      8 UVWX.
+      5 UVWY.
+      1 UVXX.
+      1 UVXY.
+      1 UVYV.
+      2 UWPW.
+      2 UWUW.
+      1 UWUY.
+      1 UWWY.
+      1 UWXV.
+      1 UWXX.
+      1 UWXY.
+      1 VAZC.
+      3 VECR.
+      1 VIVB.
+      1 VORS.
+      1 VQRS.
+      2 VQST.
+      3 VQSU.
+     12 VQSV.
+      1 VRQS.
+     12 VRRR.
+      1 VRSV.
+      1 VSPS.
+      1 VSRP.
+      1 VSRS.
+      1 VSSU.
+      1 VSSV.
+      1 VSTU.
+      1 VTRS.
+      1 VTSP.
+      1 VTSV.
+      1 VTTS.
+      1 VTTT.
+      1 VTUR.
+      4 VTVW.
+      1 VTWV.
+      3 VUPR.
+      1 VUST.
+      1 VUSU.
+      1 VUTS.
+      1 VUUS.
+      2 VUUU.
+      1 VUUV.
+      1 VUUW.
+      2 VUVV.
+      1 VUVW.
+      1 VVUT.
+      3 VVUU.
+      1 VVUV.
+      1 VVVT.
+     10 VVVV.
+      7 VVVW.
+      2 VVVY.
+      2 VVWV.
+      6 VVWX.
+      1 VVXY.
+      1 VVYV.
+      3 VWUW.
+      1 VWVW.
+      1 VWVX.
+      2 VWWU.
+      2 VWWV.
+      3 VWXX.
+     13 VWXY.
+      1 VWYY.
+      1 VXST.
+      1 VXVV.
+      1 VXXU.
+      1 VXXY.
+      1 VXYU.
+      1 VYSM.
+      1 VYWS.
+      1 WCHH.
+      1 WIMD.
+      4 WINS.
+      3 WLLL.
+      5 WQST.
+      4 WQSU.
+      6 WQSV.
+      1 WQTX.
+      1 WRRO.
+     11 WRRR.
+      1 WSGX.
+      2 WSSS.
+      1 WTQP.
+      1 WTRU.
+      1 WTRV.
+      4 WTSU.
+      1 WTUW.
+      1 WUTU.
+      1 WUUU.
+      1 WUXX.
+      8 WVVU.
+      3 WVVW.
+      1 WVVY.
+      1 WVWY.
+      2 WWPP.
+      5 WWRR.
+     12 WWWP.
+     17 WWWR.
+      7 WWWV.
+    281 WWWW.
+      2 WWWX.
+      1 WWWY.
+      3 WWXW.
+      1 WWXX.
+      1 WWXY.
+      1 WWYY.
+      1 WXDN.
+      1 WXRS.
+      1 WXWV.
+      1 WXXW.
+      2 WXXY.
+     11 WXYY.
+      1 WYRG.
+      1 WYYY.
+      1 XFYZ.
+      1 XHII.
+      1 XKLN.
+      1 XQPR.
+      1 XQRT.
+      1 XRHK.
+      1 XTQT.
+      1 XTSU.
+      2 XTUV.
+      1 XUCS.
+      2 XURS.
+      8 XUSR.
+      2 XUSV.
+      1 XUTT.
+      4 XVRR.
+      1 XVRS.
+      7 XVSR.
+      1 XVST.
+      2 XVTU.
+      2 XWUU.
+      1 XWVU.
+      1 XXVU.
+      2 XXWU.
+      1 XXXV.
+      2 XXXW.
+      6 XXXX.
+      4 XXXY.
+     10 XXYY.
+      1 XYWX.
+      1 XYXX.
+      2 XYYV.
+      1 XYYW.
+      2 XYYX.
+      8 XYYY.
+      1 YFAU.
+      6 YLLL.
+     15 YMMM.
+      1 YNNQ.
+      1 YNTS.
+      6 YPSY.
+     12 YPYY.
+     48 YSPY.
+      1 YSRO.
+     36 YSRY.
+      5 YSSS.
+      1 YSSU.
+     18 YSYY.
+      1 YTLI.
+      6 YTPY.
+      1 YTQT.
+      1 YTWY.
+      1 YURS.
+      3 YUUU.
+     24 YUUY.
+      1 YUXU.
+      1 YVSV.
+      1 YVTS.
+      1 YVTV.
+      1 YVUS.
+      1 YVWW.
+      5 YWRR.
+      1 YWSW.
+      3 YWTR.
+      1 YWVY.
+      1 YWWY.
+     11 YWYW.
+      1 YXUS.
+      3 YXVV.
+      3 YXWV.
+      3 YXWX.
+      1 YXWY.
+      5 YXXY.
+      1 YXYX.
+     24 YYPY.
+     18 YYSY.
+      2 YYTT.
+      1 YYUO.
+      7 YYWY.
+      1 YYXW.
+      4 YYXX.
+     56 YYXY.
+      3 YYYW.
+      4 YYYX.
+    218 YYYY.
+      1 ZDZZ.
+      1 ZFFF.
+      6 ZMWM.
+      1 ZRMP.
+     16 ZRRP.
+    126 ZRRR.
+      4 ZSSP.
+      5 ZSSS.
+      4 ZWRR.
+      4 ZWSR.
+      1 ZWVU.
+     10 ZWWW.
+      4 ZYSR.
+      5 ZYWR.
+      2 ZZSN.
+      5 ZZWR.
+      1 ZZZT.
+     39 ZZZZ.
+
+
+ - Just found BMRS  (BMR G, BMR B, BMR S)
+ - 1287 BODY's!
+
+This still won't tell us for sure. There could be 1 of something interesting.
+
+ - 8 CDEF   definitions?  Definitely note ones that start with C!
+ - 9 CHGR
+ - 3 CPAL - Palettes?!
+ - 30 DEFG - definitions?
+ - 1 DTXT - ???
+
+
+138 FEND?! Already had it but dang.
+95 GEED?
+
+
+
+ONE MORE WARNIGN. We're looking through hexdump but WHAT IF AN ACNYRONMN STARTS
+AND THEN WRAPS AROUND TO THE NEXT LINE? GREP won't see it!
+	- So keep in mind this won't see ALL matches! It just has to see "enough" for us to notice them.
+
+
+ - 18 IFIM   - not sure. images?
+ - 36 IFJM
+
+
+ - 107 JKLM -- note this is just a progression.
+ - 42 JMIM -- ?
+ - 1 - NEND - ? n end?
+
+ - 8 STRS - strings?
+ - 1 TEAM - ?
+ - 39 TILE - !!!
+
+
+
+
+
+
+
+---------------------- Chunk lengths STILL DONT MAKE SENSE. They keep getting off by different amounts.
+
+
+
+
+Anyway, scanned every value we're looking for into an array.
+
+2285 - pair_t(22970510, 20744, "TILE")
+2286 - pair_t(22970518, 20736, "BODY")
+2287 - pair_t(22991262, 10376, "TILE")
+2288 - pair_t(22991270, 10368, "BODY")
+2289 - pair_t(23001646, 20744, "TILE")
+2290 - pair_t(23001654, 20736, "BODY")
+2291 - pair_t(23022398, 20744, "TILE")
+2292 - pair_t(23022406, 20736, "BODY")
+2293 - pair_t(23043150, 10376, "TILE")
+2294 - pair_t(23043158, 10368, "BODY")
+2295 - pair_t(23053534, 776, "CPAL")
+2296 - pair_t(23053542, 768, "BODY")
+2297 - pair_t(23054330, 192, "FORM")
+2298 - pair_t(23054342, 32, "DIAL")
+2299 - pair_t(23054350, 24, "TEXT")
+2300 - pair_t(23054382, 36, "DIAL")
+2301 - pair_t(23054390, 28, "TEXT")
+2302 - pair_t(23054426, 12, "DIAC")
+2303 - pair_t(23054474, 4, "TEXT")
+2304 - pair_t(23054514, 8, "TEXT")
+2305 - pair_t(23054530, 196, "FORM")
+2306 - pair_t(23054542, 28, "DIAL")
+2307 - pair_t(23054550, 20, "TEXT")
+2308 - pair_t(23054578, 12, "DIAC")
+2309 - pair_t(23054626, 8, "TEXT")
+2310 - pair_t(23054670, 8, "TEXT")
+2311 - pair_t(23054686, 20, "DTXT")
+2312 - pair_t(23054694, 12, "TEXT")
+2313 - pair_t(23054714, 12, "DINP")
+(END)
+
+
+Well, we get some that have a length of -2357925325 (or whatever). Yeah, those aren't real.
+
+	CDEF. For example. Nope.
+
+
+
+
+
+
+
+
+
+
+
+
+
+0 - pair_t(948, 923568, "FORM")
+1 - pair_t(968, 226548, "BODY")
+2 - pair_t(976, 226540, "FORM")
+3 - pair_t(1008, 80664, "PANL")
+4 - pair_t(1032, 80640, "BODY")
+5 - pair_t(81680, 3800, "BRDP")
+6 - pair_t(81704, 3776, "BODY")
+7 - pair_t(85488, 3800, "BRDP")
+8 - pair_t(85512, 3776, "BODY")
+9 - pair_t(89296, 3736, "BRDP")
+10 - pair_t(89320, 3712, "BODY")
+11 - pair_t(93040, 5144, "BRDN")
+12 - pair_t(93064, 5120, "BODY")
+13 - pair_t(98192, 5144, "BRDN")
+14 - pair_t(98216, 5120, "BODY")
+15 - pair_t(103344, 3736, "BRDN")
+16 - pair_t(103368, 3712, "BODY")
+17 - pair_t(107088, 3736, "BRDN")
+18 - pair_t(107112, 3712, "BODY")
+19 - pair_t(110832, 960, "BUTT")
+20 - pair_t(110872, 440, "BODY")
+21 - pair_t(111320, 0, "BODY")
+22 - pair_t(111328, 440, "BODY")
+23 - pair_t(111776, 0, "BODY")
+24 - pair_t(111784, 0, "BODY")
+25 - pair_t(111792, 0, "BODY")
+26 - pair_t(111800, 1000, "BUTT")
+27 - pair_t(111840, 460, "BODY")
+28 - pair_t(112308, 0, "BODY")
+29 - pair_t(112316, 460, "BODY")
+30 - pair_t(112784, 0, "BODY")
+31 - pair_t(112792, 0, "BODY")
+32 - pair_t(112800, 0, "BODY")
+33 - pair_t(112808, 1096, "BUTT")
+34 - pair_t(112815, 1090519040, "HDAT")
+35 - pair_t(112848, 508, "BODY")
+36 - pair_t(113364, 0, "BODY")
+37 - pair_t(113372, 508, "BODY")
+38 - pair_t(113888, 0, "BODY")
+39 - pair_t(113896, 0, "BODY")
+40 - pair_t(113904, 0, "BODY")
+41 - pair_t(113912, 840, "BUTT")
+42 - pair_t(113919, 1090519040, "HDAT")
+43 - pair_t(113952, 380, "BODY")
+44 - pair_t(114340, 0, "BODY")
+45 - pair_t(114348, 380, "BODY")
+46 - pair_t(114736, 0, "BODY")
+47 - pair_t(114744, 0, "BODY")
+48 - pair_t(114752, 0, "BODY")
+49 - pair_t(114760, 768, "BUTT")
+50 - pair_t(114800, 344, "BODY")
+51 - pair_t(115152, 0, "BODY")
+52 - pair_t(115160, 344, "BODY")
+53 - pair_t(115512, 0, "BODY")
+54 - pair_t(115520, 0, "BODY")
+55 - pair_t(115528, 0, "BODY")
+56 - pair_t(115536, 880, "BUTT")
+57 - pair_t(115576, 400, "BODY")
+58 - pair_t(115984, 0, "BODY")
+59 - pair_t(115992, 400, "BODY")
+60 - pair_t(116400, 0, "BODY")
+61 - pair_t(116408, 0, "BODY")
+62 - pair_t(116416, 0, "BODY")
+63 - pair_t(116424, 2480, "RHBG")
+64 - pair_t(116464, 2400, "BODY")
+65 - pair_t(118872, 0, "BODY")
+66 - pair_t(118880, 0, "BODY")
+67 - pair_t(118888, 0, "BODY")
+68 - pair_t(118896, 0, "BODY")
+69 - pair_t(118904, 0, "BODY")
+70 - pair_t(118912, 16080, "TABG")
+71 - pair_t(118952, 16000, "BODY")
+72 - pair_t(134960, 0, "BODY")
+73 - pair_t(134968, 0, "BODY")
+74 - pair_t(134976, 0, "BODY")
+75 - pair_t(134984, 0, "BODY")
+76 - pair_t(134992, 0, "BODY")
+77 - pair_t(135000, 9680, "TWND")
+78 - pair_t(135040, 9600, "BODY")
+79 - pair_t(144648, 0, "BODY")
+80 - pair_t(144656, 0, "BODY")
+81 - pair_t(144664, 0, "BODY")
+82 - pair_t(144672, 0, "BODY")
+83 - pair_t(144680, 0, "BODY")
+84 - pair_t(144688, 44, "HLTK")
+85 - pair_t(144740, 308, "CHGR")
+86 - pair_t(144780, 228, "BODY")
+87 - pair_t(145016, 0, "BODY")
+88 - pair_t(145024, 0, "BODY")
+89 - pair_t(145032, 0, "BODY")
+90 - pair_t(145040, 0, "BODY")
+91 - pair_t(145048, 0, "BODY")
+92 - pair_t(145056, 1132, "CHGR")
+93 - pair_t(145096, 1052, "BODY")
+94 - pair_t(146156, 0, "BODY")
+95 - pair_t(146164, 0, "BODY")
+96 - pair_t(146172, 0, "BODY")
+97 - pair_t(146180, 0, "BODY")
+98 - pair_t(146188, 0, "BODY")
+99 - pair_t(146196, 1132, "CHGR")
+100 - pair_t(146236, 1052, "BODY")
+101 - pair_t(147296, 0, "BODY")
+102 - pair_t(147304, 0, "BODY")
+103 - pair_t(147312, 0, "BODY")
+104 - pair_t(147320, 0, "BODY")
+105 - pair_t(147328, 0, "BODY")
+106 - pair_t(147336, 2948, "CHBG")
+107 - pair_t(147376, 2868, "BODY")
+108 - pair_t(150252, 0, "BODY")
+109 - pair_t(150260, 0, "BODY")
+110 - pair_t(150268, 0, "BODY")
+111 - pair_t(150276, 0, "BODY")
+112 - pair_t(150284, 0, "BODY")
+113 - pair_t(150292, 2948, "CHBG")
+114 - pair_t(150332, 2868, "BODY")
+115 - pair_t(153208, 0, "BODY")
+116 - pair_t(153216, 0, "BODY")
+117 - pair_t(153224, 0, "BODY")
+118 - pair_t(153232, 0, "BODY")
+119 - pair_t(153240, 0, "BODY")
+120 - pair_t(153248, 308, "BHGR")
+121 - pair_t(153288, 228, "BODY")
+122 - pair_t(153524, 0, "BODY")
+123 - pair_t(153532, 0, "BODY")
+124 - pair_t(153540, 0, "BODY")
+125 - pair_t(153548, 0, "BODY")
+126 - pair_t(153556, 0, "BODY")
+127 - pair_t(153564, 1132, "BHGR")
+128 - pair_t(153604, 1052, "BODY")
+129 - pair_t(154664, 0, "BODY")
+130 - pair_t(154672, 0, "BODY")
+131 - pair_t(154680, 0, "BODY")
+132 - pair_t(154688, 0, "BODY")
+133 - pair_t(154696, 0, "BODY")
+134 - pair_t(154704, 308, "PHGR")
+135 - pair_t(154744, 228, "BODY")
+136 - pair_t(154980, 0, "BODY")
+137 - pair_t(154988, 0, "BODY")
+138 - pair_t(154996, 0, "BODY")
+139 - pair_t(155004, 0, "BODY")
+140 - pair_t(155012, 0, "BODY")
+141 - pair_t(155020, 1132, "PHGR")
+142 - pair_t(155060, 1052, "BODY")
+143 - pair_t(156120, 0, "BODY")
+144 - pair_t(156128, 0, "BODY")
+145 - pair_t(156136, 0, "BODY")
+146 - pair_t(156144, 0, "BODY")
+147 - pair_t(156152, 0, "BODY")
+148 - pair_t(156200, 3288, "BODY")
+149 - pair_t(159496, 0, "BODY")
+150 - pair_t(159504, 0, "BODY")
+151 - pair_t(159512, 0, "BODY")
+152 - pair_t(159520, 0, "BODY")
+153 - pair_t(159528, 0, "BODY")
+154 - pair_t(159536, 3368, "PHBG")
+155 - pair_t(159576, 3288, "BODY")
+156 - pair_t(162872, 0, "BODY")
+157 - pair_t(162880, 0, "BODY")
+158 - pair_t(162888, 0, "BODY")
+159 - pair_t(162896, 0, "BODY")
+160 - pair_t(162904, 0, "BODY")
+161 - pair_t(162912, 368, "BMRS")
+162 - pair_t(162952, 288, "BODY")
+163 - pair_t(163248, 0, "BODY")
+164 - pair_t(163256, 0, "BODY")
+165 - pair_t(163264, 0, "BODY")
+166 - pair_t(163272, 0, "BODY")
+167 - pair_t(163280, 0, "BODY")
+168 - pair_t(163288, 1616, "BMRG")
+169 - pair_t(163328, 1536, "BODY")
+170 - pair_t(164872, 0, "BODY")
+171 - pair_t(164880, 0, "BODY")
+172 - pair_t(164888, 0, "BODY")
+173 - pair_t(164896, 0, "BODY")
+174 - pair_t(164904, 0, "BODY")
+175 - pair_t(164912, 2548, "BMRB")
+176 - pair_t(164952, 2468, "BODY")
+177 - pair_t(167428, 0, "BODY")
+178 - pair_t(167436, 0, "BODY")
+179 - pair_t(167444, 0, "BODY")
+180 - pair_t(167452, 0, "BODY")
+181 - pair_t(167460, 0, "BODY")
+182 - pair_t(167508, 2400, "BODY")
+183 - pair_t(169916, 0, "BODY")
+184 - pair_t(169924, 0, "BODY")
+185 - pair_t(169932, 0, "BODY")
+186 - pair_t(169940, 0, "BODY")
+187 - pair_t(169948, 0, "BODY")
+188 - pair_t(169956, 1136, "BUTA")
+189 - pair_t(169996, 528, "BODY")
+190 - pair_t(170532, 0, "BODY")
+191 - pair_t(170540, 528, "BODY")
+192 - pair_t(171076, 0, "BODY")
+193 - pair_t(171084, 0, "BODY")
+194 - pair_t(171092, 0, "BODY")
+195 - pair_t(171100, 1280, "BUTA")
+196 - pair_t(171140, 600, "BODY")
+197 - pair_t(171748, 0, "BODY")
+198 - pair_t(171756, 600, "BODY")
+199 - pair_t(172364, 0, "BODY")
+200 - pair_t(172372, 0, "BODY")
+201 - pair_t(172380, 0, "BODY")
+202 - pair_t(172388, 1184, "BUTA")
+203 - pair_t(172428, 552, "BODY")
+204 - pair_t(172988, 0, "BODY")
+205 - pair_t(172996, 552, "BODY")
+206 - pair_t(173556, 0, "BODY")
+207 - pair_t(173564, 0, "BODY")
+208 - pair_t(173572, 0, "BODY")
+209 - pair_t(173580, 1232, "BUTA")
+210 - pair_t(173620, 576, "BODY")
+211 - pair_t(174204, 0, "BODY")
+212 - pair_t(174212, 576, "BODY")
+213 - pair_t(174796, 0, "BODY")
+214 - pair_t(174804, 0, "BODY")
+215 - pair_t(174812, 0, "BODY")
+216 - pair_t(174820, 4984, "BUTA")
+217 - pair_t(174860, 2452, "BODY")
+218 - pair_t(177320, 0, "BODY")
+219 - pair_t(177328, 2452, "BODY")
+220 - pair_t(179788, 0, "BODY")
+221 - pair_t(179796, 0, "BODY")
+222 - pair_t(179804, 0, "BODY")
+223 - pair_t(179812, 4984, "BUTA")
+224 - pair_t(179852, 2452, "BODY")
+225 - pair_t(182312, 0, "BODY")
+226 - pair_t(182320, 2452, "BODY")
+227 - pair_t(184780, 0, "BODY")
+228 - pair_t(184788, 0, "BODY")
+229 - pair_t(184796, 0, "BODY")
+230 - pair_t(184804, 4040, "BUTA")
+231 - pair_t(184844, 1980, "BODY")
+232 - pair_t(186832, 0, "BODY")
+233 - pair_t(186840, 1980, "BODY")
+234 - pair_t(188828, 0, "BODY")
+235 - pair_t(188836, 0, "BODY")
+236 - pair_t(188844, 0, "BODY")
+237 - pair_t(188852, 5184, "BUTA")
+238 - pair_t(188892, 2552, "BODY")
+239 - pair_t(191452, 0, "BODY")
+240 - pair_t(191460, 2552, "BODY")
+241 - pair_t(194020, 0, "BODY")
+242 - pair_t(194028, 0, "BODY")
+243 - pair_t(194036, 0, "BODY")
+244 - pair_t(194044, 16720, "WINS")
+245 - pair_t(194084, 16640, "BODY")
+246 - pair_t(210732, 0, "BODY")
+247 - pair_t(210740, 0, "BODY")
+248 - pair_t(210748, 0, "BODY")
+249 - pair_t(210756, 0, "BODY")
+250 - pair_t(210764, 0, "BODY")
+251 - pair_t(210772, 16720, "LOSE")
+252 - pair_t(210812, 16640, "BODY")
+253 - pair_t(227460, 0, "BODY")
+254 - pair_t(227468, 0, "BODY")
+255 - pair_t(227476, 0, "BODY")
+256 - pair_t(227484, 0, "BODY")
+257 - pair_t(227492, 0, "BODY")
+258 - pair_t(227500, 16, "TBGC")
+259 - pair_t(227524, 239056, "MEDI")
+260 - pair_t(227532, 239048, "BODY")
+261 - pair_t(227540, 239040, "FORM")
+262 - pair_t(227572, 80664, "PANL")
+263 - pair_t(227596, 80640, "BODY")
+264 - pair_t(308244, 3800, "BRDP")
+265 - pair_t(308268, 3776, "BODY")
+266 - pair_t(312052, 3800, "BRDP")
+267 - pair_t(312076, 3776, "BODY")
+268 - pair_t(315860, 3736, "BRDP")
+269 - pair_t(315884, 3712, "BODY")
+270 - pair_t(319604, 5144, "BRDN")
+271 - pair_t(319628, 5120, "BODY")
+272 - pair_t(324756, 5144, "BRDN")
+273 - pair_t(324780, 5120, "BODY")
+274 - pair_t(329908, 3736, "BRDN")
+275 - pair_t(329932, 3712, "BODY")
+276 - pair_t(333652, 3736, "BRDN")
+277 - pair_t(333676, 3712, "BODY")
+278 - pair_t(337396, 840, "BUTT")
+279 - pair_t(337403, 1090519040, "HDAT")
+280 - pair_t(337436, 380, "BODY")
+281 - pair_t(337824, 0, "BODY")
+282 - pair_t(337832, 380, "BODY")
+283 - pair_t(338220, 0, "BODY")
+284 - pair_t(338228, 0, "BODY")
+285 - pair_t(338236, 0, "BODY")
+286 - pair_t(338244, 840, "BUTT")
+287 - pair_t(338251, 1090519040, "HDAT")
+288 - pair_t(338284, 380, "BODY")
+289 - pair_t(338672, 0, "BODY")
+290 - pair_t(338680, 380, "BODY")
+291 - pair_t(339068, 0, "BODY")
+292 - pair_t(339076, 0, "BODY")
+293 - pair_t(339084, 0, "BODY")
+294 - pair_t(339092, 840, "BUTT")
+295 - pair_t(339099, 1090519040, "HDAT")
+296 - pair_t(339132, 380, "BODY")
+297 - pair_t(339520, 0, "BODY")
+298 - pair_t(339528, 380, "BODY")
+299 - pair_t(339916, 0, "BODY")
+300 - pair_t(339924, 0, "BODY")
+301 - pair_t(339932, 0, "BODY")
+302 - pair_t(339940, 840, "BUTT")
+303 - pair_t(339947, 1090519040, "HDAT")
+304 - pair_t(339980, 380, "BODY")
+305 - pair_t(340368, 0, "BODY")
+306 - pair_t(340376, 380, "BODY")
+307 - pair_t(340764, 0, "BODY")
+308 - pair_t(340772, 0, "BODY")
+309 - pair_t(340780, 0, "BODY")
+310 - pair_t(340788, 840, "BUTT")
+311 - pair_t(340795, 1090519040, "HDAT")
+312 - pair_t(340828, 380, "BODY")
+313 - pair_t(341216, 0, "BODY")
+314 - pair_t(341224, 380, "BODY")
+315 - pair_t(341612, 0, "BODY")
+316 - pair_t(341620, 0, "BODY")
+317 - pair_t(341628, 0, "BODY")
+318 - pair_t(341636, 840, "BUTT")
+319 - pair_t(341643, 1090519040, "HDAT")
+320 - pair_t(341676, 380, "BODY")
+321 - pair_t(342064, 0, "BODY")
+322 - pair_t(342072, 380, "BODY")
+323 - pair_t(342460, 0, "BODY")
+324 - pair_t(342468, 0, "BODY")
+325 - pair_t(342476, 0, "BODY")
+326 - pair_t(342484, 2480, "RHBG")
+327 - pair_t(342524, 2400, "BODY")
+328 - pair_t(344932, 0, "BODY")
+329 - pair_t(344940, 0, "BODY")
+330 - pair_t(344948, 0, "BODY")
+331 - pair_t(344956, 0, "BODY")
+332 - pair_t(344964, 0, "BODY")
+333 - pair_t(344972, 16080, "TABG")
+334 - pair_t(345012, 16000, "BODY")
+335 - pair_t(361020, 0, "BODY")
+336 - pair_t(361028, 0, "BODY")
+337 - pair_t(361036, 0, "BODY")
+338 - pair_t(361044, 0, "BODY")
+339 - pair_t(361052, 0, "BODY")
+340 - pair_t(361060, 9680, "TWND")
+341 - pair_t(361100, 9600, "BODY")
+342 - pair_t(370708, 0, "BODY")
+343 - pair_t(370716, 0, "BODY")
+344 - pair_t(370724, 0, "BODY")
+345 - pair_t(370732, 0, "BODY")
+346 - pair_t(370740, 0, "BODY")
+347 - pair_t(370748, 44, "HLTK")
+348 - pair_t(370800, 440, "CHGR")
+349 - pair_t(370840, 360, "BODY")
+350 - pair_t(371208, 0, "BODY")
+351 - pair_t(371216, 0, "BODY")
+352 - pair_t(371224, 0, "BODY")
+353 - pair_t(371232, 0, "BODY")
+354 - pair_t(371240, 0, "BODY")
+355 - pair_t(371248, 1132, "CHGR")
+356 - pair_t(371288, 1052, "BODY")
+357 - pair_t(372348, 0, "BODY")
+358 - pair_t(372356, 0, "BODY")
+359 - pair_t(372364, 0, "BODY")
+360 - pair_t(372372, 0, "BODY")
+361 - pair_t(372380, 0, "BODY")
+362 - pair_t(372388, 1132, "CHGR")
+363 - pair_t(372428, 1052, "BODY")
+364 - pair_t(373488, 0, "BODY")
+365 - pair_t(373496, 0, "BODY")
+366 - pair_t(373504, 0, "BODY")
+367 - pair_t(373512, 0, "BODY")
+368 - pair_t(373520, 0, "BODY")
+369 - pair_t(373528, 3480, "CHBG")
+370 - pair_t(373568, 3400, "BODY")
+371 - pair_t(376976, 0, "BODY")
+372 - pair_t(376984, 0, "BODY")
+373 - pair_t(376992, 0, "BODY")
+374 - pair_t(377000, 0, "BODY")
+375 - pair_t(377008, 0, "BODY")
+376 - pair_t(377016, 3480, "CHBG")
+377 - pair_t(377056, 3400, "BODY")
+378 - pair_t(380464, 0, "BODY")
+379 - pair_t(380472, 0, "BODY")
+380 - pair_t(380480, 0, "BODY")
+381 - pair_t(380488, 0, "BODY")
+382 - pair_t(380496, 0, "BODY")
+383 - pair_t(380504, 440, "BHGR")
+384 - pair_t(380544, 360, "BODY")
+385 - pair_t(380912, 0, "BODY")
+386 - pair_t(380920, 0, "BODY")
+387 - pair_t(380928, 0, "BODY")
+388 - pair_t(380936, 0, "BODY")
+389 - pair_t(380944, 0, "BODY")
+390 - pair_t(380952, 1132, "BHGR")
+391 - pair_t(380992, 1052, "BODY")
+392 - pair_t(382052, 0, "BODY")
+393 - pair_t(382060, 0, "BODY")
+394 - pair_t(382068, 0, "BODY")
+395 - pair_t(382076, 0, "BODY")
+396 - pair_t(382084, 0, "BODY")
+397 - pair_t(382092, 440, "PHGR")
+398 - pair_t(382132, 360, "BODY")
+399 - pair_t(382500, 0, "BODY")
+400 - pair_t(382508, 0, "BODY")
+401 - pair_t(382516, 0, "BODY")
+402 - pair_t(382524, 0, "BODY")
+403 - pair_t(382532, 0, "BODY")
+404 - pair_t(382540, 1132, "PHGR")
+405 - pair_t(382580, 1052, "BODY")
+406 - pair_t(383640, 0, "BODY")
+407 - pair_t(383648, 0, "BODY")
+408 - pair_t(383656, 0, "BODY")
+409 - pair_t(383664, 0, "BODY")
+410 - pair_t(383672, 0, "BODY")
+411 - pair_t(383720, 3844, "BODY")
+412 - pair_t(387572, 0, "BODY")
+413 - pair_t(387580, 0, "BODY")
+414 - pair_t(387588, 0, "BODY")
+415 - pair_t(387596, 0, "BODY")
+416 - pair_t(387604, 0, "BODY")
+417 - pair_t(387612, 3924, "PHBG")
+418 - pair_t(387652, 3844, "BODY")
+419 - pair_t(391504, 0, "BODY")
+420 - pair_t(391512, 0, "BODY")
+421 - pair_t(391520, 0, "BODY")
+422 - pair_t(391528, 0, "BODY")
+423 - pair_t(391536, 0, "BODY")
+424 - pair_t(391544, 260, "BMRS")
+425 - pair_t(391584, 180, "BODY")
+426 - pair_t(391772, 0, "BODY")
+427 - pair_t(391780, 0, "BODY")
+428 - pair_t(391788, 0, "BODY")
+429 - pair_t(391796, 0, "BODY")
+430 - pair_t(391804, 0, "BODY")
+431 - pair_t(391812, 1372, "BMRG")
+432 - pair_t(391852, 1292, "BODY")
+433 - pair_t(393152, 0, "BODY")
+434 - pair_t(393160, 0, "BODY")
+435 - pair_t(393168, 0, "BODY")
+436 - pair_t(393176, 0, "BODY")
+437 - pair_t(393184, 0, "BODY")
+438 - pair_t(393192, 2548, "BMRB")
+439 - pair_t(393232, 2468, "BODY")
+440 - pair_t(395708, 0, "BODY")
+441 - pair_t(395716, 0, "BODY")
+442 - pair_t(395724, 0, "BODY")
+443 - pair_t(395732, 0, "BODY")
+444 - pair_t(395740, 0, "BODY")
+445 - pair_t(395788, 2400, "BODY")
+446 - pair_t(398196, 0, "BODY")
+447 - pair_t(398204, 0, "BODY")
+448 - pair_t(398212, 0, "BODY")
+449 - pair_t(398220, 0, "BODY")
+450 - pair_t(398228, 0, "BODY")
+451 - pair_t(398236, 1232, "BUTA")
+452 - pair_t(398276, 576, "BODY")
+453 - pair_t(398860, 0, "BODY")
+454 - pair_t(398868, 576, "BODY")
+455 - pair_t(399452, 0, "BODY")
+456 - pair_t(399460, 0, "BODY")
+457 - pair_t(399468, 0, "BODY")
+458 - pair_t(399476, 1232, "BUTA")
+459 - pair_t(399516, 576, "BODY")
+460 - pair_t(400100, 0, "BODY")
+461 - pair_t(400108, 576, "BODY")
+462 - pair_t(400692, 0, "BODY")
+463 - pair_t(400700, 0, "BODY")
+464 - pair_t(400708, 0, "BODY")
+465 - pair_t(400716, 1232, "BUTA")
+466 - pair_t(400756, 576, "BODY")
+467 - pair_t(401340, 0, "BODY")
+468 - pair_t(401348, 576, "BODY")
+469 - pair_t(401932, 0, "BODY")
+470 - pair_t(401940, 0, "BODY")
+471 - pair_t(401948, 0, "BODY")
+472 - pair_t(401956, 1232, "BUTA")
+473 - pair_t(401996, 576, "BODY")
+474 - pair_t(402580, 0, "BODY")
+475 - pair_t(402588, 576, "BODY")
+476 - pair_t(403172, 0, "BODY")
+477 - pair_t(403180, 0, "BODY")
+478 - pair_t(403188, 0, "BODY")
+479 - pair_t(403196, 4312, "BUTA")
+480 - pair_t(403236, 2116, "BODY")
+481 - pair_t(405360, 0, "BODY")
+482 - pair_t(405368, 2116, "BODY")
+483 - pair_t(407492, 0, "BODY")
+484 - pair_t(407500, 0, "BODY")
+485 - pair_t(407508, 0, "BODY")
+486 - pair_t(407516, 4504, "BUTA")
+487 - pair_t(407556, 2212, "BODY")
+488 - pair_t(409776, 0, "BODY")
+489 - pair_t(409784, 2212, "BODY")
+490 - pair_t(412004, 0, "BODY")
+491 - pair_t(412012, 0, "BODY")
+492 - pair_t(412020, 0, "BODY")
+493 - pair_t(412028, 4312, "BUTA")
+494 - pair_t(412068, 2116, "BODY")
+495 - pair_t(414192, 0, "BODY")
+496 - pair_t(414200, 2116, "BODY")
+497 - pair_t(416324, 0, "BODY")
+498 - pair_t(416332, 0, "BODY")
+499 - pair_t(416340, 0, "BODY")
+500 - pair_t(416348, 4504, "BUTA")
+501 - pair_t(416388, 2212, "BODY")
+502 - pair_t(418608, 0, "BODY")
+503 - pair_t(418616, 2212, "BODY")
+504 - pair_t(420836, 0, "BODY")
+505 - pair_t(420844, 0, "BODY")
+506 - pair_t(420852, 0, "BODY")
+507 - pair_t(420860, 656, "MICO")
+508 - pair_t(420900, 576, "BODY")
+509 - pair_t(421484, 0, "BODY")
+510 - pair_t(421492, 0, "BODY")
+511 - pair_t(421500, 0, "BODY")
+512 - pair_t(421508, 0, "BODY")
+513 - pair_t(421516, 0, "BODY")
+514 - pair_t(421524, 656, "MICO")
+515 - pair_t(421564, 576, "BODY")
+516 - pair_t(422148, 0, "BODY")
+517 - pair_t(422156, 0, "BODY")
+518 - pair_t(422164, 0, "BODY")
+519 - pair_t(422172, 0, "BODY")
+520 - pair_t(422180, 0, "BODY")
+521 - pair_t(422188, 656, "MICO")
+522 - pair_t(422228, 576, "BODY")
+523 - pair_t(422812, 0, "BODY")
+524 - pair_t(422820, 0, "BODY")
+525 - pair_t(422828, 0, "BODY")
+526 - pair_t(422836, 0, "BODY")
+527 - pair_t(422844, 0, "BODY")
+528 - pair_t(422852, 16720, "WINS")
+529 - pair_t(422892, 16640, "BODY")
+530 - pair_t(439540, 0, "BODY")
+531 - pair_t(439548, 0, "BODY")
+532 - pair_t(439556, 0, "BODY")
+533 - pair_t(439564, 0, "BODY")
+534 - pair_t(439572, 0, "BODY")
+535 - pair_t(439580, 16720, "LOSE")
+536 - pair_t(439620, 16640, "BODY")
+537 - pair_t(456268, 0, "BODY")
+538 - pair_t(456276, 0, "BODY")
+539 - pair_t(456284, 0, "BODY")
+540 - pair_t(456292, 0, "BODY")
+541 - pair_t(456300, 0, "BODY")
+542 - pair_t(456308, 5120, "MESG")
+543 - pair_t(456348, 5040, "BODY")
+544 - pair_t(461396, 0, "BODY")
+545 - pair_t(461404, 0, "BODY")
+546 - pair_t(461412, 0, "BODY")
+547 - pair_t(461420, 0, "BODY")
+548 - pair_t(461428, 0, "BODY")
+549 - pair_t(461436, 5120, "MESG")
+550 - pair_t(461476, 5040, "BODY")
+551 - pair_t(466524, 0, "BODY")
+552 - pair_t(466532, 0, "BODY")
+553 - pair_t(466540, 0, "BODY")
+554 - pair_t(466548, 0, "BODY")
+555 - pair_t(466556, 0, "BODY")
+556 - pair_t(466564, 16, "TBGC")
+557 - pair_t(466588, 230636, "MODN")
+558 - pair_t(466596, 230628, "BODY")
+559 - pair_t(466604, 230620, "FORM")
+560 - pair_t(466636, 80664, "PANL")
+561 - pair_t(466660, 80640, "BODY")
+562 - pair_t(547308, 3800, "BRDP")
+563 - pair_t(547332, 3776, "BODY")
+564 - pair_t(551116, 3800, "BRDP")
+565 - pair_t(551140, 3776, "BODY")
+566 - pair_t(554924, 3736, "BRDP")
+567 - pair_t(554948, 3712, "BODY")
+568 - pair_t(558668, 5144, "BRDN")
+569 - pair_t(558692, 5120, "BODY")
+570 - pair_t(563820, 5144, "BRDN")
+571 - pair_t(563844, 5120, "BODY")
+572 - pair_t(568972, 3736, "BRDN")
+573 - pair_t(568996, 3712, "BODY")
+574 - pair_t(572716, 3736, "BRDN")
+575 - pair_t(572740, 3712, "BODY")
+576 - pair_t(576460, 728, "BUTT")
+577 - pair_t(576500, 324, "BODY")
+578 - pair_t(576832, 0, "BODY")
+579 - pair_t(576840, 324, "BODY")
+580 - pair_t(577172, 0, "BODY")
+581 - pair_t(577180, 0, "BODY")
+582 - pair_t(577188, 0, "BODY")
+583 - pair_t(577196, 728, "BUTT")
+584 - pair_t(577236, 324, "BODY")
+585 - pair_t(577568, 0, "BODY")
+586 - pair_t(577576, 324, "BODY")
+587 - pair_t(577908, 0, "BODY")
+588 - pair_t(577916, 0, "BODY")
+589 - pair_t(577924, 0, "BODY")
+590 - pair_t(577932, 728, "BUTT")
+591 - pair_t(577972, 324, "BODY")
+592 - pair_t(578304, 0, "BODY")
+593 - pair_t(578312, 324, "BODY")
+594 - pair_t(578644, 0, "BODY")
+595 - pair_t(578652, 0, "BODY")
+596 - pair_t(578660, 0, "BODY")
+597 - pair_t(578668, 728, "BUTT")
+598 - pair_t(578708, 324, "BODY")
+599 - pair_t(579040, 0, "BODY")
+600 - pair_t(579048, 324, "BODY")
+601 - pair_t(579380, 0, "BODY")
+602 - pair_t(579388, 0, "BODY")
+603 - pair_t(579396, 0, "BODY")
+604 - pair_t(579404, 728, "BUTT")
+605 - pair_t(579444, 324, "BODY")
+606 - pair_t(579776, 0, "BODY")
+607 - pair_t(579784, 324, "BODY")
+608 - pair_t(580116, 0, "BODY")
+609 - pair_t(580124, 0, "BODY")
+610 - pair_t(580132, 0, "BODY")
+611 - pair_t(580140, 728, "BUTT")
+612 - pair_t(580180, 324, "BODY")
+613 - pair_t(580512, 0, "BODY")
+614 - pair_t(580520, 324, "BODY")
+615 - pair_t(580852, 0, "BODY")
+616 - pair_t(580860, 0, "BODY")
+617 - pair_t(580868, 0, "BODY")
+618 - pair_t(580876, 2480, "RHBG")
+619 - pair_t(580916, 2400, "BODY")
+620 - pair_t(583324, 0, "BODY")
+621 - pair_t(583332, 0, "BODY")
+622 - pair_t(583340, 0, "BODY")
+623 - pair_t(583348, 0, "BODY")
+624 - pair_t(583356, 0, "BODY")
+625 - pair_t(583364, 16080, "TABG")
+626 - pair_t(583404, 16000, "BODY")
+627 - pair_t(599412, 0, "BODY")
+628 - pair_t(599420, 0, "BODY")
+629 - pair_t(599428, 0, "BODY")
+630 - pair_t(599436, 0, "BODY")
+631 - pair_t(599444, 0, "BODY")
+632 - pair_t(599452, 9680, "TWND")
+633 - pair_t(599492, 9600, "BODY")
+634 - pair_t(609100, 0, "BODY")
+635 - pair_t(609108, 0, "BODY")
+636 - pair_t(609116, 0, "BODY")
+637 - pair_t(609124, 0, "BODY")
+638 - pair_t(609132, 0, "BODY")
+639 - pair_t(609140, 44, "HLTK")
+640 - pair_t(609192, 328, "CHGR")
+641 - pair_t(609199, 1090519040, "HDAT")
+642 - pair_t(609232, 248, "BODY")
+643 - pair_t(609488, 0, "BODY")
+644 - pair_t(609496, 0, "BODY")
+645 - pair_t(609504, 0, "BODY")
+646 - pair_t(609512, 0, "BODY")
+647 - pair_t(609520, 0, "BODY")
+648 - pair_t(609528, 1132, "CHGR")
+649 - pair_t(609568, 1052, "BODY")
+650 - pair_t(610628, 0, "BODY")
+651 - pair_t(610636, 0, "BODY")
+652 - pair_t(610644, 0, "BODY")
+653 - pair_t(610652, 0, "BODY")
+654 - pair_t(610660, 0, "BODY")
+655 - pair_t(610668, 1132, "CHGR")
+656 - pair_t(610708, 1052, "BODY")
+657 - pair_t(611768, 0, "BODY")
+658 - pair_t(611776, 0, "BODY")
+659 - pair_t(611784, 0, "BODY")
+660 - pair_t(611792, 0, "BODY")
+661 - pair_t(611800, 0, "BODY")
+662 - pair_t(611808, 3652, "CHBG")
+663 - pair_t(611848, 3572, "BODY")
+664 - pair_t(615428, 0, "BODY")
+665 - pair_t(615436, 0, "BODY")
+666 - pair_t(615444, 0, "BODY")
+667 - pair_t(615452, 0, "BODY")
+668 - pair_t(615460, 0, "BODY")
+669 - pair_t(615468, 3652, "CHBG")
+670 - pair_t(615508, 3572, "BODY")
+671 - pair_t(619088, 0, "BODY")
+672 - pair_t(619096, 0, "BODY")
+673 - pair_t(619104, 0, "BODY")
+674 - pair_t(619112, 0, "BODY")
+675 - pair_t(619120, 0, "BODY")
+676 - pair_t(619128, 328, "BHGR")
+677 - pair_t(619135, 1090519040, "HDAT")
+678 - pair_t(619168, 248, "BODY")
+679 - pair_t(619424, 0, "BODY")
+680 - pair_t(619432, 0, "BODY")
+681 - pair_t(619440, 0, "BODY")
+682 - pair_t(619448, 0, "BODY")
+683 - pair_t(619456, 0, "BODY")
+684 - pair_t(619464, 1132, "BHGR")
+685 - pair_t(619504, 1052, "BODY")
+686 - pair_t(620564, 0, "BODY")
+687 - pair_t(620572, 0, "BODY")
+688 - pair_t(620580, 0, "BODY")
+689 - pair_t(620588, 0, "BODY")
+690 - pair_t(620596, 0, "BODY")
+691 - pair_t(620604, 328, "PHGR")
+692 - pair_t(620611, 1090519040, "HDAT")
+693 - pair_t(620644, 248, "BODY")
+694 - pair_t(620900, 0, "BODY")
+695 - pair_t(620908, 0, "BODY")
+696 - pair_t(620916, 0, "BODY")
+697 - pair_t(620924, 0, "BODY")
+698 - pair_t(620932, 0, "BODY")
+699 - pair_t(620940, 1132, "PHGR")
+700 - pair_t(620980, 1052, "BODY")
+701 - pair_t(622040, 0, "BODY")
+702 - pair_t(622048, 0, "BODY")
+703 - pair_t(622056, 0, "BODY")
+704 - pair_t(622064, 0, "BODY")
+705 - pair_t(622072, 0, "BODY")
+706 - pair_t(622120, 4144, "BODY")
+707 - pair_t(626272, 0, "BODY")
+708 - pair_t(626280, 0, "BODY")
+709 - pair_t(626288, 0, "BODY")
+710 - pair_t(626296, 0, "BODY")
+711 - pair_t(626304, 0, "BODY")
+712 - pair_t(626312, 4224, "PHBG")
+713 - pair_t(626352, 4144, "BODY")
+714 - pair_t(630504, 0, "BODY")
+715 - pair_t(630512, 0, "BODY")
+716 - pair_t(630520, 0, "BODY")
+717 - pair_t(630528, 0, "BODY")
+718 - pair_t(630536, 0, "BODY")
+719 - pair_t(630544, 448, "BMRS")
+720 - pair_t(630584, 368, "BODY")
+721 - pair_t(630960, 0, "BODY")
+722 - pair_t(630968, 0, "BODY")
+723 - pair_t(630976, 0, "BODY")
+724 - pair_t(630984, 0, "BODY")
+725 - pair_t(630992, 0, "BODY")
+726 - pair_t(631000, 748, "BMRG")
+727 - pair_t(631040, 668, "BODY")
+728 - pair_t(631716, 0, "BODY")
+729 - pair_t(631724, 0, "BODY")
+730 - pair_t(631732, 0, "BODY")
+731 - pair_t(631740, 0, "BODY")
+732 - pair_t(631748, 0, "BODY")
+733 - pair_t(631756, 3532, "BMRB")
+734 - pair_t(631796, 3452, "BODY")
+735 - pair_t(635256, 0, "BODY")
+736 - pair_t(635264, 0, "BODY")
+737 - pair_t(635272, 0, "BODY")
+738 - pair_t(635280, 0, "BODY")
+739 - pair_t(635288, 0, "BODY")
+740 - pair_t(635336, 2400, "BODY")
+741 - pair_t(637744, 0, "BODY")
+742 - pair_t(637752, 0, "BODY")
+743 - pair_t(637760, 0, "BODY")
+744 - pair_t(637768, 0, "BODY")
+745 - pair_t(637776, 0, "BODY")
+746 - pair_t(637784, 1544, "BUTA")
+747 - pair_t(637824, 732, "BODY")
+748 - pair_t(638564, 0, "BODY")
+749 - pair_t(638572, 732, "BODY")
+750 - pair_t(639312, 0, "BODY")
+751 - pair_t(639320, 0, "BODY")
+752 - pair_t(639328, 0, "BODY")
+753 - pair_t(639336, 1544, "BUTA")
+754 - pair_t(639376, 732, "BODY")
+755 - pair_t(640116, 0, "BODY")
+756 - pair_t(640124, 732, "BODY")
+757 - pair_t(640864, 0, "BODY")
+758 - pair_t(640872, 0, "BODY")
+759 - pair_t(640880, 0, "BODY")
+760 - pair_t(640888, 1336, "BUTA")
+761 - pair_t(640928, 628, "BODY")
+762 - pair_t(641564, 0, "BODY")
+763 - pair_t(641572, 628, "BODY")
+764 - pair_t(642208, 0, "BODY")
+765 - pair_t(642216, 0, "BODY")
+766 - pair_t(642224, 0, "BODY")
+767 - pair_t(642232, 1544, "BUTA")
+768 - pair_t(642272, 732, "BODY")
+769 - pair_t(643012, 0, "BODY")
+770 - pair_t(643020, 732, "BODY")
+771 - pair_t(643760, 0, "BODY")
+772 - pair_t(643768, 0, "BODY")
+773 - pair_t(643776, 0, "BODY")
+774 - pair_t(643784, 5080, "BUTA")
+775 - pair_t(643824, 2500, "BODY")
+776 - pair_t(646332, 0, "BODY")
+777 - pair_t(646340, 2500, "BODY")
+778 - pair_t(648848, 0, "BODY")
+779 - pair_t(648856, 0, "BODY")
+780 - pair_t(648864, 0, "BODY")
+781 - pair_t(648872, 4888, "BUTA")
+782 - pair_t(648912, 2404, "BODY")
+783 - pair_t(651324, 0, "BODY")
+784 - pair_t(651332, 2404, "BODY")
+785 - pair_t(653744, 0, "BODY")
+786 - pair_t(653752, 0, "BODY")
+787 - pair_t(653760, 0, "BODY")
+788 - pair_t(653768, 5080, "BUTA")
+789 - pair_t(653808, 2500, "BODY")
+790 - pair_t(656316, 0, "BODY")
+791 - pair_t(656324, 2500, "BODY")
+792 - pair_t(658832, 0, "BODY")
+793 - pair_t(658840, 0, "BODY")
+794 - pair_t(658848, 0, "BODY")
+795 - pair_t(658856, 4888, "BUTA")
+796 - pair_t(658896, 2404, "BODY")
+797 - pair_t(661308, 0, "BODY")
+798 - pair_t(661316, 2404, "BODY")
+799 - pair_t(663728, 0, "BODY")
+800 - pair_t(663736, 0, "BODY")
+801 - pair_t(663744, 0, "BODY")
+802 - pair_t(663752, 16720, "WINS")
+803 - pair_t(663792, 16640, "BODY")
+804 - pair_t(680440, 0, "BODY")
+805 - pair_t(680448, 0, "BODY")
+806 - pair_t(680456, 0, "BODY")
+807 - pair_t(680464, 0, "BODY")
+808 - pair_t(680472, 0, "BODY")
+809 - pair_t(680480, 16720, "LOSE")
+810 - pair_t(680520, 16640, "BODY")
+811 - pair_t(697168, 0, "BODY")
+812 - pair_t(697176, 0, "BODY")
+813 - pair_t(697184, 0, "BODY")
+814 - pair_t(697192, 0, "BODY")
+815 - pair_t(697200, 0, "BODY")
+816 - pair_t(697208, 16, "TBGC")
+817 - pair_t(697240, 227276, "BODY")
+818 - pair_t(697248, 227268, "FORM")
+819 - pair_t(697280, 80664, "PANL")
+820 - pair_t(697304, 80640, "BODY")
+821 - pair_t(777952, 3800, "BRDP")
+822 - pair_t(777976, 3776, "BODY")
+823 - pair_t(781760, 3800, "BRDP")
+824 - pair_t(781784, 3776, "BODY")
+825 - pair_t(785568, 3736, "BRDP")
+826 - pair_t(785592, 3712, "BODY")
+827 - pair_t(789312, 5144, "BRDN")
+828 - pair_t(789336, 5120, "BODY")
+829 - pair_t(794464, 5144, "BRDN")
+830 - pair_t(794488, 5120, "BODY")
+831 - pair_t(799616, 3736, "BRDN")
+832 - pair_t(799640, 3712, "BODY")
+833 - pair_t(803360, 3736, "BRDN")
+834 - pair_t(803384, 3712, "BODY")
+835 - pair_t(807104, 728, "BUTT")
+836 - pair_t(807144, 324, "BODY")
+837 - pair_t(807476, 0, "BODY")
+838 - pair_t(807484, 324, "BODY")
+839 - pair_t(807816, 0, "BODY")
+840 - pair_t(807824, 0, "BODY")
+841 - pair_t(807832, 0, "BODY")
+842 - pair_t(807840, 728, "BUTT")
+843 - pair_t(807880, 324, "BODY")
+844 - pair_t(808212, 0, "BODY")
+845 - pair_t(808220, 324, "BODY")
+846 - pair_t(808552, 0, "BODY")
+847 - pair_t(808560, 0, "BODY")
+848 - pair_t(808568, 0, "BODY")
+849 - pair_t(808576, 728, "BUTT")
+850 - pair_t(808616, 324, "BODY")
+851 - pair_t(808948, 0, "BODY")
+852 - pair_t(808956, 324, "BODY")
+853 - pair_t(809288, 0, "BODY")
+854 - pair_t(809296, 0, "BODY")
+855 - pair_t(809304, 0, "BODY")
+856 - pair_t(809312, 728, "BUTT")
+857 - pair_t(809352, 324, "BODY")
+858 - pair_t(809684, 0, "BODY")
+859 - pair_t(809692, 324, "BODY")
+860 - pair_t(810024, 0, "BODY")
+861 - pair_t(810032, 0, "BODY")
+862 - pair_t(810040, 0, "BODY")
+863 - pair_t(810048, 728, "BUTT")
+864 - pair_t(810088, 324, "BODY")
+865 - pair_t(810420, 0, "BODY")
+866 - pair_t(810428, 324, "BODY")
+867 - pair_t(810760, 0, "BODY")
+868 - pair_t(810768, 0, "BODY")
+869 - pair_t(810776, 0, "BODY")
+870 - pair_t(810784, 728, "BUTT")
+871 - pair_t(810824, 324, "BODY")
+872 - pair_t(811156, 0, "BODY")
+873 - pair_t(811164, 324, "BODY")
+874 - pair_t(811496, 0, "BODY")
+875 - pair_t(811504, 0, "BODY")
+876 - pair_t(811512, 0, "BODY")
+877 - pair_t(811520, 2480, "RHBG")
+878 - pair_t(811560, 2400, "BODY")
+879 - pair_t(813968, 0, "BODY")
+880 - pair_t(813976, 0, "BODY")
+881 - pair_t(813984, 0, "BODY")
+882 - pair_t(813992, 0, "BODY")
+883 - pair_t(814000, 0, "BODY")
+884 - pair_t(814008, 16080, "TABG")
+885 - pair_t(814048, 16000, "BODY")
+886 - pair_t(830056, 0, "BODY")
+887 - pair_t(830064, 0, "BODY")
+888 - pair_t(830072, 0, "BODY")
+889 - pair_t(830080, 0, "BODY")
+890 - pair_t(830088, 0, "BODY")
+891 - pair_t(830096, 9680, "TWND")
+892 - pair_t(830136, 9600, "BODY")
+893 - pair_t(839744, 0, "BODY")
+894 - pair_t(839752, 0, "BODY")
+895 - pair_t(839760, 0, "BODY")
+896 - pair_t(839768, 0, "BODY")
+897 - pair_t(839776, 0, "BODY")
+898 - pair_t(839784, 44, "HLTK")
+899 - pair_t(839836, 544, "CHGR")
+900 - pair_t(839876, 464, "BODY")
+901 - pair_t(840348, 0, "BODY")
+902 - pair_t(840356, 0, "BODY")
+903 - pair_t(840364, 0, "BODY")
+904 - pair_t(840372, 0, "BODY")
+905 - pair_t(840380, 0, "BODY")
+906 - pair_t(840388, 1192, "CHGR")
+907 - pair_t(840428, 1112, "BODY")
+908 - pair_t(841548, 0, "BODY")
+909 - pair_t(841556, 0, "BODY")
+910 - pair_t(841564, 0, "BODY")
+911 - pair_t(841572, 0, "BODY")
+912 - pair_t(841580, 0, "BODY")
+913 - pair_t(841588, 1192, "CHGR")
+914 - pair_t(841628, 1112, "BODY")
+915 - pair_t(842748, 0, "BODY")
+916 - pair_t(842756, 0, "BODY")
+917 - pair_t(842764, 0, "BODY")
+918 - pair_t(842772, 0, "BODY")
+919 - pair_t(842780, 0, "BODY")
+920 - pair_t(842788, 3392, "CHBG")
+921 - pair_t(842828, 3312, "BODY")
+922 - pair_t(846148, 0, "BODY")
+923 - pair_t(846156, 0, "BODY")
+924 - pair_t(846164, 0, "BODY")
+925 - pair_t(846172, 0, "BODY")
+926 - pair_t(846180, 0, "BODY")
+927 - pair_t(846188, 3392, "CHBG")
+928 - pair_t(846228, 3312, "BODY")
+929 - pair_t(849548, 0, "BODY")
+930 - pair_t(849556, 0, "BODY")
+931 - pair_t(849564, 0, "BODY")
+932 - pair_t(849572, 0, "BODY")
+933 - pair_t(849580, 0, "BODY")
+934 - pair_t(849588, 544, "BHGR")
+935 - pair_t(849628, 464, "BODY")
+936 - pair_t(850100, 0, "BODY")
+937 - pair_t(850108, 0, "BODY")
+938 - pair_t(850116, 0, "BODY")
+939 - pair_t(850124, 0, "BODY")
+940 - pair_t(850132, 0, "BODY")
+941 - pair_t(850140, 1192, "BHGR")
+942 - pair_t(850180, 1112, "BODY")
+943 - pair_t(851300, 0, "BODY")
+944 - pair_t(851308, 0, "BODY")
+945 - pair_t(851316, 0, "BODY")
+946 - pair_t(851324, 0, "BODY")
+947 - pair_t(851332, 0, "BODY")
+948 - pair_t(851340, 544, "PHGR")
+949 - pair_t(851380, 464, "BODY")
+950 - pair_t(851852, 0, "BODY")
+951 - pair_t(851860, 0, "BODY")
+952 - pair_t(851868, 0, "BODY")
+953 - pair_t(851876, 0, "BODY")
+954 - pair_t(851884, 0, "BODY")
+955 - pair_t(851892, 1192, "PHGR")
+956 - pair_t(851932, 1112, "BODY")
+957 - pair_t(853052, 0, "BODY")
+958 - pair_t(853060, 0, "BODY")
+959 - pair_t(853068, 0, "BODY")
+960 - pair_t(853076, 0, "BODY")
+961 - pair_t(853084, 0, "BODY")
+962 - pair_t(853132, 3744, "BODY")
+963 - pair_t(856884, 0, "BODY")
+964 - pair_t(856892, 0, "BODY")
+965 - pair_t(856900, 0, "BODY")
+966 - pair_t(856908, 0, "BODY")
+967 - pair_t(856916, 0, "BODY")
+968 - pair_t(856924, 3824, "PHBG")
+969 - pair_t(856964, 3744, "BODY")
+970 - pair_t(860716, 0, "BODY")
+971 - pair_t(860724, 0, "BODY")
+972 - pair_t(860732, 0, "BODY")
+973 - pair_t(860740, 0, "BODY")
+974 - pair_t(860748, 0, "BODY")
+975 - pair_t(860756, 564, "BMRS")
+976 - pair_t(860796, 484, "BODY")
+977 - pair_t(861288, 0, "BODY")
+978 - pair_t(861296, 0, "BODY")
+979 - pair_t(861304, 0, "BODY")
+980 - pair_t(861312, 0, "BODY")
+981 - pair_t(861320, 0, "BODY")
+982 - pair_t(861328, 552, "BMRG")
+983 - pair_t(861368, 472, "BODY")
+984 - pair_t(861848, 0, "BODY")
+985 - pair_t(861856, 0, "BODY")
+986 - pair_t(861864, 0, "BODY")
+987 - pair_t(861872, 0, "BODY")
+988 - pair_t(861880, 0, "BODY")
+989 - pair_t(861888, 3140, "BMRB")
+990 - pair_t(861928, 3060, "BODY")
+991 - pair_t(864996, 0, "BODY")
+992 - pair_t(865004, 0, "BODY")
+993 - pair_t(865012, 0, "BODY")
+994 - pair_t(865020, 0, "BODY")
+995 - pair_t(865028, 0, "BODY")
+996 - pair_t(865076, 2400, "BODY")
+997 - pair_t(867484, 0, "BODY")
+998 - pair_t(867492, 0, "BODY")
+999 - pair_t(867500, 0, "BODY")
+1000 - pair_t(867508, 0, "BODY")
+1001 - pair_t(867516, 0, "BODY")
+1002 - pair_t(867524, 880, "BUTA")
+1003 - pair_t(867564, 400, "BODY")
+1004 - pair_t(867972, 0, "BODY")
+1005 - pair_t(867980, 400, "BODY")
+1006 - pair_t(868388, 0, "BODY")
+1007 - pair_t(868396, 0, "BODY")
+1008 - pair_t(868404, 0, "BODY")
+1009 - pair_t(868412, 880, "BUTA")
+1010 - pair_t(868452, 400, "BODY")
+1011 - pair_t(868860, 0, "BODY")
+1012 - pair_t(868868, 400, "BODY")
+1013 - pair_t(869276, 0, "BODY")
+1014 - pair_t(869284, 0, "BODY")
+1015 - pair_t(869292, 0, "BODY")
+1016 - pair_t(869300, 880, "BUTA")
+1017 - pair_t(869340, 400, "BODY")
+1018 - pair_t(869748, 0, "BODY")
+1019 - pair_t(869756, 400, "BODY")
+1020 - pair_t(870164, 0, "BODY")
+1021 - pair_t(870172, 0, "BODY")
+1022 - pair_t(870180, 0, "BODY")
+1023 - pair_t(870188, 880, "BUTA")
+1024 - pair_t(870228, 400, "BODY")
+1025 - pair_t(870636, 0, "BODY")
+1026 - pair_t(870644, 400, "BODY")
+1027 - pair_t(871052, 0, "BODY")
+1028 - pair_t(871060, 0, "BODY")
+1029 - pair_t(871068, 0, "BODY")
+1030 - pair_t(871076, 4888, "BUTA")
+1031 - pair_t(871116, 2404, "BODY")
+1032 - pair_t(873528, 0, "BODY")
+1033 - pair_t(873536, 2404, "BODY")
+1034 - pair_t(875948, 0, "BODY")
+1035 - pair_t(875956, 0, "BODY")
+1036 - pair_t(875964, 0, "BODY")
+1037 - pair_t(875972, 5080, "BUTA")
+1038 - pair_t(876012, 2500, "BODY")
+1039 - pair_t(878520, 0, "BODY")
+1040 - pair_t(878528, 2500, "BODY")
+1041 - pair_t(881036, 0, "BODY")
+1042 - pair_t(881044, 0, "BODY")
+1043 - pair_t(881052, 0, "BODY")
+1044 - pair_t(881060, 4888, "BUTA")
+1045 - pair_t(881100, 2404, "BODY")
+1046 - pair_t(883512, 0, "BODY")
+1047 - pair_t(883520, 2404, "BODY")
+1048 - pair_t(885932, 0, "BODY")
+1049 - pair_t(885940, 0, "BODY")
+1050 - pair_t(885948, 0, "BODY")
+1051 - pair_t(885956, 5080, "BUTA")
+1052 - pair_t(885996, 2500, "BODY")
+1053 - pair_t(888504, 0, "BODY")
+1054 - pair_t(888512, 2500, "BODY")
+1055 - pair_t(891020, 0, "BODY")
+1056 - pair_t(891028, 0, "BODY")
+1057 - pair_t(891036, 0, "BODY")
+1058 - pair_t(891044, 16720, "WINS")
+1059 - pair_t(891084, 16640, "BODY")
+1060 - pair_t(907732, 0, "BODY")
+1061 - pair_t(907740, 0, "BODY")
+1062 - pair_t(907748, 0, "BODY")
+1063 - pair_t(907756, 0, "BODY")
+1064 - pair_t(907764, 0, "BODY")
+1065 - pair_t(907772, 16720, "LOSE")
+1066 - pair_t(907812, 16640, "BODY")
+1067 - pair_t(924460, 0, "BODY")
+1068 - pair_t(924468, 0, "BODY")
+1069 - pair_t(924476, 0, "BODY")
+1070 - pair_t(924484, 0, "BODY")
+1071 - pair_t(924492, 0, "BODY")
+1072 - pair_t(924500, 16, "TBGC")
+1073 - pair_t(7745902, 1598832982, "TILE")
+1074 - pair_t(7745964, 1163280716, "MEDI")
+1075 - pair_t(7745979, 1599294785, "TILE")
+1076 - pair_t(7746043, 1163280716, "MEDI")
+1077 - pair_t(7746058, 1598832978, "TILE")
+1078 - pair_t(7746135, 1598509637, "TILE")
+1079 - pair_t(7746216, 1598639683, "TILE")
+1080 - pair_t(7746298, 1599100236, "TILE")
+1081 - pair_t(7746379, 1598180417, "TILE")
+1082 - pair_t(7746458, 1599292741, "TILE")
+1083 - pair_t(7746529, 1598442561, "TILE")
+1084 - pair_t(7746607, 1598243156, "TILE")
+1085 - pair_t(7746683, 1598899524, "TILE")
+1086 - pair_t(7746688, 1431134019, "MEDI")
+1087 - pair_t(7749676, 538976288, "BODY")
+1088 - pair_t(7751532, 1163280716, "MEDI")
+1089 - pair_t(7751597, 1163280716, "MEDI")
+1090 - pair_t(7751662, 1163280716, "MEDI")
+1091 - pair_t(7751727, 1163280716, "MEDI")
+1092 - pair_t(7751792, 1163280716, "MEDI")
+1093 - pair_t(7751857, 1163280716, "MEDI")
+1094 - pair_t(7751922, 1163280716, "MEDI")
+1095 - pair_t(7751987, 1163280716, "MEDI")
+1096 - pair_t(7752052, 1163280716, "MEDI")
+1097 - pair_t(7752117, 1163280716, "MEDI")
+1098 - pair_t(7752182, 1163280716, "MEDI")
+1099 - pair_t(7752250, 1163280716, "MEDI")
+1100 - pair_t(7752318, 1163280716, "MEDI")
+1101 - pair_t(7752386, 1163280716, "MEDI")
+1102 - pair_t(7752454, 1163280716, "MEDI")
+1103 - pair_t(7752522, 1163280716, "MEDI")
+1104 - pair_t(7756863, 1599296848, "TILE")
+1105 - pair_t(7756952, 1598112323, "TILE")
+1106 - pair_t(7757041, 1599491922, "TILE")
+1107 - pair_t(7757758, 1598380112, "LOSE")
+1108 - pair_t(7757955, 1163280716, "MEDI")
+1109 - pair_t(7759152, 1598380112, "LOSE")
+1110 - pair_t(7759374, 1128352863, "MEDI")
+1111 - pair_t(10913452, 810820, "FORM")
+1112 - pair_t(10913464, 307224, "PANL")
+1113 - pair_t(10913488, 307200, "BODY")
+1114 - pair_t(11220696, 57540, "FEND")
+1115 - pair_t(11220732, 19160, "BODY")
+1116 - pair_t(11239900, 19160, "BODY")
+1117 - pair_t(11259068, 19160, "BODY")
+1118 - pair_t(11278236, 0, "BODY")
+1119 - pair_t(11278244, 57540, "FEND")
+1120 - pair_t(11278280, 19160, "BODY")
+1121 - pair_t(11297448, 19160, "BODY")
+1122 - pair_t(11316616, 19160, "BODY")
+1123 - pair_t(11335784, 0, "BODY")
+1124 - pair_t(11335792, 95876, "FEND")
+1125 - pair_t(11335828, 19160, "BODY")
+1126 - pair_t(11354996, 19160, "BODY")
+1127 - pair_t(11374164, 19160, "BODY")
+1128 - pair_t(11393332, 19160, "BODY")
+1129 - pair_t(11412500, 19160, "BODY")
+1130 - pair_t(11431668, 0, "BODY")
+1131 - pair_t(11431676, 57540, "FEND")
+1132 - pair_t(11431712, 19160, "BODY")
+1133 - pair_t(11450880, 19160, "BODY")
+1134 - pair_t(11470048, 19160, "BODY")
+1135 - pair_t(11489216, 0, "BODY")
+1136 - pair_t(11489224, 37944, "FEND")
+1137 - pair_t(11489260, 12628, "BODY")
+1138 - pair_t(11501896, 12628, "BODY")
+1139 - pair_t(11514532, 12628, "BODY")
+1140 - pair_t(11527168, 0, "BODY")
+1141 - pair_t(11527176, 55980, "FEND")
+1142 - pair_t(11527212, 18640, "BODY")
+1143 - pair_t(11545860, 18640, "BODY")
+1144 - pair_t(11564508, 18640, "BODY")
+1145 - pair_t(11583156, 0, "BODY")
+1146 - pair_t(11583164, 141108, "FEND")
+1147 - pair_t(11583200, 14100, "BODY")
+1148 - pair_t(11597308, 14100, "BODY")
+1149 - pair_t(11611416, 14100, "BODY")
+1150 - pair_t(11625524, 14100, "BODY")
+1151 - pair_t(11639632, 14100, "BODY")
+1152 - pair_t(11653740, 14100, "BODY")
+1153 - pair_t(11667848, 14100, "BODY")
+1154 - pair_t(11681956, 14100, "BODY")
+1155 - pair_t(11696064, 14100, "BODY")
+1156 - pair_t(11710172, 14100, "BODY")
+1157 - pair_t(11724280, 788788, "FORM")
+1158 - pair_t(11724292, 307224, "PANL")
+1159 - pair_t(11724316, 307200, "BODY")
+1160 - pair_t(12031524, 40460, "FEND")
+1161 - pair_t(12031560, 10100, "BODY")
+1162 - pair_t(12041668, 10100, "BODY")
+1163 - pair_t(12051776, 10100, "BODY")
+1164 - pair_t(12061884, 10100, "BODY")
+1165 - pair_t(12071992, 40460, "FEND")
+1166 - pair_t(12072028, 10100, "BODY")
+1167 - pair_t(12082136, 10100, "BODY")
+1168 - pair_t(12092244, 10100, "BODY")
+1169 - pair_t(12102352, 10100, "BODY")
+1170 - pair_t(12112460, 40460, "FEND")
+1171 - pair_t(12112496, 10100, "BODY")
+1172 - pair_t(12122604, 10100, "BODY")
+1173 - pair_t(12132712, 10100, "BODY")
+1174 - pair_t(12142820, 10100, "BODY")
+1175 - pair_t(12152928, 40460, "FEND")
+1176 - pair_t(12152964, 10100, "BODY")
+1177 - pair_t(12163072, 10100, "BODY")
+1178 - pair_t(12173180, 10100, "BODY")
+1179 - pair_t(12183288, 10100, "BODY")
+1180 - pair_t(12193396, 40460, "FEND")
+1181 - pair_t(12193432, 10100, "BODY")
+1182 - pair_t(12203540, 10100, "BODY")
+1183 - pair_t(12213648, 10100, "BODY")
+1184 - pair_t(12223756, 10100, "BODY")
+1185 - pair_t(12233864, 40460, "FEND")
+1186 - pair_t(12233900, 10100, "BODY")
+1187 - pair_t(12244008, 10100, "BODY")
+1188 - pair_t(12254116, 10100, "BODY")
+1189 - pair_t(12264224, 10100, "BODY")
+1190 - pair_t(12274332, 13872, "FEND")
+1191 - pair_t(12274368, 4604, "BODY")
+1192 - pair_t(12278980, 4604, "BODY")
+1193 - pair_t(12283592, 4604, "BODY")
+1194 - pair_t(12288204, 0, "BODY")
+1195 - pair_t(12288212, 13872, "FEND")
+1196 - pair_t(12288248, 4604, "BODY")
+1197 - pair_t(12292860, 4604, "BODY")
+1198 - pair_t(12297472, 4604, "BODY")
+1199 - pair_t(12302084, 0, "BODY")
+1200 - pair_t(12302092, 13872, "FEND")
+1201 - pair_t(12302128, 4604, "BODY")
+1202 - pair_t(12306740, 4604, "BODY")
+1203 - pair_t(12311352, 4604, "BODY")
+1204 - pair_t(12315964, 0, "BODY")
+1205 - pair_t(12315972, 55980, "FEND")
+1206 - pair_t(12316008, 18640, "BODY")
+1207 - pair_t(12334656, 18640, "BODY")
+1208 - pair_t(12353304, 18640, "BODY")
+1209 - pair_t(12371952, 0, "BODY")
+1210 - pair_t(12371960, 141108, "FEND")
+1211 - pair_t(12371996, 14100, "BODY")
+1212 - pair_t(12386104, 14100, "BODY")
+1213 - pair_t(12400212, 14100, "BODY")
+1214 - pair_t(12414320, 14100, "BODY")
+1215 - pair_t(12428428, 14100, "BODY")
+1216 - pair_t(12442536, 14100, "BODY")
+1217 - pair_t(12456644, 14100, "BODY")
+1218 - pair_t(12470752, 14100, "BODY")
+1219 - pair_t(12484860, 14100, "BODY")
+1220 - pair_t(12498968, 14100, "BODY")
+1221 - pair_t(12513076, 1084032, "FORM")
+1222 - pair_t(12513088, 307224, "PANL")
+1223 - pair_t(12513112, 307200, "BODY")
+1224 - pair_t(12820320, 46156, "FEND")
+1225 - pair_t(12820356, 7680, "BODY")
+1226 - pair_t(12828044, 7680, "BODY")
+1227 - pair_t(12835732, 7680, "BODY")
+1228 - pair_t(12843420, 7680, "BODY")
+1229 - pair_t(12851108, 7680, "BODY")
+1230 - pair_t(12858796, 7680, "BODY")
+1231 - pair_t(12866484, 46156, "FEND")
+1232 - pair_t(12866520, 7680, "BODY")
+1233 - pair_t(12874208, 7680, "BODY")
+1234 - pair_t(12881896, 7680, "BODY")
+1235 - pair_t(12889584, 7680, "BODY")
+1236 - pair_t(12897272, 7680, "BODY")
+1237 - pair_t(12904960, 7680, "BODY")
+1238 - pair_t(12912648, 46156, "FEND")
+1239 - pair_t(12912684, 7680, "BODY")
+1240 - pair_t(12920372, 7680, "BODY")
+1241 - pair_t(12928060, 7680, "BODY")
+1242 - pair_t(12935748, 7680, "BODY")
+1243 - pair_t(12943436, 7680, "BODY")
+1244 - pair_t(12951124, 7680, "BODY")
+1245 - pair_t(12958812, 46156, "FEND")
+1246 - pair_t(12958848, 7680, "BODY")
+1247 - pair_t(12966536, 7680, "BODY")
+1248 - pair_t(12974224, 7680, "BODY")
+1249 - pair_t(12981912, 7680, "BODY")
+1250 - pair_t(12989600, 7680, "BODY")
+1251 - pair_t(12997288, 7680, "BODY")
+1252 - pair_t(13004976, 46156, "FEND")
+1253 - pair_t(13005012, 7680, "BODY")
+1254 - pair_t(13012700, 7680, "BODY")
+1255 - pair_t(13020388, 7680, "BODY")
+1256 - pair_t(13028076, 7680, "BODY")
+1257 - pair_t(13035764, 7680, "BODY")
+1258 - pair_t(13043452, 7680, "BODY")
+1259 - pair_t(13051140, 46156, "FEND")
+1260 - pair_t(13051176, 7680, "BODY")
+1261 - pair_t(13058864, 7680, "BODY")
+1262 - pair_t(13066552, 7680, "BODY")
+1263 - pair_t(13074240, 7680, "BODY")
+1264 - pair_t(13081928, 7680, "BODY")
+1265 - pair_t(13089616, 7680, "BODY")
+1266 - pair_t(13097304, 46156, "FEND")
+1267 - pair_t(13097340, 7680, "BODY")
+1268 - pair_t(13105028, 7680, "BODY")
+1269 - pair_t(13112716, 7680, "BODY")
+1270 - pair_t(13120404, 7680, "BODY")
+1271 - pair_t(13128092, 7680, "BODY")
+1272 - pair_t(13135780, 7680, "BODY")
+1273 - pair_t(13143468, 46156, "FEND")
+1274 - pair_t(13143504, 7680, "BODY")
+1275 - pair_t(13151192, 7680, "BODY")
+1276 - pair_t(13158880, 7680, "BODY")
+1277 - pair_t(13166568, 7680, "BODY")
+1278 - pair_t(13174256, 7680, "BODY")
+1279 - pair_t(13181944, 7680, "BODY")
+1280 - pair_t(13189632, 23092, "FEND")
+1281 - pair_t(13189668, 7680, "BODY")
+1282 - pair_t(13197356, 7680, "BODY")
+1283 - pair_t(13205044, 7680, "BODY")
+1284 - pair_t(13212732, 23092, "FEND")
+1285 - pair_t(13212768, 7680, "BODY")
+1286 - pair_t(13220456, 7680, "BODY")
+1287 - pair_t(13228144, 7680, "BODY")
+1288 - pair_t(13235832, 23092, "FEND")
+1289 - pair_t(13235868, 7680, "BODY")
+1290 - pair_t(13243556, 7680, "BODY")
+1291 - pair_t(13251244, 7680, "BODY")
+1292 - pair_t(13258932, 55980, "FEND")
+1293 - pair_t(13258968, 18640, "BODY")
+1294 - pair_t(13277616, 18640, "BODY")
+1295 - pair_t(13296264, 18640, "BODY")
+1296 - pair_t(13314912, 0, "BODY")
+1297 - pair_t(13314920, 282188, "FEND")
+1298 - pair_t(13314956, 14100, "BODY")
+1299 - pair_t(13329064, 14100, "BODY")
+1300 - pair_t(13343172, 14100, "BODY")
+1301 - pair_t(13357280, 14100, "BODY")
+1302 - pair_t(13371388, 14100, "BODY")
+1303 - pair_t(13385496, 14100, "BODY")
+1304 - pair_t(13399604, 14100, "BODY")
+1305 - pair_t(13413712, 14100, "BODY")
+1306 - pair_t(13427820, 14100, "BODY")
+1307 - pair_t(13441928, 14100, "BODY")
+1308 - pair_t(13456036, 14100, "BODY")
+1309 - pair_t(13470144, 14100, "BODY")
+1310 - pair_t(13484252, 14100, "BODY")
+1311 - pair_t(13498360, 14100, "BODY")
+1312 - pair_t(13512468, 14100, "BODY")
+1313 - pair_t(13526576, 14100, "BODY")
+1314 - pair_t(13540684, 14100, "BODY")
+1315 - pair_t(13554792, 14100, "BODY")
+1316 - pair_t(13568900, 14100, "BODY")
+1317 - pair_t(13583008, 14100, "BODY")
+1318 - pair_t(13597116, 982744, "FORM")
+1319 - pair_t(13597128, 307224, "PANL")
+1320 - pair_t(13597152, 307200, "BODY")
+1321 - pair_t(13904360, 46156, "FEND")
+1322 - pair_t(13904396, 7680, "BODY")
+1323 - pair_t(13912084, 7680, "BODY")
+1324 - pair_t(13919772, 7680, "BODY")
+1325 - pair_t(13927460, 7680, "BODY")
+1326 - pair_t(13935148, 7680, "BODY")
+1327 - pair_t(13942836, 7680, "BODY")
+1328 - pair_t(13950524, 46156, "FEND")
+1329 - pair_t(13950560, 7680, "BODY")
+1330 - pair_t(13958248, 7680, "BODY")
+1331 - pair_t(13965936, 7680, "BODY")
+1332 - pair_t(13973624, 7680, "BODY")
+1333 - pair_t(13981312, 7680, "BODY")
+1334 - pair_t(13989000, 7680, "BODY")
+1335 - pair_t(13996688, 46156, "FEND")
+1336 - pair_t(13996724, 7680, "BODY")
+1337 - pair_t(14004412, 7680, "BODY")
+1338 - pair_t(14012100, 7680, "BODY")
+1339 - pair_t(14019788, 7680, "BODY")
+1340 - pair_t(14027476, 7680, "BODY")
+1341 - pair_t(14035164, 7680, "BODY")
+1342 - pair_t(14042852, 46156, "FEND")
+1343 - pair_t(14042888, 7680, "BODY")
+1344 - pair_t(14050576, 7680, "BODY")
+1345 - pair_t(14058264, 7680, "BODY")
+1346 - pair_t(14065952, 7680, "BODY")
+1347 - pair_t(14073640, 7680, "BODY")
+1348 - pair_t(14081328, 7680, "BODY")
+1349 - pair_t(14089016, 46156, "FEND")
+1350 - pair_t(14089052, 7680, "BODY")
+1351 - pair_t(14096740, 7680, "BODY")
+1352 - pair_t(14104428, 7680, "BODY")
+1353 - pair_t(14112116, 7680, "BODY")
+1354 - pair_t(14119804, 7680, "BODY")
+1355 - pair_t(14127492, 7680, "BODY")
+1356 - pair_t(14135180, 46156, "FEND")
+1357 - pair_t(14135216, 7680, "BODY")
+1358 - pair_t(14142904, 7680, "BODY")
+1359 - pair_t(14150592, 7680, "BODY")
+1360 - pair_t(14158280, 7680, "BODY")
+1361 - pair_t(14165968, 7680, "BODY")
+1362 - pair_t(14173656, 7680, "BODY")
+1363 - pair_t(14181344, 23092, "FEND")
+1364 - pair_t(14181380, 7680, "BODY")
+1365 - pair_t(14189068, 7680, "BODY")
+1366 - pair_t(14196756, 7680, "BODY")
+1367 - pair_t(14204444, 23092, "FEND")
+1368 - pair_t(14204480, 7680, "BODY")
+1369 - pair_t(14212168, 7680, "BODY")
+1370 - pair_t(14219856, 7680, "BODY")
+1371 - pair_t(14227544, 23092, "FEND")
+1372 - pair_t(14227580, 7680, "BODY")
+1373 - pair_t(14235268, 7680, "BODY")
+1374 - pair_t(14242956, 7680, "BODY")
+1375 - pair_t(14250644, 55980, "FEND")
+1376 - pair_t(14250680, 18640, "BODY")
+1377 - pair_t(14269328, 18640, "BODY")
+1378 - pair_t(14287976, 18640, "BODY")
+1379 - pair_t(14306624, 0, "BODY")
+1380 - pair_t(14306632, 273228, "FEND")
+1381 - pair_t(14306668, 13652, "BODY")
+1382 - pair_t(14320328, 13652, "BODY")
+1383 - pair_t(14333988, 13652, "BODY")
+1384 - pair_t(14347648, 13652, "BODY")
+1385 - pair_t(14361308, 13652, "BODY")
+1386 - pair_t(14374968, 13652, "BODY")
+1387 - pair_t(14388628, 13652, "BODY")
+1388 - pair_t(14402288, 13652, "BODY")
+1389 - pair_t(14415948, 13652, "BODY")
+1390 - pair_t(14429608, 13652, "BODY")
+1391 - pair_t(14443268, 13652, "BODY")
+1392 - pair_t(14456928, 13652, "BODY")
+1393 - pair_t(14470588, 13652, "BODY")
+1394 - pair_t(14484248, 13652, "BODY")
+1395 - pair_t(14497908, 13652, "BODY")
+1396 - pair_t(14511568, 13652, "BODY")
+1397 - pair_t(14525228, 13652, "BODY")
+1398 - pair_t(14538888, 13652, "BODY")
+1399 - pair_t(14552548, 13652, "BODY")
+1400 - pair_t(14566208, 13652, "BODY")
+1401 - pair_t(14579868, 964104, "FORM")
+1402 - pair_t(14579880, 307224, "PANL")
+1403 - pair_t(14579904, 307200, "BODY")
+1404 - pair_t(14887112, 46156, "FEND")
+1405 - pair_t(14887148, 7680, "BODY")
+1406 - pair_t(14894836, 7680, "BODY")
+1407 - pair_t(14902524, 7680, "BODY")
+1408 - pair_t(14910212, 7680, "BODY")
+1409 - pair_t(14917900, 7680, "BODY")
+1410 - pair_t(14925588, 7680, "BODY")
+1411 - pair_t(14933276, 46156, "FEND")
+1412 - pair_t(14933312, 7680, "BODY")
+1413 - pair_t(14941000, 7680, "BODY")
+1414 - pair_t(14948688, 7680, "BODY")
+1415 - pair_t(14956376, 7680, "BODY")
+1416 - pair_t(14964064, 7680, "BODY")
+1417 - pair_t(14971752, 7680, "BODY")
+1418 - pair_t(14979440, 46156, "FEND")
+1419 - pair_t(14979476, 7680, "BODY")
+1420 - pair_t(14987164, 7680, "BODY")
+1421 - pair_t(14994852, 7680, "BODY")
+1422 - pair_t(15002540, 7680, "BODY")
+1423 - pair_t(15010228, 7680, "BODY")
+1424 - pair_t(15017916, 7680, "BODY")
+1425 - pair_t(15025604, 46156, "FEND")
+1426 - pair_t(15025640, 7680, "BODY")
+1427 - pair_t(15033328, 7680, "BODY")
+1428 - pair_t(15041016, 7680, "BODY")
+1429 - pair_t(15048704, 7680, "BODY")
+1430 - pair_t(15056392, 7680, "BODY")
+1431 - pair_t(15064080, 7680, "BODY")
+1432 - pair_t(15071768, 46156, "FEND")
+1433 - pair_t(15071804, 7680, "BODY")
+1434 - pair_t(15079492, 7680, "BODY")
+1435 - pair_t(15087180, 7680, "BODY")
+1436 - pair_t(15094868, 7680, "BODY")
+1437 - pair_t(15102556, 7680, "BODY")
+1438 - pair_t(15110244, 7680, "BODY")
+1439 - pair_t(15117932, 46156, "FEND")
+1440 - pair_t(15117968, 7680, "BODY")
+1441 - pair_t(15125656, 7680, "BODY")
+1442 - pair_t(15133344, 7680, "BODY")
+1443 - pair_t(15141032, 7680, "BODY")
+1444 - pair_t(15148720, 7680, "BODY")
+1445 - pair_t(15156408, 7680, "BODY")
+1446 - pair_t(15164096, 23092, "FEND")
+1447 - pair_t(15164132, 7680, "BODY")
+1448 - pair_t(15171820, 7680, "BODY")
+1449 - pair_t(15179508, 7680, "BODY")
+1450 - pair_t(15187196, 23092, "FEND")
+1451 - pair_t(15187232, 7680, "BODY")
+1452 - pair_t(15194920, 7680, "BODY")
+1453 - pair_t(15202608, 7680, "BODY")
+1454 - pair_t(15210296, 23092, "FEND")
+1455 - pair_t(15210332, 7680, "BODY")
+1456 - pair_t(15218020, 7680, "BODY")
+1457 - pair_t(15225708, 7680, "BODY")
+1458 - pair_t(15233396, 37340, "FEND")
+1459 - pair_t(15233432, 18640, "BODY")
+1460 - pair_t(15252080, 18640, "BODY")
+1461 - pair_t(15270728, 0, "BODY")
+1462 - pair_t(15270736, 0, "BODY")
+1463 - pair_t(15270744, 273228, "FEND")
+1464 - pair_t(15270780, 13652, "BODY")
+1465 - pair_t(15284440, 13652, "BODY")
+1466 - pair_t(15298100, 13652, "BODY")
+1467 - pair_t(15311760, 13652, "BODY")
+1468 - pair_t(15325420, 13652, "BODY")
+1469 - pair_t(15339080, 13652, "BODY")
+1470 - pair_t(15352740, 13652, "BODY")
+1471 - pair_t(15366400, 13652, "BODY")
+1472 - pair_t(15380060, 13652, "BODY")
+1473 - pair_t(15393720, 13652, "BODY")
+1474 - pair_t(15407380, 13652, "BODY")
+1475 - pair_t(15421040, 13652, "BODY")
+1476 - pair_t(15434700, 13652, "BODY")
+1477 - pair_t(15448360, 13652, "BODY")
+1478 - pair_t(15462020, 13652, "BODY")
+1479 - pair_t(15475680, 13652, "BODY")
+1480 - pair_t(15489340, 13652, "BODY")
+1481 - pair_t(15503000, 13652, "BODY")
+1482 - pair_t(15516660, 13652, "BODY")
+1483 - pair_t(15530320, 13652, "BODY")
+1484 - pair_t(15543980, 982744, "FORM")
+1485 - pair_t(15543992, 307224, "PANL")
+1486 - pair_t(15544016, 307200, "BODY")
+1487 - pair_t(15851224, 46156, "FEND")
+1488 - pair_t(15851260, 7680, "BODY")
+1489 - pair_t(15858948, 7680, "BODY")
+1490 - pair_t(15866636, 7680, "BODY")
+1491 - pair_t(15874324, 7680, "BODY")
+1492 - pair_t(15882012, 7680, "BODY")
+1493 - pair_t(15889700, 7680, "BODY")
+1494 - pair_t(15897388, 46156, "FEND")
+1495 - pair_t(15897424, 7680, "BODY")
+1496 - pair_t(15905112, 7680, "BODY")
+1497 - pair_t(15912800, 7680, "BODY")
+1498 - pair_t(15920488, 7680, "BODY")
+1499 - pair_t(15928176, 7680, "BODY")
+1500 - pair_t(15935864, 7680, "BODY")
+1501 - pair_t(15943552, 46156, "FEND")
+1502 - pair_t(15943588, 7680, "BODY")
+1503 - pair_t(15951276, 7680, "BODY")
+1504 - pair_t(15958964, 7680, "BODY")
+1505 - pair_t(15966652, 7680, "BODY")
+1506 - pair_t(15974340, 7680, "BODY")
+1507 - pair_t(15982028, 7680, "BODY")
+1508 - pair_t(15989716, 46156, "FEND")
+1509 - pair_t(15989752, 7680, "BODY")
+1510 - pair_t(15997440, 7680, "BODY")
+1511 - pair_t(16005128, 7680, "BODY")
+1512 - pair_t(16012816, 7680, "BODY")
+1513 - pair_t(16020504, 7680, "BODY")
+1514 - pair_t(16028192, 7680, "BODY")
+1515 - pair_t(16035880, 46156, "FEND")
+1516 - pair_t(16035916, 7680, "BODY")
+1517 - pair_t(16043604, 7680, "BODY")
+1518 - pair_t(16051292, 7680, "BODY")
+1519 - pair_t(16058980, 7680, "BODY")
+1520 - pair_t(16066668, 7680, "BODY")
+1521 - pair_t(16074356, 7680, "BODY")
+1522 - pair_t(16082044, 46156, "FEND")
+1523 - pair_t(16082080, 7680, "BODY")
+1524 - pair_t(16089768, 7680, "BODY")
+1525 - pair_t(16097456, 7680, "BODY")
+1526 - pair_t(16105144, 7680, "BODY")
+1527 - pair_t(16112832, 7680, "BODY")
+1528 - pair_t(16120520, 7680, "BODY")
+1529 - pair_t(16128208, 23092, "FEND")
+1530 - pair_t(16128244, 7680, "BODY")
+1531 - pair_t(16135932, 7680, "BODY")
+1532 - pair_t(16143620, 7680, "BODY")
+1533 - pair_t(16151308, 23092, "FEND")
+1534 - pair_t(16151344, 7680, "BODY")
+1535 - pair_t(16159032, 7680, "BODY")
+1536 - pair_t(16166720, 7680, "BODY")
+1537 - pair_t(16174408, 23092, "FEND")
+1538 - pair_t(16174444, 7680, "BODY")
+1539 - pair_t(16182132, 7680, "BODY")
+1540 - pair_t(16189820, 7680, "BODY")
+1541 - pair_t(16197508, 55980, "FEND")
+1542 - pair_t(16197544, 18640, "BODY")
+1543 - pair_t(16216192, 18640, "BODY")
+1544 - pair_t(16234840, 18640, "BODY")
+1545 - pair_t(16253488, 0, "BODY")
+1546 - pair_t(16253496, 273228, "FEND")
+1547 - pair_t(16253532, 13652, "BODY")
+1548 - pair_t(16267192, 13652, "BODY")
+1549 - pair_t(16280852, 13652, "BODY")
+1550 - pair_t(16294512, 13652, "BODY")
+1551 - pair_t(16308172, 13652, "BODY")
+1552 - pair_t(16321832, 13652, "BODY")
+1553 - pair_t(16335492, 13652, "BODY")
+1554 - pair_t(16349152, 13652, "BODY")
+1555 - pair_t(16362812, 13652, "BODY")
+1556 - pair_t(16376472, 13652, "BODY")
+1557 - pair_t(16390132, 13652, "BODY")
+1558 - pair_t(16403792, 13652, "BODY")
+1559 - pair_t(16417452, 13652, "BODY")
+1560 - pair_t(16431112, 13652, "BODY")
+1561 - pair_t(16444772, 13652, "BODY")
+1562 - pair_t(16458432, 13652, "BODY")
+1563 - pair_t(16472092, 13652, "BODY")
+1564 - pair_t(16485752, 13652, "BODY")
+1565 - pair_t(16499412, 13652, "BODY")
+1566 - pair_t(16513072, 13652, "BODY")
+1567 - pair_t(16526732, 846144, "FORM")
+1568 - pair_t(16526744, 307224, "PANL")
+1569 - pair_t(16526768, 307200, "BODY")
+1570 - pair_t(16833976, 46156, "FEND")
+1571 - pair_t(16834012, 7680, "BODY")
+1572 - pair_t(16841700, 7680, "BODY")
+1573 - pair_t(16849388, 7680, "BODY")
+1574 - pair_t(16857076, 7680, "BODY")
+1575 - pair_t(16864764, 7680, "BODY")
+1576 - pair_t(16872452, 7680, "BODY")
+1577 - pair_t(16880140, 46156, "FEND")
+1578 - pair_t(16880176, 7680, "BODY")
+1579 - pair_t(16887864, 7680, "BODY")
+1580 - pair_t(16895552, 7680, "BODY")
+1581 - pair_t(16903240, 7680, "BODY")
+1582 - pair_t(16910928, 7680, "BODY")
+1583 - pair_t(16918616, 7680, "BODY")
+1584 - pair_t(16926304, 46156, "FEND")
+1585 - pair_t(16926340, 7680, "BODY")
+1586 - pair_t(16934028, 7680, "BODY")
+1587 - pair_t(16941716, 7680, "BODY")
+1588 - pair_t(16949404, 7680, "BODY")
+1589 - pair_t(16957092, 7680, "BODY")
+1590 - pair_t(16964780, 7680, "BODY")
+1591 - pair_t(16972468, 46156, "FEND")
+1592 - pair_t(16972504, 7680, "BODY")
+1593 - pair_t(16980192, 7680, "BODY")
+1594 - pair_t(16987880, 7680, "BODY")
+1595 - pair_t(16995568, 7680, "BODY")
+1596 - pair_t(17003256, 7680, "BODY")
+1597 - pair_t(17010944, 7680, "BODY")
+1598 - pair_t(17018632, 46156, "FEND")
+1599 - pair_t(17018668, 7680, "BODY")
+1600 - pair_t(17026356, 7680, "BODY")
+1601 - pair_t(17034044, 7680, "BODY")
+1602 - pair_t(17041732, 7680, "BODY")
+1603 - pair_t(17049420, 7680, "BODY")
+1604 - pair_t(17057108, 7680, "BODY")
+1605 - pair_t(17064796, 46156, "FEND")
+1606 - pair_t(17064832, 7680, "BODY")
+1607 - pair_t(17072520, 7680, "BODY")
+1608 - pair_t(17080208, 7680, "BODY")
+1609 - pair_t(17087896, 7680, "BODY")
+1610 - pair_t(17095584, 7680, "BODY")
+1611 - pair_t(17103272, 7680, "BODY")
+1612 - pair_t(17110960, 23092, "FEND")
+1613 - pair_t(17110996, 7680, "BODY")
+1614 - pair_t(17118684, 7680, "BODY")
+1615 - pair_t(17126372, 7680, "BODY")
+1616 - pair_t(17134060, 23092, "FEND")
+1617 - pair_t(17134096, 7680, "BODY")
+1618 - pair_t(17141784, 7680, "BODY")
+1619 - pair_t(17149472, 7680, "BODY")
+1620 - pair_t(17157160, 23092, "FEND")
+1621 - pair_t(17157196, 7680, "BODY")
+1622 - pair_t(17164884, 7680, "BODY")
+1623 - pair_t(17172572, 7680, "BODY")
+1624 - pair_t(17180260, 55980, "FEND")
+1625 - pair_t(17180296, 18640, "BODY")
+1626 - pair_t(17198944, 18640, "BODY")
+1627 - pair_t(17217592, 18640, "BODY")
+1628 - pair_t(17236240, 0, "BODY")
+1629 - pair_t(17236248, 136628, "FEND")
+1630 - pair_t(17236284, 13652, "BODY")
+1631 - pair_t(17249944, 13652, "BODY")
+1632 - pair_t(17263604, 13652, "BODY")
+1633 - pair_t(17277264, 13652, "BODY")
+1634 - pair_t(17290924, 13652, "BODY")
+1635 - pair_t(17304584, 13652, "BODY")
+1636 - pair_t(17318244, 13652, "BODY")
+1637 - pair_t(17331904, 13652, "BODY")
+1638 - pair_t(17345564, 13652, "BODY")
+1639 - pair_t(17359224, 13652, "BODY")
+1640 - pair_t(17372886, 564852, "FORM")
+1641 - pair_t(17372898, 307224, "PANL")
+1642 - pair_t(17372922, 307200, "BODY")
+1643 - pair_t(17680130, 15412, "FEND")
+1644 - pair_t(17680166, 5120, "BODY")
+1645 - pair_t(17685294, 5120, "BODY")
+1646 - pair_t(17690422, 5120, "BODY")
+1647 - pair_t(17695550, 15412, "FEND")
+1648 - pair_t(17695586, 5120, "BODY")
+1649 - pair_t(17700714, 5120, "BODY")
+1650 - pair_t(17705842, 5120, "BODY")
+1651 - pair_t(17710970, 15412, "FEND")
+1652 - pair_t(17711006, 5120, "BODY")
+1653 - pair_t(17716134, 5120, "BODY")
+1654 - pair_t(17721262, 5120, "BODY")
+1655 - pair_t(17726390, 15412, "FEND")
+1656 - pair_t(17726426, 5120, "BODY")
+1657 - pair_t(17731554, 5120, "BODY")
+1658 - pair_t(17736682, 5120, "BODY")
+1659 - pair_t(17741810, 15412, "FEND")
+1660 - pair_t(17741846, 5120, "BODY")
+1661 - pair_t(17746974, 5120, "BODY")
+1662 - pair_t(17752102, 5120, "BODY")
+1663 - pair_t(17757230, 15412, "FEND")
+1664 - pair_t(17757266, 5120, "BODY")
+1665 - pair_t(17762394, 5120, "BODY")
+1666 - pair_t(17767522, 5120, "BODY")
+1667 - pair_t(17772650, 15412, "FEND")
+1668 - pair_t(17772686, 5120, "BODY")
+1669 - pair_t(17777814, 5120, "BODY")
+1670 - pair_t(17782942, 5120, "BODY")
+1671 - pair_t(17788070, 15412, "FEND")
+1672 - pair_t(17788106, 5120, "BODY")
+1673 - pair_t(17793234, 5120, "BODY")
+1674 - pair_t(17798362, 5120, "BODY")
+1675 - pair_t(17803490, 15412, "FEND")
+1676 - pair_t(17803526, 5120, "BODY")
+1677 - pair_t(17808654, 5120, "BODY")
+1678 - pair_t(17813782, 5120, "BODY")
+1679 - pair_t(17818910, 15412, "FEND")
+1680 - pair_t(17818946, 5120, "BODY")
+1681 - pair_t(17824074, 5120, "BODY")
+1682 - pair_t(17829202, 5120, "BODY")
+1683 - pair_t(17834330, 3520, "FEND")
+1684 - pair_t(17834366, 1156, "BODY")
+1685 - pair_t(17835530, 1156, "BODY")
+1686 - pair_t(17836694, 1156, "BODY")
+1687 - pair_t(17837858, 37324, "FEND")
+1688 - pair_t(17837894, 18640, "BODY")
+1689 - pair_t(17856542, 18640, "BODY")
+1690 - pair_t(17875190, 62548, "FEND")
+1691 - pair_t(17875226, 6244, "BODY")
+1692 - pair_t(17881478, 6244, "BODY")
+1693 - pair_t(17887730, 6244, "BODY")
+1694 - pair_t(17893982, 6244, "BODY")
+1695 - pair_t(17900234, 6244, "BODY")
+1696 - pair_t(17906486, 6244, "BODY")
+1697 - pair_t(17912738, 6244, "BODY")
+1698 - pair_t(17918990, 6244, "BODY")
+1699 - pair_t(17925242, 6244, "BODY")
+1700 - pair_t(17931494, 6244, "BODY")
+1701 - pair_t(17937746, 564852, "FORM")
+1702 - pair_t(17937758, 307224, "PANL")
+1703 - pair_t(17937782, 307200, "BODY")
+1704 - pair_t(18244990, 15412, "FEND")
+1705 - pair_t(18245026, 5120, "BODY")
+1706 - pair_t(18250154, 5120, "BODY")
+1707 - pair_t(18255282, 5120, "BODY")
+1708 - pair_t(18260410, 15412, "FEND")
+1709 - pair_t(18260446, 5120, "BODY")
+1710 - pair_t(18265574, 5120, "BODY")
+1711 - pair_t(18270702, 5120, "BODY")
+1712 - pair_t(18275830, 15412, "FEND")
+1713 - pair_t(18275866, 5120, "BODY")
+1714 - pair_t(18280994, 5120, "BODY")
+1715 - pair_t(18286122, 5120, "BODY")
+1716 - pair_t(18291250, 15412, "FEND")
+1717 - pair_t(18291286, 5120, "BODY")
+1718 - pair_t(18296414, 5120, "BODY")
+1719 - pair_t(18301542, 5120, "BODY")
+1720 - pair_t(18306670, 15412, "FEND")
+1721 - pair_t(18306706, 5120, "BODY")
+1722 - pair_t(18311834, 5120, "BODY")
+1723 - pair_t(18316962, 5120, "BODY")
+1724 - pair_t(18322090, 15412, "FEND")
+1725 - pair_t(18322126, 5120, "BODY")
+1726 - pair_t(18327254, 5120, "BODY")
+1727 - pair_t(18332382, 5120, "BODY")
+1728 - pair_t(18337510, 15412, "FEND")
+1729 - pair_t(18337546, 5120, "BODY")
+1730 - pair_t(18342674, 5120, "BODY")
+1731 - pair_t(18347802, 5120, "BODY")
+1732 - pair_t(18352930, 15412, "FEND")
+1733 - pair_t(18352966, 5120, "BODY")
+1734 - pair_t(18358094, 5120, "BODY")
+1735 - pair_t(18363222, 5120, "BODY")
+1736 - pair_t(18368350, 15412, "FEND")
+1737 - pair_t(18368386, 5120, "BODY")
+1738 - pair_t(18373514, 5120, "BODY")
+1739 - pair_t(18378642, 5120, "BODY")
+1740 - pair_t(18383770, 15412, "FEND")
+1741 - pair_t(18383806, 5120, "BODY")
+1742 - pair_t(18388934, 5120, "BODY")
+1743 - pair_t(18394062, 5120, "BODY")
+1744 - pair_t(18399190, 3520, "FEND")
+1745 - pair_t(18399226, 1156, "BODY")
+1746 - pair_t(18400390, 1156, "BODY")
+1747 - pair_t(18401554, 1156, "BODY")
+1748 - pair_t(18402718, 37324, "FEND")
+1749 - pair_t(18402754, 18640, "BODY")
+1750 - pair_t(18421402, 18640, "BODY")
+1751 - pair_t(18440050, 62548, "FEND")
+1752 - pair_t(18440086, 6244, "BODY")
+1753 - pair_t(18446338, 6244, "BODY")
+1754 - pair_t(18452590, 6244, "BODY")
+1755 - pair_t(18458842, 6244, "BODY")
+1756 - pair_t(18465094, 6244, "BODY")
+1757 - pair_t(18471346, 6244, "BODY")
+1758 - pair_t(18477598, 6244, "BODY")
+1759 - pair_t(18483850, 6244, "BODY")
+1760 - pair_t(18490102, 6244, "BODY")
+1761 - pair_t(18496354, 6244, "BODY")
+1762 - pair_t(18502606, 573228, "FORM")
+1763 - pair_t(18502618, 307224, "PANL")
+1764 - pair_t(18502642, 307200, "BODY")
+1765 - pair_t(18809850, 2916, "FEND")
+1766 - pair_t(18809886, 2880, "BODY")
+1767 - pair_t(18812774, 2916, "FEND")
+1768 - pair_t(18812810, 2880, "BODY")
+1769 - pair_t(18815698, 2916, "FEND")
+1770 - pair_t(18815734, 2880, "BODY")
+1771 - pair_t(18818622, 2916, "FEND")
+1772 - pair_t(18818658, 2880, "BODY")
+1773 - pair_t(18821546, 2916, "FEND")
+1774 - pair_t(18821582, 2880, "BODY")
+1775 - pair_t(18824470, 2916, "FEND")
+1776 - pair_t(18824506, 2880, "BODY")
+1777 - pair_t(18827394, 2916, "FEND")
+1778 - pair_t(18827430, 2880, "BODY")
+1779 - pair_t(18830318, 2916, "FEND")
+1780 - pair_t(18830354, 2880, "BODY")
+1781 - pair_t(18833242, 2916, "FEND")
+1782 - pair_t(18833278, 2880, "BODY")
+1783 - pair_t(18836166, 2916, "FEND")
+1784 - pair_t(18836202, 2880, "BODY")
+1785 - pair_t(18839090, 2916, "FEND")
+1786 - pair_t(18839126, 2880, "BODY")
+1787 - pair_t(18842014, 2916, "FEND")
+1788 - pair_t(18842050, 2880, "BODY")
+1789 - pair_t(18844938, 2916, "FEND")
+1790 - pair_t(18844974, 2880, "BODY")
+1791 - pair_t(18847862, 2916, "FEND")
+1792 - pair_t(18847898, 2880, "BODY")
+1793 - pair_t(18850786, 2916, "FEND")
+1794 - pair_t(18850822, 2880, "BODY")
+1795 - pair_t(18853710, 2916, "FEND")
+1796 - pair_t(18853746, 2880, "BODY")
+1797 - pair_t(18856634, 2916, "FEND")
+1798 - pair_t(18856670, 2880, "BODY")
+1799 - pair_t(18859558, 2916, "FEND")
+1800 - pair_t(18859594, 2880, "BODY")
+1801 - pair_t(18862482, 2916, "FEND")
+1802 - pair_t(18862518, 2880, "BODY")
+1803 - pair_t(18865406, 2916, "FEND")
+1804 - pair_t(18865442, 2880, "BODY")
+1805 - pair_t(18868330, 2916, "FEND")
+1806 - pair_t(18868366, 2880, "BODY")
+1807 - pair_t(18871254, 2916, "FEND")
+1808 - pair_t(18871290, 2880, "BODY")
+1809 - pair_t(18874178, 2916, "FEND")
+1810 - pair_t(18874214, 2880, "BODY")
+1811 - pair_t(18877102, 2916, "FEND")
+1812 - pair_t(18877138, 2880, "BODY")
+1813 - pair_t(18880026, 2916, "FEND")
+1814 - pair_t(18880062, 2880, "BODY")
+1815 - pair_t(18882950, 2916, "FEND")
+1816 - pair_t(18882986, 2880, "BODY")
+1817 - pair_t(18885874, 2916, "FEND")
+1818 - pair_t(18885910, 2880, "BODY")
+1819 - pair_t(18888798, 2916, "FEND")
+1820 - pair_t(18888834, 2880, "BODY")
+1821 - pair_t(18891722, 2916, "FEND")
+1822 - pair_t(18891758, 2880, "BODY")
+1823 - pair_t(18894646, 2916, "FEND")
+1824 - pair_t(18894682, 2880, "BODY")
+1825 - pair_t(18897570, 74620, "FEND")
+1826 - pair_t(18897606, 18640, "BODY")
+1827 - pair_t(18916254, 18640, "BODY")
+1828 - pair_t(18934902, 18640, "BODY")
+1829 - pair_t(18953550, 18640, "BODY")
+1830 - pair_t(18972198, 100108, "FEND")
+1831 - pair_t(18972234, 10000, "BODY")
+1832 - pair_t(18982242, 10000, "BODY")
+1833 - pair_t(18992250, 10000, "BODY")
+1834 - pair_t(19002258, 10000, "BODY")
+1835 - pair_t(19012266, 10000, "BODY")
+1836 - pair_t(19022274, 10000, "BODY")
+1837 - pair_t(19032282, 10000, "BODY")
+1838 - pair_t(19042290, 10000, "BODY")
+1839 - pair_t(19052298, 10000, "BODY")
+1840 - pair_t(19062306, 10000, "BODY")
+1841 - pair_t(19072314, 3520, "FEND")
+1842 - pair_t(19072350, 1156, "BODY")
+1843 - pair_t(19073514, 1156, "BODY")
+1844 - pair_t(19074678, 1156, "BODY")
+1845 - pair_t(19075842, 613412, "FORM")
+1846 - pair_t(19075854, 307224, "PANL")
+1847 - pair_t(19075878, 307200, "BODY")
+1848 - pair_t(19383086, 4804, "FEND")
+1849 - pair_t(19383122, 2380, "BODY")
+1850 - pair_t(19385510, 2380, "BODY")
+1851 - pair_t(19387898, 3520, "FEND")
+1852 - pair_t(19387934, 1156, "BODY")
+1853 - pair_t(19389098, 1156, "BODY")
+1854 - pair_t(19390262, 1156, "BODY")
+1855 - pair_t(19391426, 3520, "FEND")
+1856 - pair_t(19391462, 1156, "BODY")
+1857 - pair_t(19392626, 1156, "BODY")
+1858 - pair_t(19393790, 1156, "BODY")
+1859 - pair_t(19394990, 10908, "BODY")
+1860 - pair_t(19405906, 10908, "BODY")
+1861 - pair_t(19416822, 4804, "FEND")
+1862 - pair_t(19416858, 2380, "BODY")
+1863 - pair_t(19419246, 2380, "BODY")
+1864 - pair_t(19421634, 3520, "FEND")
+1865 - pair_t(19421670, 1156, "BODY")
+1866 - pair_t(19422834, 1156, "BODY")
+1867 - pair_t(19423998, 1156, "BODY")
+1868 - pair_t(19425162, 3520, "FEND")
+1869 - pair_t(19425198, 1156, "BODY")
+1870 - pair_t(19426362, 1156, "BODY")
+1871 - pair_t(19427526, 1156, "BODY")
+1872 - pair_t(19428726, 10908, "BODY")
+1873 - pair_t(19439642, 10908, "BODY")
+1874 - pair_t(19450558, 18256, "FEND")
+1875 - pair_t(19450594, 6068, "BODY")
+1876 - pair_t(19456670, 6068, "BODY")
+1877 - pair_t(19462746, 6068, "BODY")
+1878 - pair_t(19468822, 18676, "FEND")
+1879 - pair_t(19468858, 18640, "BODY")
+1880 - pair_t(19487506, 201748, "FEND")
+1881 - pair_t(19487542, 20164, "BODY")
+1882 - pair_t(19507714, 20164, "BODY")
+1883 - pair_t(19527886, 20164, "BODY")
+1884 - pair_t(19548058, 20164, "BODY")
+1885 - pair_t(19568230, 20164, "BODY")
+1886 - pair_t(19588402, 20164, "BODY")
+1887 - pair_t(19608574, 20164, "BODY")
+1888 - pair_t(19628746, 20164, "BODY")
+1889 - pair_t(19648918, 20164, "BODY")
+1890 - pair_t(19669090, 20164, "BODY")
+1891 - pair_t(19689278, 742592, "FORM")
+1892 - pair_t(19689290, 307224, "PANL")
+1893 - pair_t(19689314, 307200, "BODY")
+1894 - pair_t(19996522, 141108, "FEND")
+1895 - pair_t(19996558, 14100, "BODY")
+1896 - pair_t(20010666, 14100, "BODY")
+1897 - pair_t(20024774, 14100, "BODY")
+1898 - pair_t(20038882, 14100, "BODY")
+1899 - pair_t(20052990, 14100, "BODY")
+1900 - pair_t(20067098, 14100, "BODY")
+1901 - pair_t(20081206, 14100, "BODY")
+1902 - pair_t(20095314, 14100, "BODY")
+1903 - pair_t(20109422, 14100, "BODY")
+1904 - pair_t(20123530, 14100, "BODY")
+1905 - pair_t(20137638, 20668, "FEND")
+1906 - pair_t(20137674, 1024, "BODY")
+1907 - pair_t(20138706, 1024, "BODY")
+1908 - pair_t(20139738, 1024, "BODY")
+1909 - pair_t(20140770, 1024, "BODY")
+1910 - pair_t(20141802, 1024, "BODY")
+1911 - pair_t(20142834, 1024, "BODY")
+1912 - pair_t(20143866, 1024, "BODY")
+1913 - pair_t(20144898, 1024, "BODY")
+1914 - pair_t(20145930, 1024, "BODY")
+1915 - pair_t(20146962, 1024, "BODY")
+1916 - pair_t(20147994, 1024, "BODY")
+1917 - pair_t(20149026, 1024, "BODY")
+1918 - pair_t(20150058, 1024, "BODY")
+1919 - pair_t(20151090, 1024, "BODY")
+1920 - pair_t(20152122, 1024, "BODY")
+1921 - pair_t(20153154, 1024, "BODY")
+1922 - pair_t(20154186, 1024, "BODY")
+1923 - pair_t(20155218, 1024, "BODY")
+1924 - pair_t(20156250, 1024, "BODY")
+1925 - pair_t(20157282, 1024, "BODY")
+1926 - pair_t(20158314, 20668, "FEND")
+1927 - pair_t(20158350, 1024, "BODY")
+1928 - pair_t(20159382, 1024, "BODY")
+1929 - pair_t(20160414, 1024, "BODY")
+1930 - pair_t(20161446, 1024, "BODY")
+1931 - pair_t(20162478, 1024, "BODY")
+1932 - pair_t(20163510, 1024, "BODY")
+1933 - pair_t(20164542, 1024, "BODY")
+1934 - pair_t(20165574, 1024, "BODY")
+1935 - pair_t(20166606, 1024, "BODY")
+1936 - pair_t(20167638, 1024, "BODY")
+1937 - pair_t(20168670, 1024, "BODY")
+1938 - pair_t(20169702, 1024, "BODY")
+1939 - pair_t(20170734, 1024, "BODY")
+1940 - pair_t(20171766, 1024, "BODY")
+1941 - pair_t(20172798, 1024, "BODY")
+1942 - pair_t(20173830, 1024, "BODY")
+1943 - pair_t(20174862, 1024, "BODY")
+1944 - pair_t(20175894, 1024, "BODY")
+1945 - pair_t(20176926, 1024, "BODY")
+1946 - pair_t(20177958, 1024, "BODY")
+1947 - pair_t(20178990, 20668, "FEND")
+1948 - pair_t(20179026, 1024, "BODY")
+1949 - pair_t(20180058, 1024, "BODY")
+1950 - pair_t(20181090, 1024, "BODY")
+1951 - pair_t(20182122, 1024, "BODY")
+1952 - pair_t(20183154, 1024, "BODY")
+1953 - pair_t(20184186, 1024, "BODY")
+1954 - pair_t(20185218, 1024, "BODY")
+1955 - pair_t(20186250, 1024, "BODY")
+1956 - pair_t(20187282, 1024, "BODY")
+1957 - pair_t(20188314, 1024, "BODY")
+1958 - pair_t(20189346, 1024, "BODY")
+1959 - pair_t(20190378, 1024, "BODY")
+1960 - pair_t(20191410, 1024, "BODY")
+1961 - pair_t(20192442, 1024, "BODY")
+1962 - pair_t(20193474, 1024, "BODY")
+1963 - pair_t(20194506, 1024, "BODY")
+1964 - pair_t(20195538, 1024, "BODY")
+1965 - pair_t(20196570, 1024, "BODY")
+1966 - pair_t(20197602, 1024, "BODY")
+1967 - pair_t(20198634, 1024, "BODY")
+1968 - pair_t(20199666, 20668, "FEND")
+1969 - pair_t(20199702, 1024, "BODY")
+1970 - pair_t(20200734, 1024, "BODY")
+1971 - pair_t(20201766, 1024, "BODY")
+1972 - pair_t(20202798, 1024, "BODY")
+1973 - pair_t(20203830, 1024, "BODY")
+1974 - pair_t(20204862, 1024, "BODY")
+1975 - pair_t(20205894, 1024, "BODY")
+1976 - pair_t(20206926, 1024, "BODY")
+1977 - pair_t(20207958, 1024, "BODY")
+1978 - pair_t(20208990, 1024, "BODY")
+1979 - pair_t(20210022, 1024, "BODY")
+1980 - pair_t(20211054, 1024, "BODY")
+1981 - pair_t(20212086, 1024, "BODY")
+1982 - pair_t(20213118, 1024, "BODY")
+1983 - pair_t(20214150, 1024, "BODY")
+1984 - pair_t(20215182, 1024, "BODY")
+1985 - pair_t(20216214, 1024, "BODY")
+1986 - pair_t(20217246, 1024, "BODY")
+1987 - pair_t(20218278, 1024, "BODY")
+1988 - pair_t(20219310, 1024, "BODY")
+1989 - pair_t(20220342, 10860, "FEND")
+1990 - pair_t(20220378, 2700, "BODY")
+1991 - pair_t(20223086, 2700, "BODY")
+1992 - pair_t(20225794, 2700, "BODY")
+1993 - pair_t(20228502, 2700, "BODY")
+1994 - pair_t(20231210, 19868, "FEND")
+1995 - pair_t(20231246, 4952, "BODY")
+1996 - pair_t(20236206, 4952, "BODY")
+1997 - pair_t(20241166, 4952, "BODY")
+1998 - pair_t(20246126, 4952, "BODY")
+1999 - pair_t(20251086, 19868, "FEND")
+2000 - pair_t(20251122, 4952, "BODY")
+2001 - pair_t(20256082, 4952, "BODY")
+2002 - pair_t(20261042, 4952, "BODY")
+2003 - pair_t(20266002, 4952, "BODY")
+2004 - pair_t(20270962, 19868, "FEND")
+2005 - pair_t(20270998, 4952, "BODY")
+2006 - pair_t(20275958, 4952, "BODY")
+2007 - pair_t(20280918, 4952, "BODY")
+2008 - pair_t(20285878, 4952, "BODY")
+2009 - pair_t(20290838, 19868, "FEND")
+2010 - pair_t(20290874, 4952, "BODY")
+2011 - pair_t(20295834, 4952, "BODY")
+2012 - pair_t(20300794, 4952, "BODY")
+2013 - pair_t(20305754, 4952, "BODY")
+2014 - pair_t(20310714, 4860, "FEND")
+2015 - pair_t(20310750, 1600, "BODY")
+2016 - pair_t(20312358, 1600, "BODY")
+2017 - pair_t(20313966, 1600, "BODY")
+2018 - pair_t(20315574, 0, "BODY")
+2019 - pair_t(20315582, 7692, "FEND")
+2020 - pair_t(20315618, 1908, "BODY")
+2021 - pair_t(20317534, 1908, "BODY")
+2022 - pair_t(20319450, 1908, "BODY")
+2023 - pair_t(20321366, 1908, "BODY")
+2024 - pair_t(20323282, 7692, "FEND")
+2025 - pair_t(20323318, 1908, "BODY")
+2026 - pair_t(20325234, 1908, "BODY")
+2027 - pair_t(20327150, 1908, "BODY")
+2028 - pair_t(20329066, 1908, "BODY")
+2029 - pair_t(20330982, 7692, "FEND")
+2030 - pair_t(20331018, 1908, "BODY")
+2031 - pair_t(20332934, 1908, "BODY")
+2032 - pair_t(20334850, 1908, "BODY")
+2033 - pair_t(20336766, 1908, "BODY")
+2034 - pair_t(20338682, 7692, "FEND")
+2035 - pair_t(20338718, 1908, "BODY")
+2036 - pair_t(20340634, 1908, "BODY")
+2037 - pair_t(20342550, 1908, "BODY")
+2038 - pair_t(20344466, 1908, "BODY")
+2039 - pair_t(20346382, 10860, "FEND")
+2040 - pair_t(20346418, 2700, "BODY")
+2041 - pair_t(20349126, 2700, "BODY")
+2042 - pair_t(20351834, 2700, "BODY")
+2043 - pair_t(20354542, 2700, "BODY")
+2044 - pair_t(20357250, 74620, "FEND")
+2045 - pair_t(20357286, 18640, "BODY")
+2046 - pair_t(20375934, 18640, "BODY")
+2047 - pair_t(20394582, 18640, "BODY")
+2048 - pair_t(20413230, 18640, "BODY")
+2049 - pair_t(20431878, 663376, "FORM")
+2050 - pair_t(20431890, 307224, "PANL")
+2051 - pair_t(20431914, 307200, "BODY")
+2052 - pair_t(20739122, 141108, "FEND")
+2053 - pair_t(20739158, 14100, "BODY")
+2054 - pair_t(20753266, 14100, "BODY")
+2055 - pair_t(20767374, 14100, "BODY")
+2056 - pair_t(20781482, 14100, "BODY")
+2057 - pair_t(20795590, 14100, "BODY")
+2058 - pair_t(20809698, 14100, "BODY")
+2059 - pair_t(20823806, 14100, "BODY")
+2060 - pair_t(20837914, 14100, "BODY")
+2061 - pair_t(20852022, 14100, "BODY")
+2062 - pair_t(20866130, 14100, "BODY")
+2063 - pair_t(20880238, 4852, "FEND")
+2064 - pair_t(20880274, 1600, "BODY")
+2065 - pair_t(20881882, 1600, "BODY")
+2066 - pair_t(20883490, 1600, "BODY")
+2067 - pair_t(20885098, 135528, "FEND")
+2068 - pair_t(20885134, 45156, "BODY")
+2069 - pair_t(20930298, 45156, "BODY")
+2070 - pair_t(20975462, 45156, "BODY")
+2071 - pair_t(21020626, 0, "BODY")
+2072 - pair_t(21020634, 74620, "FEND")
+2073 - pair_t(21020670, 18640, "BODY")
+2074 - pair_t(21039318, 18640, "BODY")
+2075 - pair_t(21057966, 18640, "BODY")
+2076 - pair_t(21076614, 18640, "BODY")
+2077 - pair_t(21095266, 1084032, "FORM")
+2078 - pair_t(21095278, 307224, "PANL")
+2079 - pair_t(21095302, 307200, "BODY")
+2080 - pair_t(21402510, 46156, "FEND")
+2081 - pair_t(21402546, 7680, "BODY")
+2082 - pair_t(21410234, 7680, "BODY")
+2083 - pair_t(21417922, 7680, "BODY")
+2084 - pair_t(21425610, 7680, "BODY")
+2085 - pair_t(21433298, 7680, "BODY")
+2086 - pair_t(21440986, 7680, "BODY")
+2087 - pair_t(21448674, 46156, "FEND")
+2088 - pair_t(21448710, 7680, "BODY")
+2089 - pair_t(21456398, 7680, "BODY")
+2090 - pair_t(21464086, 7680, "BODY")
+2091 - pair_t(21471774, 7680, "BODY")
+2092 - pair_t(21479462, 7680, "BODY")
+2093 - pair_t(21487150, 7680, "BODY")
+2094 - pair_t(21494838, 46156, "FEND")
+2095 - pair_t(21494874, 7680, "BODY")
+2096 - pair_t(21502562, 7680, "BODY")
+2097 - pair_t(21510250, 7680, "BODY")
+2098 - pair_t(21517938, 7680, "BODY")
+2099 - pair_t(21525626, 7680, "BODY")
+2100 - pair_t(21533314, 7680, "BODY")
+2101 - pair_t(21541002, 46156, "FEND")
+2102 - pair_t(21541038, 7680, "BODY")
+2103 - pair_t(21548726, 7680, "BODY")
+2104 - pair_t(21556414, 7680, "BODY")
+2105 - pair_t(21564102, 7680, "BODY")
+2106 - pair_t(21571790, 7680, "BODY")
+2107 - pair_t(21579478, 7680, "BODY")
+2108 - pair_t(21587166, 46156, "FEND")
+2109 - pair_t(21587202, 7680, "BODY")
+2110 - pair_t(21594890, 7680, "BODY")
+2111 - pair_t(21602578, 7680, "BODY")
+2112 - pair_t(21610266, 7680, "BODY")
+2113 - pair_t(21617954, 7680, "BODY")
+2114 - pair_t(21625642, 7680, "BODY")
+2115 - pair_t(21633330, 46156, "FEND")
+2116 - pair_t(21633366, 7680, "BODY")
+2117 - pair_t(21641054, 7680, "BODY")
+2118 - pair_t(21648742, 7680, "BODY")
+2119 - pair_t(21656430, 7680, "BODY")
+2120 - pair_t(21664118, 7680, "BODY")
+2121 - pair_t(21671806, 7680, "BODY")
+2122 - pair_t(21679494, 46156, "FEND")
+2123 - pair_t(21679530, 7680, "BODY")
+2124 - pair_t(21687218, 7680, "BODY")
+2125 - pair_t(21694906, 7680, "BODY")
+2126 - pair_t(21702594, 7680, "BODY")
+2127 - pair_t(21710282, 7680, "BODY")
+2128 - pair_t(21717970, 7680, "BODY")
+2129 - pair_t(21725658, 46156, "FEND")
+2130 - pair_t(21725694, 7680, "BODY")
+2131 - pair_t(21733382, 7680, "BODY")
+2132 - pair_t(21741070, 7680, "BODY")
+2133 - pair_t(21748758, 7680, "BODY")
+2134 - pair_t(21756446, 7680, "BODY")
+2135 - pair_t(21764134, 7680, "BODY")
+2136 - pair_t(21771822, 23092, "FEND")
+2137 - pair_t(21771858, 7680, "BODY")
+2138 - pair_t(21779546, 7680, "BODY")
+2139 - pair_t(21787234, 7680, "BODY")
+2140 - pair_t(21794922, 23092, "FEND")
+2141 - pair_t(21794958, 7680, "BODY")
+2142 - pair_t(21802646, 7680, "BODY")
+2143 - pair_t(21810334, 7680, "BODY")
+2144 - pair_t(21818022, 23092, "FEND")
+2145 - pair_t(21818058, 7680, "BODY")
+2146 - pair_t(21825746, 7680, "BODY")
+2147 - pair_t(21833434, 7680, "BODY")
+2148 - pair_t(21841122, 55980, "FEND")
+2149 - pair_t(21841158, 18640, "BODY")
+2150 - pair_t(21859806, 18640, "BODY")
+2151 - pair_t(21878454, 18640, "BODY")
+2152 - pair_t(21897102, 0, "BODY")
+2153 - pair_t(21897110, 282188, "FEND")
+2154 - pair_t(21897146, 14100, "BODY")
+2155 - pair_t(21911254, 14100, "BODY")
+2156 - pair_t(21925362, 14100, "BODY")
+2157 - pair_t(21939470, 14100, "BODY")
+2158 - pair_t(21953578, 14100, "BODY")
+2159 - pair_t(21967686, 14100, "BODY")
+2160 - pair_t(21981794, 14100, "BODY")
+2161 - pair_t(21995902, 14100, "BODY")
+2162 - pair_t(22010010, 14100, "BODY")
+2163 - pair_t(22024118, 14100, "BODY")
+2164 - pair_t(22038226, 14100, "BODY")
+2165 - pair_t(22052334, 14100, "BODY")
+2166 - pair_t(22066442, 14100, "BODY")
+2167 - pair_t(22080550, 14100, "BODY")
+2168 - pair_t(22094658, 14100, "BODY")
+2169 - pair_t(22108766, 14100, "BODY")
+2170 - pair_t(22122874, 14100, "BODY")
+2171 - pair_t(22136982, 14100, "BODY")
+2172 - pair_t(22151090, 14100, "BODY")
+2173 - pair_t(22165198, 14100, "BODY")
+2174 - pair_t(22179314, 874996, "FORM")
+2175 - pair_t(22179334, 218732, "BODY")
+2176 - pair_t(22179342, 218724, "FORM")
+2177 - pair_t(22179354, 10376, "TILE")
+2178 - pair_t(22179362, 10368, "BODY")
+2179 - pair_t(22189738, 20744, "TILE")
+2180 - pair_t(22189746, 20736, "BODY")
+2181 - pair_t(22210490, 20744, "TILE")
+2182 - pair_t(22210498, 20736, "BODY")
+2183 - pair_t(22231242, 10376, "TILE")
+2184 - pair_t(22231250, 10368, "BODY")
+2185 - pair_t(22241626, 20744, "TILE")
+2186 - pair_t(22241634, 20736, "BODY")
+2187 - pair_t(22262378, 20744, "TILE")
+2188 - pair_t(22262386, 20736, "BODY")
+2189 - pair_t(22283130, 10376, "TILE")
+2190 - pair_t(22283138, 10368, "BODY")
+2191 - pair_t(22293514, 20744, "TILE")
+2192 - pair_t(22293522, 20736, "BODY")
+2193 - pair_t(22314266, 20744, "TILE")
+2194 - pair_t(22314274, 20736, "BODY")
+2195 - pair_t(22335018, 10376, "TILE")
+2196 - pair_t(22335026, 10368, "BODY")
+2197 - pair_t(22345402, 20744, "TILE")
+2198 - pair_t(22345410, 20736, "BODY")
+2199 - pair_t(22366154, 20744, "TILE")
+2200 - pair_t(22366162, 20736, "BODY")
+2201 - pair_t(22386906, 10376, "TILE")
+2202 - pair_t(22386914, 10368, "BODY")
+2203 - pair_t(22397290, 776, "CPAL")
+2204 - pair_t(22397298, 768, "BODY")
+2205 - pair_t(22398074, 218740, "MEDI")
+2206 - pair_t(22398082, 218732, "BODY")
+2207 - pair_t(22398090, 218724, "FORM")
+2208 - pair_t(22398102, 10376, "TILE")
+2209 - pair_t(22398110, 10368, "BODY")
+2210 - pair_t(22408486, 20744, "TILE")
+2211 - pair_t(22408494, 20736, "BODY")
+2212 - pair_t(22429238, 20744, "TILE")
+2213 - pair_t(22429246, 20736, "BODY")
+2214 - pair_t(22449990, 10376, "TILE")
+2215 - pair_t(22449998, 10368, "BODY")
+2216 - pair_t(22460374, 20744, "TILE")
+2217 - pair_t(22460382, 20736, "BODY")
+2218 - pair_t(22481126, 20744, "TILE")
+2219 - pair_t(22481134, 20736, "BODY")
+2220 - pair_t(22501878, 10376, "TILE")
+2221 - pair_t(22501886, 10368, "BODY")
+2222 - pair_t(22512262, 20744, "TILE")
+2223 - pair_t(22512270, 20736, "BODY")
+2224 - pair_t(22533014, 20744, "TILE")
+2225 - pair_t(22533022, 20736, "BODY")
+2226 - pair_t(22553766, 10376, "TILE")
+2227 - pair_t(22553774, 10368, "BODY")
+2228 - pair_t(22564150, 20744, "TILE")
+2229 - pair_t(22564158, 20736, "BODY")
+2230 - pair_t(22584902, 20744, "TILE")
+2231 - pair_t(22584910, 20736, "BODY")
+2232 - pair_t(22605654, 10376, "TILE")
+2233 - pair_t(22605662, 10368, "BODY")
+2234 - pair_t(22616038, 776, "CPAL")
+2235 - pair_t(22616046, 768, "BODY")
+2236 - pair_t(22616822, 218740, "MODN")
+2237 - pair_t(22616830, 218732, "BODY")
+2238 - pair_t(22616838, 218724, "FORM")
+2239 - pair_t(22616850, 10376, "TILE")
+2240 - pair_t(22616858, 10368, "BODY")
+2241 - pair_t(22627234, 20744, "TILE")
+2242 - pair_t(22627242, 20736, "BODY")
+2243 - pair_t(22647986, 20744, "TILE")
+2244 - pair_t(22647994, 20736, "BODY")
+2245 - pair_t(22668738, 10376, "TILE")
+2246 - pair_t(22668746, 10368, "BODY")
+2247 - pair_t(22679122, 20744, "TILE")
+2248 - pair_t(22679130, 20736, "BODY")
+2249 - pair_t(22699874, 20744, "TILE")
+2250 - pair_t(22699882, 20736, "BODY")
+2251 - pair_t(22720626, 10376, "TILE")
+2252 - pair_t(22720634, 10368, "BODY")
+2253 - pair_t(22731010, 20744, "TILE")
+2254 - pair_t(22731018, 20736, "BODY")
+2255 - pair_t(22751762, 20744, "TILE")
+2256 - pair_t(22751770, 20736, "BODY")
+2257 - pair_t(22772514, 10376, "TILE")
+2258 - pair_t(22772522, 10368, "BODY")
+2259 - pair_t(22782898, 20744, "TILE")
+2260 - pair_t(22782906, 20736, "BODY")
+2261 - pair_t(22803650, 20744, "TILE")
+2262 - pair_t(22803658, 20736, "BODY")
+2263 - pair_t(22824402, 10376, "TILE")
+2264 - pair_t(22824410, 10368, "BODY")
+2265 - pair_t(22834786, 776, "CPAL")
+2266 - pair_t(22834794, 768, "BODY")
+2267 - pair_t(22835578, 218732, "BODY")
+2268 - pair_t(22835586, 218724, "FORM")
+2269 - pair_t(22835598, 10376, "TILE")
+2270 - pair_t(22835606, 10368, "BODY")
+2271 - pair_t(22845982, 20744, "TILE")
+2272 - pair_t(22845990, 20736, "BODY")
+2273 - pair_t(22866734, 20744, "TILE")
+2274 - pair_t(22866742, 20736, "BODY")
+2275 - pair_t(22887486, 10376, "TILE")
+2276 - pair_t(22887494, 10368, "BODY")
+2277 - pair_t(22897870, 20744, "TILE")
+2278 - pair_t(22897878, 20736, "BODY")
+2279 - pair_t(22918622, 20744, "TILE")
+2280 - pair_t(22918630, 20736, "BODY")
+2281 - pair_t(22939374, 10376, "TILE")
+2282 - pair_t(22939382, 10368, "BODY")
+2283 - pair_t(22949758, 20744, "TILE")
+2284 - pair_t(22949766, 20736, "BODY")
+2285 - pair_t(22970510, 20744, "TILE")
+2286 - pair_t(22970518, 20736, "BODY")
+2287 - pair_t(22991262, 10376, "TILE")
+2288 - pair_t(22991270, 10368, "BODY")
+2289 - pair_t(23001646, 20744, "TILE")
+2290 - pair_t(23001654, 20736, "BODY")
+2291 - pair_t(23022398, 20744, "TILE")
+2292 - pair_t(23022406, 20736, "BODY")
+2293 - pair_t(23043150, 10376, "TILE")
+2294 - pair_t(23043158, 10368, "BODY")
+2295 - pair_t(23053534, 776, "CPAL")
+2296 - pair_t(23053542, 768, "BODY")
+2297 - pair_t(23054330, 192, "FORM")
+2298 - pair_t(23054342, 32, "DIAL")
+2299 - pair_t(23054350, 24, "TEXT")
+2300 - pair_t(23054382, 36, "DIAL")
+2301 - pair_t(23054390, 28, "TEXT")
+2302 - pair_t(23054426, 12, "DIAC")
+2303 - pair_t(23054474, 4, "TEXT")
+2304 - pair_t(23054514, 8, "TEXT")
+2305 - pair_t(23054530, 196, "FORM")
+2306 - pair_t(23054542, 28, "DIAL")
+2307 - pair_t(23054550, 20, "TEXT")
+2308 - pair_t(23054578, 12, "DIAC")
+2309 - pair_t(23054626, 8, "TEXT")
+2310 - pair_t(23054670, 8, "TEXT")
+2311 - pair_t(23054686, 20, "DTXT")
+2312 - pair_t(23054694, 12, "TEXT")
+2313 - pair_t(23054714, 12, "DINP")
+
+
+
+
+
+
+1 - 
+2 - 
+3 - 
+4 - 
+	5 - SPLIT old ones. Start new one. 
+	6 - 
+	7 -  
+		8 -  SPLIT old one. Start new one.
+	9 - Back to OLD ONE. <---
+0 - BACK TO OLD ONE. <----
+
